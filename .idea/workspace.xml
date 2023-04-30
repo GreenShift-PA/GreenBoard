@@ -4,15 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc171112-159e-4834-b66f-98b0a2d009cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="fc171112-159e-4834-b66f-98b0a2d009cc" name="Changes" comment="Authentication witth DB">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/auth/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/db/PostgreSQL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/apple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/github.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/google.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenboard/greenboard/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenboard/greenboard/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenboard/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/greenboard/greenboard/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/auth.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/greenboard/auth.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/auth.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +30,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaFXApplication" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -39,12 +47,26 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.24827586"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/icons" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.com.greenboard.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.greenboard.greenboard.Main" />
@@ -89,6 +111,14 @@
       <updated>1682861867927</updated>
       <workItem from="1682861869092" duration="1000" />
     </task>
+    <task id="LOCAL-00001" summary="Rename the generated files">
+      <created>1682868516816</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1682868516816</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,5 +134,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Rename the generated files" />
+    <MESSAGE value="Authentication witth DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="Authentication witth DB" />
   </component>
 </project>
