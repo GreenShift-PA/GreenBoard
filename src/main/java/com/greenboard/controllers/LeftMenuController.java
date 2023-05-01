@@ -1,9 +1,10 @@
-package com.greenboard;
+package com.greenboard.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class MainController {
+public class LeftMenuController {
+
     @FXML
     private Label welcomeText;
 
@@ -11,4 +12,5 @@ public class MainController {
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
+
 }

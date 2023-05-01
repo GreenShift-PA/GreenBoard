@@ -1,0 +1,119 @@
+/* Set background and text colors */
+.root {
+    -fx-background-color: #1E1E1E;
+    -fx-text-fill: #fff;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+
+.tab-pane
+{
+    -fx-tab-min-width:90px;
+}
+
+.tab{
+    -fx-background-insets: 0 1 0 1,0,0;
+}
+.tab-pane .tab
+{
+    -fx-background-color: #1E1E1E;
+
+}
+
+.tab-pane .tab:selected
+{
+    -fx-background-color: #3c3c3c;
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #828282;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #fff;
+}
+
+.tab:hover .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #fff;
+}
+
+.tab-pane .tab:selected .focus-indicator {
+    -fx-border-color: #fff;
+    -fx-border-width: 0 0 2 0;
+}
+
+.tab-pane .tab .focus-indicator {
+    -fx-border-color: transparent;
+}
+
+
+/* Set button styles */
+.button {
+    -fx-background-color: #1f1f1f;
+    -fx-text-fill: #fff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #2f2f2f;
+}
+
+.button:pressed {
+    -fx-background-color: #0d0d0d;
+}
+
+/* Set text field styles */
+.text-field {
+    -fx-background-color: #1f1f1f;
+    -fx-text-fill: #fff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px 20px;
+}
+
+.text-field:focused {
+    -fx-background-color: #2f2f2f;
+}
+
+/* Set label styles */
+.label {
+    -fx-text-fill: #fff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+
+.list-cell {
+    -fx-background-color: #121212;
+    -fx-border-color: #424242;
+    -fx-border-width: 0 0 2px 0;
+    -fx-padding: 10px;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 2);
+    -fx-background-insets: 0;
+}
+
+.list-cell:hover {
+    -fx-background-color: #212121;
+}
+
+.list-cell:selected {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #61dafb;
+}
+
+.list-view {
+    -fx-background-color: #121212;
+}

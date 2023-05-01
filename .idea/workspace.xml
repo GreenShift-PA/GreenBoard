@@ -5,21 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc171112-159e-4834-b66f-98b0a2d009cc" name="Changes" comment="Authentication witth DB">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/auth/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/db/PostgreSQL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/apple.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/github.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/google.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/components/tasks/TaskCard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/components/tasks/TaskGridPane.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/LeftMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/TaskCardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/TasksController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/tasks/TasksBoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/enums/TaskStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/factories/TaskCardFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/factories/TaskCellFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/models/Task.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/home.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/left-menu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/tasks-board.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/tasks.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/greenboard/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenboard/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/greenboard/auth.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/auth.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,12 +36,17 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaFXApplication" />
+        <option value="Enum" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2P9GQRXf9Yt3svdyRCFF5nKVvN8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -45,26 +56,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.24827586"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.24827586&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/greenboard" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/greenboard" />
       <recent name="$PROJECT_DIR$/src/main/resources/icons" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.greenboard" />
     </key>
   </component>
   <component name="RunManager" selected="Application.com.greenboard.Main">
@@ -86,7 +102,7 @@
       <module name="greenboard" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.greenboard.*" />
+          <option name="PATTERN" value="com.greenboard.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -110,6 +126,7 @@
       <option name="presentableId" value="Default" />
       <updated>1682861867927</updated>
       <workItem from="1682861869092" duration="1000" />
+      <workItem from="1682876010055" duration="13887000" />
     </task>
     <task id="LOCAL-00001" summary="Rename the generated files">
       <created>1682868516816</created>
@@ -118,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682868516816</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Authentication witth DB">
+      <created>1682874811865</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682874811865</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,5 +164,15 @@
     <MESSAGE value="Rename the generated files" />
     <MESSAGE value="Authentication witth DB" />
     <option name="LAST_COMMIT_MESSAGE" value="Authentication witth DB" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalAccessException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
