@@ -1,6 +1,8 @@
 package com.greenboard.models;
 
+import com.greenboard.enums.TaskPriority;
 import com.greenboard.enums.TaskStatus;
+import javafx.beans.value.ObservableValue;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,15 +13,17 @@ public class Task {
     private String description;
     private List<User> users;
     private TaskStatus status;
+    private TaskPriority priority;
     private LocalDate created_date;
     private LocalDate due_date;
 
-    public Task(int id, String name, String description, List<User> users, TaskStatus status, LocalDate created_date, LocalDate due_date) {
+    public Task(int id, String name, String description, List<User> users, TaskStatus status, TaskPriority priority, LocalDate created_date, LocalDate due_date) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.users = users;
         this.status = status;
+        this.priority = priority;
         this.created_date = created_date;
         this.due_date = due_date;
     }
@@ -74,6 +78,14 @@ public class Task {
 
     public void setDue_date(LocalDate due_date) {
         this.due_date = due_date;
+    }
+
+    public TaskPriority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(TaskPriority priority) {
+        this.priority = priority;
     }
 
 }

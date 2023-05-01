@@ -4,19 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc171112-159e-4834-b66f-98b0a2d009cc" name="Changes" comment="Tasks view">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/models/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/models/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/task-card.fxml" afterDir="false" />
+    <list default="true" id="fc171112-159e-4834-b66f-98b0a2d009cc" name="Changes" comment="users and tasks models">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/tasks/TaskViewerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/tasks/TasksListController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/enums/TaskPriority.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/task-viewer.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/tasks-list.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/TaskCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/TaskCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenboard/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/TaskCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/tasks/TaskCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/tasks/TasksController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/tasks/TasksBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/controllers/tasks/TasksBoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/greenboard/factories/TaskCardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/factories/TaskCardFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/greenboard/factories/TaskCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/factories/TaskCellFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/greenboard/models/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/greenboard/models/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/greenboard/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/home.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/greenboard/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/greenboard/tasks-board.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/tasks-board.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/greenboard/task-card.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/task-card.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/greenboard/tasks.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/greenboard/tasks.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +96,7 @@
       <module name="greenboard" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.greenboard.controllers.*" />
+          <option name="PATTERN" value="com.greenboard.controllers.tasks.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -118,7 +120,7 @@
       <option name="presentableId" value="Default" />
       <updated>1682861867927</updated>
       <workItem from="1682861869092" duration="1000" />
-      <workItem from="1682876010055" duration="20303000" />
+      <workItem from="1682876010055" duration="27582000" />
     </task>
     <task id="LOCAL-00001" summary="Rename the generated files">
       <created>1682868516816</created>
@@ -141,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682946253450</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="users and tasks models">
+      <created>1682953054263</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1682953054263</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +172,8 @@
     <MESSAGE value="Rename the generated files" />
     <MESSAGE value="Authentication witth DB" />
     <MESSAGE value="Tasks view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tasks view" />
+    <MESSAGE value="users and tasks models" />
+    <option name="LAST_COMMIT_MESSAGE" value="users and tasks models" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

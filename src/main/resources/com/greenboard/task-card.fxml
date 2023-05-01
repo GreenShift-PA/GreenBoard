@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <!--    @FXML
         private Label nameLabel;
@@ -16,7 +15,7 @@
         @FXML
         private Label statusLabel;-->
 
-<AnchorPane maxHeight="64.0" style="-fx-background-color: #282828;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenboard.controllers.TaskCardController">
+<AnchorPane maxHeight="64.0" onMouseClicked="#handleTaskClicked" style="-fx-background-color: #282828;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenboard.controllers.tasks.TaskCardController">
     <children>
       <HBox alignment="CENTER_LEFT">
          <children>
@@ -32,63 +31,13 @@
                <children>
                         <Label fx:id="nameLabel" text="Name" textFill="WHITE" />
                         <Label fx:id="descriptionLabel" prefWidth="200.0" text="Description" textFill="WHITE" />
-                        <Label fx:id="statusLabel" prefHeight="4.0" prefWidth="200.0" text="Status" textFill="WHITE" />
-                  <Label fx:id="usersLabel" prefHeight="18.0" prefWidth="188.0" />
-                  <HBox prefHeight="0.0" prefWidth="195.0">
+                  <HBox spacing="10.0">
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="63.0">
-                           <children>
-                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../icons/github.png" />
-                                 </image>
-                              </ImageView>
-                              <Label text="Abdoulaye" textFill="WHITE" wrapText="true">
-                                 <font>
-                                    <Font size="8.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="65.0">
-                           <children>
-                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../icons/github.png" />
-                                 </image>
-                              </ImageView>
-                              <Label text="Abdoulaye" textFill="WHITE" wrapText="true">
-                                 <font>
-                                    <Font size="8.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="65.0">
-                           <children>
-                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../icons/github.png" />
-                                 </image>
-                              </ImageView>
-                              <Label text="Abdoulaye" textFill="WHITE" wrapText="true">
-                                 <font>
-                                    <Font size="8.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
+                              <Label fx:id="statusLabel" prefHeight="18.0" prefWidth="65.0" text="Status" textFill="WHITE" />
+                        <Label fx:id="priorityLabel" prefHeight="18.0" prefWidth="67.0" text="Priority" textFill="WHITE" />
                      </children>
                   </HBox>
+                  <Label fx:id="usersLabel" prefHeight="18.0" prefWidth="188.0" />
                </children>
             </VBox>
          </children>

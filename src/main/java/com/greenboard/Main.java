@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+
+    private Stage stage;
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home.fxml"));
@@ -16,9 +18,15 @@ public class Main extends Application {
         String css = Main.class.getResource("styles.css").toExternalForm();
         scene.getStylesheets().add(css);
 
-        stage.setTitle("GreenBoard");
-        stage.setScene(scene);
-        stage.show();
+        this.stage = stage;
+
+        this.stage.setTitle("GreenBoard");
+        this.stage.setScene(scene);
+        this.stage.show();
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 
     public static void main(String[] args) {

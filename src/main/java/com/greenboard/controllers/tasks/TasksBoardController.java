@@ -1,5 +1,6 @@
 package com.greenboard.controllers.tasks;
 
+import com.greenboard.enums.TaskPriority;
 import com.greenboard.enums.TaskStatus;
 import com.greenboard.factories.TaskCardFactory;
 import com.greenboard.factories.TaskCellFactory;
@@ -47,12 +48,16 @@ public class TasksBoardController implements Initializable {
 
         for (int i = 0; i < 10; i++) {
             /*Task(int id, String name, String description, List<User> users, TaskStatus status, LocalDate created_date, LocalDate due_date)*/
+            TaskStatus randomStatus = TaskStatus.values()[(int) (Math.random() * TaskStatus.values().length)];
+            TaskPriority randomPriority = TaskPriority.values()[(int) (Math.random() * TaskPriority.values().length)];
+
             Task task = new Task(
                     i,
                     "Task " + i,
                     "Description for task " + i,
                     List.of(user1, user2, user3),
-                    TaskStatus.TODO,
+                    randomStatus,
+                    randomPriority,
                     LocalDate.now(),
                     LocalDate.now().plusDays(5)
             );

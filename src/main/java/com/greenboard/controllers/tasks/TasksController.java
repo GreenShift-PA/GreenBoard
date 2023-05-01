@@ -1,4 +1,4 @@
-package com.greenboard.controllers;
+package com.greenboard.controllers.tasks;
 
 import com.greenboard.enums.TaskStatus;
 import com.greenboard.factories.TaskCellFactory;

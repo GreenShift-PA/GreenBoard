@@ -1,7 +1,7 @@
 package com.greenboard.factories;
 
 import com.greenboard.models.Task;
-import com.greenboard.controllers.TaskCardController;
+import com.greenboard.controllers.tasks.TaskCardController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.ListCell;
@@ -33,7 +33,9 @@ public class TaskCardFactory extends ListCell<Task> {
                 controller.setName(task.getName());
                 controller.setDescription(task.getDescription());
                 controller.setStatus(task.getStatus().toString());
+                controller.setPriority(task.getPriority().toString());
                 controller.setUsers(task.getUsers());
+
                 setGraphic(card);
             } catch (IOException e) {
                 e.printStackTrace();

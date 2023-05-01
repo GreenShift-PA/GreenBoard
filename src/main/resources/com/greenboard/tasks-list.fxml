@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1e1e1e;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenboard.controllers.tasks.TasksListController">
+    <TableView fx:id="tasksTable" prefHeight="400" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+            <TableColumn fx:id="nameColumn" prefWidth="200" text="Name" />
+            <TableColumn fx:id="statusColumn" prefWidth="200" text="Status" />
+            <TableColumn fx:id="usersColumn" prefWidth="200" text="Assignee" />
+            <TableColumn fx:id="dueDateColumn" prefWidth="200" text="Due" />
+            <TableColumn fx:id="priorityColumn" prefWidth="200" text="Priority" />
+        </columns>
+      <columnResizePolicy>
+         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+      </columnResizePolicy>
+    </TableView>
+</AnchorPane>

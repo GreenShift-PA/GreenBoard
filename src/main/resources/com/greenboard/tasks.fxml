@@ -11,18 +11,13 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.BreadCrumbBar?>
 
-<AnchorPane maxHeight="644.0" maxWidth="813.0" minHeight="644.0" minWidth="813.0" prefHeight="644.0" prefWidth="813.0" style="-fx-background-color: #1E1E1E;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenboard.controllers.TasksController">
+<AnchorPane maxHeight="644.0" maxWidth="813.0" minHeight="644.0" minWidth="813.0" prefHeight="644.0" prefWidth="813.0" style="-fx-background-color: #1E1E1E;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenboard.controllers.tasks.TasksController">
    <children>
       <BreadCrumbBar layoutX="32.0" layoutY="14.0" prefHeight="25.0" prefWidth="179.0" />
       <StackPane layoutX="40.0" layoutY="59.0" prefHeight="150.0" prefWidth="653.0" style="-fx-background-color: #1E1E1E;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
             <TabPane prefHeight="544.0" prefWidth="682.0" style="-fx-background-color: #1E1E1E;" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab text="By Project">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                  </content>
-                </Tab>
                 <Tab text="Board">
                   <content>
                       <fx:include source="tasks-board.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
@@ -30,7 +25,7 @@
                 </Tab>
                   <Tab text="All tasks">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <fx:include source="tasks-list.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </content>
                   </Tab>
               </tabs>
