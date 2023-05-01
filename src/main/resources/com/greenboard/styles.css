@@ -99,8 +99,6 @@
     -fx-background-color: #121212;
     -fx-border-color: #424242;
     -fx-border-width: 0 0 2px 0;
-    -fx-padding: 10px;
-    -fx-background-radius: 20;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 2);
     -fx-background-insets: 0;
 }
@@ -116,4 +114,12 @@
 
 .list-view {
     -fx-background-color: #121212;
+}
+
+.list-view .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #333333;
 }

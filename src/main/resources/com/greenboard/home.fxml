@@ -3,8 +3,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="644.0" prefWidth="1113.0" style="-fx-background-color: #1E1E1E;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenboard.controllers.HomeController">
-<fx:include source="left-menu.fxml" />
+<fx:include source="left-menu.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="910.0" AnchorPane.topAnchor="0.0" />
 <!-- <fx:include source="tasks.fxml" />
     move the tasks 113px to the right -->
-<fx:include source="tasks.fxml" fx:id="tasks" AnchorPane.leftAnchor="200.0" />
+<fx:include fx:id="tasks" source="tasks.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 </AnchorPane>

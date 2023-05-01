@@ -3,21 +3,22 @@ package com.greenboard.models;
 import com.greenboard.enums.TaskStatus;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Task {
     private int id;
     private String name;
     private String description;
-    private int user_id;
+    private List<User> users;
     private TaskStatus status;
     private LocalDate created_date;
     private LocalDate due_date;
 
-    public Task(int id, String name, String description, int user_id, TaskStatus status, LocalDate created_date, LocalDate due_date) {
+    public Task(int id, String name, String description, List<User> users, TaskStatus status, LocalDate created_date, LocalDate due_date) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.user_id = user_id;
+        this.users = users;
         this.status = status;
         this.created_date = created_date;
         this.due_date = due_date;
@@ -43,12 +44,12 @@ public class Task {
         this.description = description;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     public TaskStatus getStatus() {
@@ -75,7 +76,4 @@ public class Task {
         this.due_date = due_date;
     }
 
-    public String getUserAvatar() {
-        return "https://avatars.dicebear.com/api/avataaars/" + this.user_id + ".svg";
-    }
 }
