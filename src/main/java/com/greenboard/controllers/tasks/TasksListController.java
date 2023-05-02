@@ -84,7 +84,7 @@ public class TasksListController implements Initializable {
             TaskPriority randomPriority = TaskPriority.values()[(int) (Math.random() * TaskPriority.values().length)];
 
             Task task = new Task(
-                    i,
+                    Integer.toString(i),
                     "Task " + i,
                     "Description for task " + i,
                     List.of(user1, user2, user3),

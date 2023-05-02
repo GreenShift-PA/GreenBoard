@@ -1,5 +1,9 @@
 package com.greenboard.models;
 
+import com.greenboard.utils.PasswordUtils;
+
+import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -8,6 +12,8 @@ public class User {
     private String username;
     private String passwordHash;
     private String fullName;
+    private String firstName;
+    private String lastName;
     private String email;
     private String bio;
     private String profilePictureUrl;
@@ -24,6 +30,33 @@ public class User {
         this.isActive = true;
     }
 
+    public User(String id, String email, String password, String first_name, String last_name) {
+        this.userId = UUID.fromString(id);
+        this.email = email;
+        try {
+            this.passwordHash = PasswordUtils.hashPassword(password);
+        } catch (NoSuchAlgorithmException e) {
+            this.passwordHash = "";
+        }
+        this.fullName = first_name + " " + last_name;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+        this.isActive = true;
+    }
+
+    public User(String email, String password, String first_name, String last_name) {
+        this.userId = null;
+        this.email = email;
+        try {
+            this.passwordHash = PasswordUtils.hashPassword(password);
+        } catch (NoSuchAlgorithmException e) {
+            this.passwordHash = "";
+        }
+        this.fullName = first_name + " " + last_name;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+        this.isActive = true;
+    }
     public UUID getUserId() {
         return userId;
     }
@@ -135,5 +168,44 @@ public class User {
     public boolean validate() {
         // TODO: Implement validation logic
         return true;
+    }
+
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", passwordHash='" + passwordHash + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", bio='" + bio + '\'' +
+                ", profilePictureUrl='" + profilePictureUrl + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", lastLogin=" + lastLogin +
+                ", isActive=" + isActive +
+                ", role=" + role +
+                '}';
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+        this.fullName = this.firstName + " " + this.lastName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+        this.fullName = this.firstName + " " + this.lastName;
+    }
+
+    public String getId() {
+        return userId.toString();
     }
 }

@@ -94,6 +94,7 @@ public class TaskCardController {
         controller.setDescription(getDescription());
         controller.setStatus(getStatus());
         controller.setPriority(getPriority());
+        controller.setEditMode(true);
 
         stage.show();
     }

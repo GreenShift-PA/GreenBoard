@@ -18,4 +18,13 @@ public enum TaskPriority {
     public String toString() {
         return priority;
     }
+
+    public static TaskPriority fromString(String text) {
+        for (TaskPriority b : TaskPriority.values()) {
+            if (b.priority.equalsIgnoreCase(text)) {
+                return b;
+            }
+        }
+        return null;
+    }
 }

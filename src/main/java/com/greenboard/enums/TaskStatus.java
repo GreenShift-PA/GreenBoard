@@ -16,8 +16,18 @@ public enum TaskStatus {
         return status;
     }
 
+
     @Override
     public String toString() {
         return getStatus();
+    }
+
+    public static TaskStatus fromString(String text) {
+        for (TaskStatus b : TaskStatus.values()) {
+            if (b.status.equalsIgnoreCase(text)) {
+                return b;
+            }
+        }
+        return null;
     }
 }

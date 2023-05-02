@@ -6,6 +6,7 @@ import com.greenboard.factories.TaskCardFactory;
 import com.greenboard.factories.TaskCellFactory;
 import com.greenboard.models.Task;
 import com.greenboard.models.User;
+import com.greenboard.singletons.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -34,36 +35,7 @@ public class TasksBoardController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        User user1 = new User();
-        user1.setUsername("user1");
-
-        User user2 = new User();
-        user2.setUsername("user2");
-
-        User user3 = new User();
-        user3.setUsername("user3");
-
-        // create some sample tasks
-        List<Task> tasks = new ArrayList<>();
-
-        for (int i = 0; i < 10; i++) {
-            /*Task(int id, String name, String description, List<User> users, TaskStatus status, LocalDate created_date, LocalDate due_date)*/
-            TaskStatus randomStatus = TaskStatus.values()[(int) (Math.random() * TaskStatus.values().length)];
-            TaskPriority randomPriority = TaskPriority.values()[(int) (Math.random() * TaskPriority.values().length)];
-
-            Task task = new Task(
-                    i,
-                    "Task " + i,
-                    "Description for task " + i,
-                    List.of(user1, user2, user3),
-                    randomStatus,
-                    randomPriority,
-                    LocalDate.now(),
-                    LocalDate.now().plusDays(5)
-            );
-
-            tasks.add(task);
-        }
+        List<Task> tasks = Application.getInstance().getTasks();
 
         // group tasks by status
         Map<TaskStatus, List<Task>> tasksByStatus = tasks.stream().collect(Collectors.groupingBy(Task::getStatus));

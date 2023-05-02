@@ -54,7 +54,7 @@
          </padding>
          <children>
             <FontAwesomeIconView fill="WHITE" glyphName="BOOK" size="24" />
-            <Label fx:id="taskName" text="This is Elon Musk" textFill="WHITE">
+            <Label fx:id="taskName" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -76,7 +76,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                      <children>
-                        <Label fx:id="taskUsers" prefHeight="18.0" prefWidth="133.0" text="Abdoulaye Dia, Pascal Zhou" textFill="#909090" />
+                        <Label fx:id="taskUsers" prefHeight="18.0" prefWidth="133.0" textFill="#909090" />
                      </children>
                   </HBox>
                </children>
@@ -93,7 +93,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                      <children>
-                        <Label fx:id="taskStatus" prefHeight="18.0" prefWidth="133.0" text="OK" textFill="#909090" />
+                        <Label fx:id="taskStatus" prefHeight="18.0" prefWidth="133.0" text="To Do" textFill="#909090" />
                      </children>
                   </HBox>
                </children>
@@ -127,7 +127,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                      <children>
-                        <Label fx:id="taskPriority" prefHeight="18.0" prefWidth="133.0" text="OK" textFill="#909090" />
+                        <Label fx:id="taskPriority" prefHeight="18.0" prefWidth="133.0" text="Low" textFill="#909090" />
                      </children>
                   </HBox>
                </children>

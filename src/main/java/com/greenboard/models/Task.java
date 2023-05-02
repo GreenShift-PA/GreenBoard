@@ -5,19 +5,33 @@ import com.greenboard.enums.TaskStatus;
 import javafx.beans.value.ObservableValue;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Task {
-    private int id;
+    private String id;
     private String name;
     private String description;
-    private List<User> users;
+    private List<User> users = new ArrayList<User>();
     private TaskStatus status;
     private TaskPriority priority;
     private LocalDate created_date;
     private LocalDate due_date;
 
-    public Task(int id, String name, String description, List<User> users, TaskStatus status, TaskPriority priority, LocalDate created_date, LocalDate due_date) {
+    public Task()
+    {
+        this.id = "";
+        this.name = "New Task";
+        this.description = "";
+        this.users = new ArrayList<User>();
+        this.status = TaskStatus.TODO;
+        this.priority = TaskPriority.LOW;
+        this.created_date = LocalDate.now();
+        this.due_date = LocalDate.now();
+    }
+
+    public Task(String id, String name, String description, List<User> users, TaskStatus status, TaskPriority priority, LocalDate created_date, LocalDate due_date) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -28,7 +42,7 @@ public class Task {
         this.due_date = due_date;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -88,4 +102,63 @@ public class Task {
         this.priority = priority;
     }
 
+    public void setDueDate(LocalDate parse) {
+        this.due_date = parse;
+    }
+
+    public void setDueDate(ObservableValue<LocalDate> value) {
+        this.due_date = value.getValue();
+    }
+
+    public LocalDate getDueDate() {
+        return this.due_date;
+    }
+
+    public boolean assignUser(User user) {
+        if (this.users.contains(user)) {
+            return false;
+        } else {
+            this.users.add(user);
+            return true;
+        }
+    }
+
+    public boolean unassignUser(User user) {
+        if (this.users.contains(user)) {
+            this.users.remove(user);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isAssigned(User user) {
+        return this.users.contains(user);
+    }
+
+    public boolean isAssigned(String userId) {
+        for (User user : this.users) {
+            if (user.getUserId().toString().equals(userId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String toString() {
+        return "Task{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", users=" + users +
+                ", status=" + status +
+                ", priority=" + priority +
+                ", created_date=" + created_date +
+                ", due_date=" + due_date +
+                '}';
+    }
+
+    public LocalDate getCreatedDate() {
+        return this.created_date;
+    }
 }

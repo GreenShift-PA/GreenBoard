@@ -15,6 +15,10 @@ public class Role {
         this.updatedAt = updatedAt;
     }
 
+    public static Role valueOf(String role) {
+        return new Role(0, role, LocalDateTime.now(), LocalDateTime.now());
+    }
+
     public int getId() {
         return id;
     }
