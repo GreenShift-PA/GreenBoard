@@ -2,6 +2,21 @@
     -fx-background-color: #ffffff;
 }
 
+.split-pane:horizontal > .split-pane-divider {
+    -fx-background-color: transparent;
+}
+.split-pane:vertical > .split-pane-divider {
+    -fx-background-color: transparent;
+}
+
+.split-pane:horizontal > .split-pane-divider:hover {
+    -fx-background-color: "#cececece";
+}
+
+.split-pane:vertical > .split-pane-divider:hover {
+    -fx-background-color: "#cececece";
+}
+
 .label {
     -fx-font-size: 14px;
     -fx-text-fill: #000000;
@@ -101,4 +116,14 @@
 .list-cell:selected {
     -fx-background-color: #4d90fe;
     -fx-text-fill: #ffffff;
+}
+
+
+
+.cta:hover {
+    -fx-background-color: #12121212;
+}
+
+.cta:pressed {
+    -fx-background-color: #12121222;
 }

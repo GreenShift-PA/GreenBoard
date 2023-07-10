@@ -1,20 +1,444 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.MainController">
     <children>
-        <fx:include fx:id="topbar" source="topbar.fxml" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+          <children>
+             <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="357.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <padding>
+                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                </padding>
+                <children>
+                   <Label text="Dernière modification: Il y a 1j" />
+                   <Label text="Partager" />
+                   <FontAwesomeIconView fill="#b2b2b2" glyphName="CLOCK_ALT" />
+                   <FontAwesomeIconView fill="#b2b2b2" glyphName="STAR" />
+                   <FontAwesomeIconView fill="#b2b2b2" glyphName="ELLIPSIS_H" />
+                </children>
+             </HBox>
+             <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="207.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1113.0" AnchorPane.topAnchor="0.0">
+                <padding>
+                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                </padding>
+                <children>
+                   <FontAwesomeIconView fx:id="topBarHamburger" fill="#b2b2b2" glyphName="BARS" onMouseClicked="#toggleLeftMenu" text="" />
+                   <FontAwesomeIconView glyphName="CHEVRON_LEFT" />
+                   <FontAwesomeIconView fill="#b2b2b2" glyphName="CHEVRON_RIGHT" />
+                   <FontAwesomeIconView glyphName="PLUS" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                         <FontAwesomeIconView fill="#b2b2b2" glyphName="CHECK" />
+                        <Label text="Green Shift" textFill="#b2b2b2">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                </children>
+             </HBox>
+          </children>
+       </AnchorPane>
+      <SplitPane fx:id="split" dividerPositions="0.16881638846737482, 0.5003793626707133" focusTraversable="true" layoutX="10.0" layoutY="10.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+         <items>
+            <AnchorPane prefHeight="818.0" prefWidth="8.0" style="-fx-background-color: #12121212;" SplitPane.resizableWithParent="false">
+               <children>
+                  <VBox layoutX="60.0" layoutY="22.0" prefHeight="55.0" prefWidth="414.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="207.0" spacing="10.0" styleClass="cta">
+                           <children>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@logos/Notion-logo.svg.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="Abdoulaye Dia">
+                                 <font>
+                                    <Font name="Roboto Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER" prefHeight="3.0" prefWidth="34.0">
+                                 <children>
+                                    <FontAwesomeIconView fill="#a8a8a8" glyphName="ANGLE_UP" />
+                                    <FontAwesomeIconView fill="#a8a8a8" glyphName="ANGLE_DOWN" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox layoutY="62.0" prefHeight="120.0" prefWidth="207.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="SEARCH" />
+                              <Label text="Rechercher" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="CLOCK_ALT" />
+                              <Label text="Dernières Modifications" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="50.0" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="BUILDING_ALT" />
+                              <Label text="Toutes les équipes" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="GEAR" />
+                              <Label text="Paramètres" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox layoutY="212.0" prefHeight="206.0" prefWidth="207.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="212.0">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="22.0" prefWidth="197.0" spacing="10.0">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <Label prefHeight="14.0" prefWidth="68.0" text="Équipe" textFill="#e1e1e1">
+                                 <font>
+                                    <Font name="Roboto" size="11.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="127.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <FontAwesomeIconView fill="#b2b2b2" glyphName="ELLIPSIS_H" />
+                                    <FontAwesomeIconView fill="#b2b2b2" glyphName="PLUS" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="COMPASS" />
+                              <Label text="Équpe 7" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="BOOK" />
+                              <Label text="Wiki" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="50.0" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="FILE" />
+                              <Label text="Docs" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="CALENDAR" />
+                              <Label text="Meetings" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="USERS" />
+                              <Label text="Membres" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="CHECK" />
+                              <Label text="Tâches" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="10.0" layoutY="465.0" prefHeight="165.0" prefWidth="207.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="465.0">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="22.0" prefWidth="197.0" spacing="10.0">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <Label prefHeight="14.0" prefWidth="68.0" text="Projets" textFill="#e1e1e1">
+                                 <font>
+                                    <Font name="Roboto" size="11.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="127.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <FontAwesomeIconView fill="#b2b2b2" glyphName="ELLIPSIS_H" />
+                                    <FontAwesomeIconView fill="#b2b2b2" glyphName="PLUS" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="FILE_ALT" text="" />
+                              <Label text="Getting Started" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="CLIPBOARD" />
+                              <Label text="Quick Notes" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="50.0" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="HOME" />
+                              <Label text="Personal Home" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="CHECK" />
+                              <Label text="Task List" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
+                              <FontAwesomeIconView fill="#a8a8a8" glyphName="MAP" />
+                              <Label text="Journal" textAlignment="RIGHT" textFill="#b2b2b2">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fillWidth="false" layoutY="695.0" prefHeight="123.0" prefWidth="207.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="695.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="17.0" prefWidth="207.0" spacing="10.0">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="PLUG" />
+                              <Label text="Plugins" textFill="#a49f9f" wrapText="true">
+                                 <font>
+                                    <Font name="Roboto" size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="17.0" prefWidth="207.0" spacing="10.0">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="DOWNLOAD" />
+                              <Label text="Importer" textFill="#a49f9f" wrapText="true">
+                                 <font>
+                                    <Font name="Roboto" size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="17.0" prefWidth="207.0" spacing="10.0">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="SHARE" />
+                              <Label text="Exporter" textFill="#a49f9f" wrapText="true">
+                                 <font>
+                                    <Font name="Roboto" size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="17.0" prefWidth="207.0" spacing="10.0">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <children>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="TRASH" />
+                              <Label text="Corbeille" textFill="#a49f9f" wrapText="true">
+                                 <font>
+                                    <Font name="Roboto" size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <ScrollPane prefWidth="445.0">
+               <content>
+                  <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" wrapText="false">
+                           <font>
+                              <Font size="18.0" fx:id="x1" />
+                           </font>
+                           <textFill>
+                              <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
+                           </textFill>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+            <AnchorPane>
+               <children>
+                  <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
     </children>
 </AnchorPane>
