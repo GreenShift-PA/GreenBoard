@@ -127,3 +127,14 @@
 .cta:pressed {
     -fx-background-color: #12121222;
 }
+
+.text-field {
+    -fx-background-color: #EBEBEBEB;
+    -fx-background-radius: 5;
+    -fx-border-color: #D9D9D9;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+    -fx-font-size: 14px;
+    -fx-text-fill: #000000;
+    -fx-padding: 5;
+}
