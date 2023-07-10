@@ -1,14 +1,13 @@
 package com.greenshift.greenboard.controllers;
 
 import com.greenshift.greenboard.services.AuthService;
-import javafx.application.Application;
+import com.greenshift.greenboard.singletons.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import net.synedra.validatorfx.Check;
 import net.synedra.validatorfx.TooltipWrapper;
 import net.synedra.validatorfx.Validator;
@@ -89,7 +88,13 @@ public class AuthController {
             // if validator contains no errors, then login
             if (showPassword && !validator.containsErrorsProperty().get()) {
                 boolean authenticationSuccessful = AuthService.authenticate(emailTextField.getText(), passwordField.getText());
-                System.out.println("Authentication successful: " + authenticationSuccessful);
+                if(authenticationSuccessful) {
+                    SceneManager.getInstance().switchToScene("/fxml/main-view.fxml", null, scene -> {
+                        scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
+                    });
+                } else {
+                    System.out.println("Authentication failed");
+                }
             }
 
             showPassword = true;
@@ -97,7 +102,6 @@ public class AuthController {
         } else {
             passwordVBox.setVisible(false);
             showPassword = false;
-            System.out.println("User does not exist");
         }
     }
 }

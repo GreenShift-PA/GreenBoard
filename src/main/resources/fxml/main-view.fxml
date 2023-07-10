@@ -69,7 +69,7 @@
                            <children>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@logos/Notion-logo.svg.png" />
+                                    <Image url="@../logos/Notion-logo.svg.png" />
                                  </image>
                               </ImageView>
                               <Label text="Abdoulaye Dia">
