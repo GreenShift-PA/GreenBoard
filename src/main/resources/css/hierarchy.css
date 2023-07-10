@@ -1,0 +1,121 @@
+.hierarchy-item {
+    -fx-text-fill: #19171199;
+}
+
+.hierarchy-item .ikonli-font-icon {
+    -fx-icon-color: #19171199;
+}
+
+
+.tree-view {
+    -fx-padding: 5;
+}
+
+/* JavaFX TreeView */
+.tree-view .arrow {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+.tree-view .cell {
+    -fx-text-fill: rgba(0, 0, 0, 0.87);
+    -fx-background-radius: 10;
+    -fx-padding: 0;
+    -fx-spacing: 0;
+}
+
+.tree-view .tree-cell:hover {
+    -fx-background-color: #12121222;
+}
+
+.tree-view .tree-cell:filled:selected {
+    -fx-background-color: #12121222;
+}
+
+.tree-view .tree-cell:filled:selected:hover {
+    -fx-background-color: #12121222;
+}
+
+.tree-view .tree-cell:filled:selected:focused {
+    -fx-background-color: #12121222;
+}
+
+/* JFoenix JFXTreeView */
+.jfx-tree-view .arrow {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+.jfx-tree-view .cell {
+    -fx-text-fill: rgba(0, 0, 0, 0.87);
+    -fx-background-radius: 5;
+    -fx-padding: 0;
+    -fx-spacing: 0;
+}
+
+/* transparent textfield */
+.text-field {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+
+.context-menu {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-padding: 3px;
+    -fx-spacing: 4px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: rgba(0, 0, 0, 0.1);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.5, 0, 0);
+
+}
+
+.menu-item {
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: rgba(37, 40, 45, 0.6);
+}
+
+.menu-item:hover, .menu-item:focused {
+    -fx-background-color: rgba(0, 0, 0, 0.05);
+    -fx-text-fill: rgba(37, 40, 45, 1);
+}
+
+.menu-item > .label {
+    -fx-background-color: transparent;
+    -fx-padding: 0.2em 0.1em 0.2em 0.1em;
+    -fx-text-fill: rgba(37, 40, 45, 0.6);
+    -fx-effect: null;
+    -fx-font-size: 13px;
+    -fx-font-family: 'Roboto';
+}
+
+.menu-item:focused > .label {
+    -fx-text-fill: rgba(37, 40, 45, 1);
+}
+
+/* Padding on menu item separator */
+.menu-item > .separator {
+    -fx-padding: 0.2em 0.1em 0.2em 0.1em;
+}
+
+.context-menu .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}
+
+.context-menu .arrow {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}
+
