@@ -10,6 +10,7 @@ module com.greenshift.greenboard.greenboard {
     requires eu.hansolo.tilesfx;
     requires de.jensd.fx.glyphs.fontawesome;
     requires net.synedra.validatorfx;
+    requires com.google.gson;
 
     opens com.greenshift.greenboard to javafx.fxml;
     exports com.greenshift.greenboard;
@@ -19,4 +20,7 @@ module com.greenshift.greenboard.greenboard {
 
     opens com.greenshift.greenboard.controllers to javafx.fxml;
     exports com.greenshift.greenboard.controllers;
+
+    opens com.greenshift.greenboard.models to com.google.gson;
+    opens com.greenshift.greenboard.models.entities to com.google.gson;
 }

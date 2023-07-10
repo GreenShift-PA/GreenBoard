@@ -1,5 +1,6 @@
 package com.greenshift.greenboard.controllers;
 
+import com.greenshift.greenboard.services.AuthService;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -38,7 +39,7 @@ public class AuthController {
                     String email = c.get("email");
                     if (!email.contains("@")) {
                         c.error("Please enter a valid email address.");
-                    }else{
+                    } else {
                     }
 
                 })
@@ -70,18 +71,33 @@ public class AuthController {
         System.out.println("Email: " + emailTextField.getText());
         System.out.println("Password: " + passwordField.getText());
 
-        validator.createCheck()
-                .dependsOn("password", passwordField.textProperty())
-                .withMethod(c -> {
-                    String password = c.get("password");
-                    if (password.isEmpty()) {
-                        c.error("Password is required.");
-                    }
-                })
-                .decorates(passwordField)
-                .immediate();
 
+        boolean userExists = AuthService.userExists(emailTextField.getText());
 
-        passwordVBox.setVisible(true);
+        if (userExists) {
+            validator.createCheck()
+                    .dependsOn("password", passwordField.textProperty())
+                    .withMethod(c -> {
+                        String password = c.get("password");
+                        if (password.isEmpty()) {
+                            c.error("Password is required.");
+                        }
+                    })
+                    .decorates(passwordField)
+                    .immediate();
+
+            // if validator contains no errors, then login
+            if (showPassword && !validator.containsErrorsProperty().get()) {
+                boolean authenticationSuccessful = AuthService.authenticate(emailTextField.getText(), passwordField.getText());
+                System.out.println("Authentication successful: " + authenticationSuccessful);
+            }
+
+            showPassword = true;
+            passwordVBox.setVisible(true);
+        } else {
+            passwordVBox.setVisible(false);
+            showPassword = false;
+            System.out.println("User does not exist");
+        }
     }
 }
