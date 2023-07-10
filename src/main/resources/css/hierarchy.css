@@ -6,9 +6,14 @@
     -fx-icon-color: #19171199;
 }
 
+.jfx-tree-view .tree-cell {
+    -fx-background-color: transparent;
+}
+
 
 .tree-view {
     -fx-padding: 5;
+    -fx-background-color: transparent;
 }
 
 /* JavaFX TreeView */

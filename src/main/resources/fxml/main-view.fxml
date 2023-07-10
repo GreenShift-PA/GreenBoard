@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTreeView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -59,7 +60,7 @@
              </HBox>
           </children>
        </AnchorPane>
-      <SplitPane fx:id="split" dividerPositions="0.16881638846737482, 0.5003793626707133" focusTraversable="true" layoutX="10.0" layoutY="10.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+      <SplitPane fx:id="split" dividerPositions="0.2, 0.5004" focusTraversable="true" layoutX="10.0" layoutY="10.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
          <items>
             <AnchorPane prefHeight="818.0" prefWidth="8.0" style="-fx-background-color: #12121212;" SplitPane.resizableWithParent="false">
                <children>
@@ -175,90 +176,11 @@
                               </HBox>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                        <VBox fx:id="teamTreeViewVBox" prefHeight="213.0" prefWidth="209.0">
                            <children>
-                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
-                              <FontAwesomeIconView fill="#a8a8a8" glyphName="COMPASS" />
-                              <Label text="Équpe 7" textAlignment="RIGHT" textFill="#b2b2b2">
-                                 <font>
-                                    <Font name="Roboto" size="13.0" />
-                                 </font>
-                              </Label>
+                              <JFXTreeView fx:id="teamTreeView" VBox.vgrow="ALWAYS" />
                            </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
-                           <children>
-                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
-                              <FontAwesomeIconView fill="#a8a8a8" glyphName="BOOK" />
-                              <Label text="Wiki" textAlignment="RIGHT" textFill="#b2b2b2">
-                                 <font>
-                                    <Font name="Roboto" size="13.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="50.0" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
-                           <children>
-                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
-                              <FontAwesomeIconView fill="#a8a8a8" glyphName="FILE" />
-                              <Label text="Docs" textAlignment="RIGHT" textFill="#b2b2b2">
-                                 <font>
-                                    <Font name="Roboto" size="13.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
-                           <children>
-                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
-                              <FontAwesomeIconView fill="#a8a8a8" glyphName="CALENDAR" />
-                              <Label text="Meetings" textAlignment="RIGHT" textFill="#b2b2b2">
-                                 <font>
-                                    <Font name="Roboto" size="13.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
-                           <children>
-                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
-                              <FontAwesomeIconView fill="#a8a8a8" glyphName="USERS" />
-                              <Label text="Membres" textAlignment="RIGHT" textFill="#b2b2b2">
-                                 <font>
-                                    <Font name="Roboto" size="13.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
-                           <children>
-                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
-                              <FontAwesomeIconView fill="#a8a8a8" glyphName="CHECK" />
-                              <Label text="Tâches" textAlignment="RIGHT" textFill="#b2b2b2">
-                                 <font>
-                                    <Font name="Roboto" size="13.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
+                        </VBox>
                      </children>
                   </VBox>
                   <VBox layoutX="10.0" layoutY="465.0" prefHeight="165.0" prefWidth="207.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="465.0">
@@ -287,76 +209,11 @@
                               </HBox>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                        <VBox fx:id="projectTreeViewVBox" prefHeight="213.0" prefWidth="209.0">
                            <children>
-                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
-                              <FontAwesomeIconView fill="#a8a8a8" glyphName="FILE_ALT" text="" />
-                              <Label text="Getting Started" textAlignment="RIGHT" textFill="#b2b2b2">
-                                 <font>
-                                    <Font name="Roboto" size="13.0" />
-                                 </font>
-                              </Label>
+                              <JFXTreeView fx:id="projectTreeView" VBox.vgrow="ALWAYS" />
                            </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
-                           <children>
-                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
-                              <FontAwesomeIconView fill="#a8a8a8" glyphName="CLIPBOARD" />
-                              <Label text="Quick Notes" textAlignment="RIGHT" textFill="#b2b2b2">
-                                 <font>
-                                    <Font name="Roboto" size="13.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="50.0" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
-                           <children>
-                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
-                              <FontAwesomeIconView fill="#a8a8a8" glyphName="HOME" />
-                              <Label text="Personal Home" textAlignment="RIGHT" textFill="#b2b2b2">
-                                 <font>
-                                    <Font name="Roboto" size="13.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
-                           <children>
-                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
-                              <FontAwesomeIconView fill="#a8a8a8" glyphName="CHECK" />
-                              <Label text="Task List" textAlignment="RIGHT" textFill="#b2b2b2">
-                                 <font>
-                                    <Font name="Roboto" size="13.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
-                           <children>
-                              <FontAwesomeIconView fill="#b2b2b2" glyphName="ANGLE_RIGHT" />
-                              <FontAwesomeIconView fill="#a8a8a8" glyphName="MAP" />
-                              <Label text="Journal" textAlignment="RIGHT" textFill="#b2b2b2">
-                                 <font>
-                                    <Font name="Roboto" size="13.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
+                        </VBox>
                      </children>
                   </VBox>
                   <VBox fillWidth="false" layoutY="695.0" prefHeight="123.0" prefWidth="207.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="695.0">

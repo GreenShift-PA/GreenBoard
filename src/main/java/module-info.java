@@ -1,4 +1,4 @@
-module com.greenshift.greenboard.greenboard {
+module com.greenshift.greenboard {
     // JavaFX
     requires javafx.controls;
     requires javafx.fxml;

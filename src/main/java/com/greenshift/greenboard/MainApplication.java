@@ -14,9 +14,11 @@ import java.util.Objects;
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/fxml/auth-view.fxml"));
+
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/fxml/main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(Objects.requireNonNull(MainApplication.class.getResource("/css/styles.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(MainApplication.class.getResource("/css/hierarchy.css")).toExternalForm());
         scene.setFill(Color.TRANSPARENT);
         stage.initStyle(StageStyle.UNIFIED);
         stage.setResizable(false);
