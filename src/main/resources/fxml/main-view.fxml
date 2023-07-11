@@ -1,68 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXDialog?>
+<?import com.jfoenix.controls.JFXDialogLayout?>
 <?import com.jfoenix.controls.JFXTreeView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.MainController">
+<StackPane fx:id="root" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.MainController">
     <children>
-       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-          <children>
-             <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="357.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <padding>
-                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                </padding>
-                <children>
-                   <Label text="Dernière modification: Il y a 1j" />
-                   <Label text="Partager" />
-                   <FontAwesomeIconView fill="#b2b2b2" glyphName="CLOCK_ALT" />
-                   <FontAwesomeIconView fill="#b2b2b2" glyphName="STAR" />
-                   <FontAwesomeIconView fill="#b2b2b2" glyphName="ELLIPSIS_H" />
-                </children>
-             </HBox>
-             <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="207.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1113.0" AnchorPane.topAnchor="0.0">
-                <padding>
-                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                </padding>
-                <children>
-                   <FontAwesomeIconView fx:id="topBarHamburger" fill="#b2b2b2" glyphName="BARS" onMouseClicked="#toggleLeftMenu" text="" />
-                   <FontAwesomeIconView glyphName="CHEVRON_LEFT" />
-                   <FontAwesomeIconView fill="#b2b2b2" glyphName="CHEVRON_RIGHT" />
-                   <FontAwesomeIconView glyphName="PLUS" />
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
-                     <children>
-                         <FontAwesomeIconView fill="#b2b2b2" glyphName="CHECK" />
-                        <Label text="Green Shift" textFill="#b2b2b2">
-                           <font>
-                              <Font size="11.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </HBox>
-                </children>
-             </HBox>
-          </children>
-       </AnchorPane>
-      <SplitPane fx:id="split" dividerPositions="0.2, 0.5004" focusTraversable="true" layoutX="10.0" layoutY="10.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+       <JFXDialog fx:id="dialog" prefHeight="600" prefWidth="800" styleClass="custom-jfx-dialog">
+          <JFXDialogLayout prefWidth="800" styleClass="custom-jfx">
+             <body>
+                <fx:include source="settings-base-view.fxml" />
+             </body>
+          </JFXDialogLayout>
+       </JFXDialog>
+      <SplitPane fx:id="split" dividerPositions="0.2" focusTraversable="true" layoutX="10.0" layoutY="10.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
          <items>
-            <AnchorPane prefHeight="818.0" prefWidth="8.0" style="-fx-background-color: #12121212;" SplitPane.resizableWithParent="false">
+            <AnchorPane prefHeight="818.0" prefWidth="8.0" styleClass="light-gray" SplitPane.resizableWithParent="false">
                <children>
                   <VBox layoutX="60.0" layoutY="22.0" prefHeight="55.0" prefWidth="414.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -135,7 +101,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                        <HBox fx:id="leftMenuSettingsButton" alignment="CENTER_LEFT" onMouseClicked="#openSettings" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                            <children>
                               <FontAwesomeIconView fill="#a8a8a8" glyphName="GEAR" />
                               <Label text="Paramètres" textAlignment="RIGHT" textFill="#b2b2b2">
@@ -274,28 +240,58 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <ScrollPane prefWidth="445.0">
-               <content>
-                  <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
-                     <children>
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" wrapText="false">
-                           <font>
-                              <Font size="18.0" fx:id="x1" />
-                           </font>
-                           <textFill>
-                              <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
-                           </textFill>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </ScrollPane>
-            <AnchorPane>
+            <AnchorPane fx:id="rightContent" style="-fx-background-color: white;">
                <children>
-                  <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                  <fx:include source="kanban.fxml" fx:id="kanban" />
                </children>
             </AnchorPane>
          </items>
+         <StackPane.margin>
+            <Insets top="40.0" />
+         </StackPane.margin>
       </SplitPane>
+       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="1320.0">
+          <children>
+             <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="357.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <padding>
+                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                </padding>
+                <children>
+                   <Label text="Dernière modification: Il y a 1j" />
+                   <Label text="Partager" />
+                   <FontAwesomeIconView fill="#b2b2b2" glyphName="CLOCK_ALT" />
+                   <FontAwesomeIconView fill="#b2b2b2" glyphName="STAR" />
+                   <FontAwesomeIconView fill="#b2b2b2" glyphName="ELLIPSIS_H" />
+                </children>
+             </HBox>
+             <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="207.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1113.0" AnchorPane.topAnchor="0.0">
+                <padding>
+                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                </padding>
+                <children>
+                   <FontAwesomeIconView fx:id="topBarHamburger" fill="#b2b2b2" glyphName="BARS" onMouseClicked="#toggleLeftMenu" text="" />
+                   <FontAwesomeIconView glyphName="CHEVRON_LEFT" />
+                   <FontAwesomeIconView fill="#b2b2b2" glyphName="CHEVRON_RIGHT" />
+                   <FontAwesomeIconView glyphName="PLUS" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                         <FontAwesomeIconView fill="#b2b2b2" glyphName="CHECK" />
+                        <Label text="Green Shift" textFill="#b2b2b2">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                </children>
+             </HBox>
+          </children>
+       </AnchorPane>
     </children>
-</AnchorPane>
+</StackPane>

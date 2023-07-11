@@ -1,0 +1,70 @@
+/* Style the list view */
+.list-view {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+}
+
+.list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+
+.list-cell .kanban-item {
+    -fx-background-color: white;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 1);
+    -fx-margin: 5;
+    -fx-padding: 3;
+}
+
+.list-cell .list-cell:empty {
+    -fx-padding: 2px;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+.list-cell:selected .kanban-item {
+    -fx-background-color: #DAE9FF;
+}
+
+.list-cell:selected {
+    -fx-background-color: transparent;
+}
+
+.kanban-item-action {
+    -fx-padding: 10;
+    -fx-background-color: #DAE9FF;
+}
+
+/* Style the kanban item */
+.list-view .kanban-item:hover {
+    -fx-background-color: rgba(55, 53, 47, 0.03); /* Change to your desired gray color */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 1);
+}
+
+/* Style the selected cell */
+.list-view .kanban-item:selected {
+    -fx-background-color: #DAE9FF; /* Change to your desired selected color */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 1);
+}
+
+.list-view .kanban-item .label {
+    -fx-text-fill: rgb(55, 53, 47); /* Set the text color for list cells */
+}
+
+.kanban-item-title {
+    -fx-font-size: 1.2em;
+    -fx-font-weight: bold;
+}
+
+
+
+.list-view .scroll-bar:vertical,
+.list-view .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}

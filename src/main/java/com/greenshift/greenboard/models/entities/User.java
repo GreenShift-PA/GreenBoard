@@ -2,6 +2,7 @@ package com.greenshift.greenboard.models.entities;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 public class User {
     private String id;
@@ -31,6 +32,19 @@ public class User {
     private List<Task> pinnedTasks;
     private List<Comment> pinnedComments;
     private List<Organization> pinnedOrganizations;
+
+    public User(String email, String firstName, String lastName) {
+        this.id = UUID.randomUUID().toString();
+        this.active = true;
+        this.confirmed = false;
+        this.firebaseId = UUID.randomUUID().toString();
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public String getId() {
         return id;

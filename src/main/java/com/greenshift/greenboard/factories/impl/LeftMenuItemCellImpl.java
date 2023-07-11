@@ -248,9 +248,10 @@ public final class LeftMenuItemCellImpl extends JFXTreeCell<LeftMenuItem> {
         textField.setOnKeyReleased(t -> {
             if (t.getCode() == KeyCode.ENTER) {
                 getItem().setName(textField.getText());
-                System.out.println("Committed: " + getItem());
+
                 commitEdit(getItem());
                 cancelEdit();
+
                 if (getGraphic() != null) {
                     getGraphic().requestFocus();
                 }

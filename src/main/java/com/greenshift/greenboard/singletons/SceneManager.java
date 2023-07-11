@@ -1,8 +1,10 @@
 package com.greenshift.greenboard.singletons;
 
+import com.greenshift.greenboard.controllers.MainController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,6 +15,9 @@ public class SceneManager {
     private static SceneManager instance;
     private Stage primaryStage;
     private Scene previousScene;
+
+
+    private MainController mainController;
 
     private SceneManager() {
         this.primaryStage = new Stage();
@@ -71,5 +76,13 @@ public class SceneManager {
 
     private void setPreviousScene(Scene scene) {
         previousScene = scene;
+    }
+
+    public MainController getMainController() {
+        return mainController;
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
     }
 }

@@ -31,19 +31,19 @@
 }
 
 .tree-view .tree-cell:hover {
-    -fx-background-color: #12121222;
+    -fx-background-color: rgba(55, 53, 47, 0.08);
 }
 
 .tree-view .tree-cell:filled:selected {
-    -fx-background-color: #12121222;
+    -fx-background-color: rgba(0, 0, 0, 0.04);
 }
 
 .tree-view .tree-cell:filled:selected:hover {
-    -fx-background-color: #12121222;
+    -fx-background-color: rgba(55, 53, 47, 0.08);
 }
 
 .tree-view .tree-cell:filled:selected:focused {
-    -fx-background-color: #12121222;
+    -fx-background-color: rgba(0, 0, 0, 0.04);
 }
 
 /* JFoenix JFXTreeView */
