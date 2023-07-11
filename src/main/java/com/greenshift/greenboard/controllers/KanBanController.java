@@ -1,17 +1,18 @@
 package com.greenshift.greenboard.controllers;
 
+import com.greenshift.greenboard.builders.CustomContextMenuBuilder;
 import com.greenshift.greenboard.factories.KanbanItemFactory;
+import com.greenshift.greenboard.features.CustomContextMenu;
 import com.greenshift.greenboard.models.entities.Project;
 import com.greenshift.greenboard.models.entities.User;
+import com.greenshift.greenboard.models.ui.CustomContextMenuItem;
 import com.greenshift.greenboard.models.ui.KanbanItem;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
@@ -186,27 +187,136 @@ public class KanBanController {
     }
 
     private void setupContextMenu() {
-        ContextMenu contextMenu = new ContextMenu();
+        CustomContextMenu contextMenu = new CustomContextMenu();
+        List<CustomContextMenuItem> customContextMenuItems = new ArrayList<>();
 
-        MenuItem editItem = new MenuItem("Edit");
-        editItem.setOnAction(event -> {
-            KanbanItem selectedItem = getCurrentSelectedItem();
-            if (selectedItem != null) {
-                // Handle edit action
-                System.out.println("Edit: " + selectedItem.getTitle());
-            }
-        });
+        CustomContextMenuItem addMenuItem = new CustomContextMenuBuilder()
+                .setId("add")
+                .setLabel("Ajouter un projet")
+                .setLeftIcon("anto-plus")
+                .setActive(true)
+                .build();
 
-        MenuItem deleteItem = new MenuItem("Delete");
-        deleteItem.setOnAction(event -> {
-            KanbanItem selectedItem = getCurrentSelectedItem();
-            if (selectedItem != null) {
-                // Handle delete action
-                System.out.println("Delete: " + selectedItem.getTitle());
-            }
-        });
+        CustomContextMenuItem deleteMenuItem = new CustomContextMenuBuilder()
+                .setId("delete")
+                .setLabel("Supprimer")
+                .setLeftIcon("fas-trash-alt")
+                .setActive(true)
+                .setAction(item -> {
+                    System.out.println("Trash clicked");
+                    return null;
+                })
+                .build();
 
-        contextMenu.getItems().addAll(editItem, deleteItem);
+        CustomContextMenuItem favoriteMenuItem = new CustomContextMenuBuilder()
+                .setId("favorite")
+                .setLabel("Ajouter aux favoris")
+                .setLeftIcon("far-star")
+                .setActive(true)
+                .setAction(item -> {
+                    System.out.println("Trash clicked");
+                    return null;
+                })
+                .build();
+
+        CustomContextMenuItem duplicateMenuItem = new CustomContextMenuBuilder()
+                .setId("duplicate")
+                .setLabel("Dupliquer")
+                .setLeftIcon("far-clone")
+                .setActive(true)
+                .setAction(item -> {
+                    System.out.println("Trash clicked");
+                    return null;
+                })
+                .build();
+
+        CustomContextMenuItem linkMenuItem = new CustomContextMenuBuilder()
+                .setId("link")
+                .setLabel("Copier le lien")
+                .setLeftIcon("fas-link")
+                .setActive(true)
+                .setAction(item -> {
+                    System.out.println("Trash clicked");
+                    return null;
+                })
+                .build();
+
+        CustomContextMenuItem renameMenuItem = new CustomContextMenuBuilder()
+                .setId("rename")
+                .setLabel("Renommer")
+                .setLeftIcon("far-edit")
+                .setActive(true)
+                .setSeparator(true)
+                .setAction(item -> {
+                    System.out.println("Trash clicked");
+                    return null;
+                })
+                .build();
+
+        CustomContextMenuItem moveMenuItem = new CustomContextMenuBuilder()
+                .setId("rename")
+                .setLabel("Déplacer vers")
+                .setLeftIcon("mdi2s-share")
+                .setActive(true)
+                .setSeparator(true)
+                .setAction(item -> {
+                    System.out.println("Trash clicked");
+                    return null;
+                })
+                .build();
+
+        CustomContextMenuItem transformIntoMenuItem = new CustomContextMenuBuilder()
+                .setId("item1")
+                .setLabel("Transformer en")
+                .setLeftIcon("mdi2t-twitter-retweet")
+                .setActive(true)
+                .setCategory("Settings")
+                .setSeparator(true)
+                .setAction(item -> {
+                    System.out.println("Menu Item 1 clicked");
+                    return null;
+                })
+                .addSubMenuItem(new CustomContextMenuBuilder()
+                        .setLabel("Dark Theme")
+                        .setLeftIcon("fas-moon")
+                        .setAction(subItem -> {
+                            System.out.println("Changing to dark theme");
+                            return null;
+                        })
+                        .build())
+                .addSubMenuItem(new CustomContextMenuBuilder()
+                        .setLabel("Delete Account")
+                        .setRightIcon("fas-times")
+                        .setAction(subItem -> {
+                            System.out.println("Deleting the account");
+                            return null;
+                        })
+                        .build())
+                .build();
+
+        CustomContextMenuItem infoMenuItem = new CustomContextMenuBuilder()
+                .setId("info")
+                .setLabel("Dernière modification par Eh Eh 29 avr. 2020, 23:05")
+                .setActive(true)
+                .setAction(item -> {
+                    System.out.println("Trash clicked");
+                    return null;
+                })
+                .build();
+
+
+        customContextMenuItems.add(addMenuItem);
+        customContextMenuItems.add(deleteMenuItem);
+        customContextMenuItems.add(favoriteMenuItem);
+        customContextMenuItems.add(duplicateMenuItem);
+        customContextMenuItems.add(linkMenuItem);
+        customContextMenuItems.add(renameMenuItem);
+        customContextMenuItems.add(moveMenuItem);
+        customContextMenuItems.add(transformIntoMenuItem);
+        customContextMenuItems.add(infoMenuItem);
+
+
+        contextMenu.buildMenuItems(customContextMenuItems);
 
         // Set the context menu to each list view
         notStartedListView.setContextMenu(contextMenu);

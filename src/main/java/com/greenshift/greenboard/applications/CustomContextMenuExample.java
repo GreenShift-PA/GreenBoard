@@ -1,6 +1,6 @@
 package com.greenshift.greenboard.applications;
 
-import com.greenshift.greenboard.factories.impl.LeftMenuItemCellImpl;
+import com.greenshift.greenboard.cells.LeftMenuItemCell;
 import com.greenshift.greenboard.models.ui.LeftMenuItem;
 import com.jfoenix.controls.JFXTreeView;
 import javafx.application.Application;
@@ -38,7 +38,7 @@ public class CustomContextMenuExample extends Application {
 
         treeView.setRoot(root);
         treeView.setEditable(true);
-        treeView.setCellFactory(p -> new LeftMenuItemCellImpl());
+        treeView.setCellFactory(p -> new LeftMenuItemCell());
 
         scene.setRoot(treeView);
 

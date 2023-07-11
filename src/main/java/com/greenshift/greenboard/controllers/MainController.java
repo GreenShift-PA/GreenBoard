@@ -1,12 +1,11 @@
 package com.greenshift.greenboard.controllers;
 
 import com.greenshift.greenboard.TopBarController;
-import com.greenshift.greenboard.factories.impl.LeftMenuItemCellImpl;
+import com.greenshift.greenboard.cells.LeftMenuItemCell;
 import com.greenshift.greenboard.interfaces.IContentLoadedCallback;
 import com.greenshift.greenboard.models.ui.LeftMenuItem;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXTreeView;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -51,6 +50,8 @@ public class MainController {
     @FXML
     private TopBarController topBarController;
 
+    private String currentRightContent = "";
+
     @FXML
     protected void toggleLeftMenu() {
         if (isLeftMenuOpen) {
@@ -87,9 +88,10 @@ public class MainController {
                 System.out.println("Loaded kanban");
             });
         }));
-        tasks.getChildren().add(new TreeItem<>(new LeftMenuItem("Recently edited", null)));
-        tasks.getChildren().add(new TreeItem<>(new LeftMenuItem("Table by Category", null)));
-        tasks.getChildren().add(new TreeItem<>(new LeftMenuItem("All", null)));
+
+        tasks.getChildren().add(new TreeItem<>(new LeftMenuItem("Not Started", null)));
+        tasks.getChildren().add(new TreeItem<>(new LeftMenuItem("In Progress", null)));
+        tasks.getChildren().add(new TreeItem<>(new LeftMenuItem("Done", null)));
 
 
         TreeItem<LeftMenuItem> docs = new TreeItem<>(new LeftMenuItem("Docs", "mdi2f-file-document-outline"));
@@ -106,7 +108,7 @@ public class MainController {
 
         teamTreeView.setRoot(rootItem);
         teamTreeView.setEditable(true);
-        teamTreeView.setCellFactory(p -> new LeftMenuItemCellImpl());
+        teamTreeView.setCellFactory(p -> new LeftMenuItemCell());
     }
 
     private void initProjectTreeView() {
@@ -128,7 +130,7 @@ public class MainController {
 
         projectTreeView.setRoot(rootItem);
         projectTreeView.setEditable(true);
-        projectTreeView.setCellFactory(p -> new LeftMenuItemCellImpl());
+        projectTreeView.setCellFactory(p -> new LeftMenuItemCell());
     }
 
 
@@ -139,6 +141,11 @@ public class MainController {
     }
 
     public void loadContent(String fxmlFile, IContentLoadedCallback callback) {
+        if (fxmlFile.equals(currentRightContent)) {
+            System.out.println("Already loaded");
+            return;
+        }
+        currentRightContent = fxmlFile;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Node content = loader.load();

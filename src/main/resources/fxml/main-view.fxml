@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="root" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.MainController">
@@ -242,7 +241,7 @@
             </AnchorPane>
             <AnchorPane fx:id="rightContent" style="-fx-background-color: white;">
                <children>
-                  <fx:include source="kanban.fxml" fx:id="kanban" />
+                  <fx:include fx:id="kanban" source="kanban.fxml" />
                </children>
             </AnchorPane>
          </items>

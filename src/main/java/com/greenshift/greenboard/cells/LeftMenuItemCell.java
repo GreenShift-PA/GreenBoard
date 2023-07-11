@@ -1,4 +1,4 @@
-package com.greenshift.greenboard.factories.impl;
+package com.greenshift.greenboard.cells;
 
 import com.greenshift.greenboard.builders.CustomContextMenuBuilder;
 import com.greenshift.greenboard.controllers.TreeItemViewController;
@@ -16,14 +16,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class LeftMenuItemCellImpl extends JFXTreeCell<LeftMenuItem> {
+public final class LeftMenuItemCell extends JFXTreeCell<LeftMenuItem> {
 
     private TextField textField;
     private final CustomContextMenu addMenu = new CustomContextMenu();
     TreeItemViewController controller = null;
     List<CustomContextMenuItem> customContextMenuItems = new ArrayList<>();
 
-    public LeftMenuItemCellImpl() {
+    public LeftMenuItemCell() {
         CustomContextMenuItem addMenuItem = new CustomContextMenuBuilder()
                 .setId("add")
                 .setLabel("Ajouter un projet")

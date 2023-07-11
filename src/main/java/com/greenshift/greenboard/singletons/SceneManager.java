@@ -15,8 +15,6 @@ public class SceneManager {
     private static SceneManager instance;
     private Stage primaryStage;
     private Scene previousScene;
-
-
     private MainController mainController;
 
     private SceneManager() {
