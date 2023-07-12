@@ -51,7 +51,7 @@ public class KanBanItemController {
         if (item.getProject() != null) {
             projectName.setText(item.getProject().getName());
             projectIcon.setIconLiteral(item.getProject().getIcon());
-        }else {
+        } else {
             projectHBox.setVisible(false);
             projectHBox.setManaged(false);
         }
@@ -62,7 +62,7 @@ public class KanBanItemController {
                 Image image = new Image(item.getUsers().get(0).getAvatar());
                 userPfp.setImage(image);
             }
-        }else {
+        } else {
             assigneesHBox.setVisible(false);
             assigneesHBox.setManaged(false);
         }

@@ -11,13 +11,12 @@ import com.greenshift.greenboard.utils.HTTPRequest;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 
 public class AuthService {
 
     public static final String AUTH_URL = "http://localhost:3000/api/v1/auth/authenticate/email";
 
-    public static boolean authenticate(String email, String password)  {
+    public static boolean authenticate(String email, String password) {
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeTypeAdapter())
@@ -69,7 +68,7 @@ public class AuthService {
                 String userJson = gson.toJson(responseBody.get("user"));
                 User user = gson.fromJson(userJson, User.class);
 
-                if(user == null) {
+                if (user == null) {
                     throw new AuthenticationFailedException();
                 }
 
@@ -85,7 +84,7 @@ public class AuthService {
     }
 
     public static boolean userExists(String email) {
-        if(email == null || email.isEmpty()) {
+        if (email == null || email.isEmpty()) {
             return false;
         }
 

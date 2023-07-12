@@ -12,8 +12,8 @@ public class LeftMenuItem implements IHierarchicalItem {
 
 
     private final String id;
-    private int index;
     private final SimpleStringProperty name;
+    private int index;
     private String iconLiteral;
 
 
@@ -56,9 +56,17 @@ public class LeftMenuItem implements IHierarchicalItem {
         return name.get();
     }
 
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
     @Override
     public String getIconLiteral() {
         return iconLiteral;
+    }
+
+    public void setIconLiteral(String iconLiteral) {
+        this.iconLiteral = iconLiteral;
     }
 
     @Override
@@ -81,14 +89,6 @@ public class LeftMenuItem implements IHierarchicalItem {
         return name;
     }
 
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    public void setIconLiteral(String iconLiteral) {
-        this.iconLiteral = iconLiteral;
-    }
-
     public IMenuItemCallback getCallback() {
         return callback;
     }
@@ -101,8 +101,7 @@ public class LeftMenuItem implements IHierarchicalItem {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof LeftMenuItem)) return false;
-        LeftMenuItem that = (LeftMenuItem) o;
+        if (!(o instanceof LeftMenuItem that)) return false;
         return Objects.equals(getId(), that.getId());
     }
 

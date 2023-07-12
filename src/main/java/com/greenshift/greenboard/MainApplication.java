@@ -14,6 +14,10 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class MainApplication extends Application {
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -34,9 +38,5 @@ public class MainApplication extends Application {
         SceneManager.getInstance().setMainController(controller);
 
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }

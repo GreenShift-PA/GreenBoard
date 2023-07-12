@@ -18,10 +18,10 @@ import java.util.List;
 
 public final class LeftMenuItemCell extends JFXTreeCell<LeftMenuItem> {
 
-    private TextField textField;
     private final CustomContextMenu addMenu = new CustomContextMenu();
     TreeItemViewController controller = null;
     List<CustomContextMenuItem> customContextMenuItems = new ArrayList<>();
+    private TextField textField;
 
     public LeftMenuItemCell() {
         CustomContextMenuItem addMenuItem = new CustomContextMenuBuilder()

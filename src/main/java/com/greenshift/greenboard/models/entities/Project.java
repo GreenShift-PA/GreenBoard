@@ -37,7 +37,7 @@ public class Project {
         this.color = color;
     }
 
-    public Project(String name,  String description, String icon, String color ) {
+    public Project(String name, String description, String icon, String color) {
         this.name = name;
         this.description = description;
         this.icon = icon;
@@ -139,6 +139,24 @@ public class Project {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", icon='" + icon + '\'' +
+                ", description='" + description + '\'' +
+                ", teams=" + teams +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", tasks=" + tasks +
+                ", tags=" + tags +
+                ", organization=" + organization +
+                ", pinnedUsers=" + pinnedUsers +
+                '}';
     }
 
     // Constructor

@@ -13,10 +13,14 @@ import net.synedra.validatorfx.Validator;
 
 public class ValidatorFXExample extends Application {
 
-    private Validator validator = new Validator();
+    private final Validator validator = new Validator();
+
+    public static void main(String[] args) {
+        launch();
+    }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
 
         TextField userTextField = new TextField();
 
@@ -30,7 +34,6 @@ public class ValidatorFXExample extends Application {
                 })
                 .decorates(userTextField)
                 .immediate();
-        ;
 
         Button signUp = new Button("Sign Up");
         signUp.disableProperty().bind(validator.containsErrorsProperty());
@@ -54,11 +57,7 @@ public class ValidatorFXExample extends Application {
     private GridPane createGrid() {
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
-        grid.setPrefSize(400,  200);
+        grid.setPrefSize(400, 200);
         return grid;
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }

@@ -6,16 +6,15 @@ import java.util.Objects;
 import java.util.function.Function;
 
 public class CustomContextMenuItem {
-    private String id = null;
-    private String label = "Item";
-    private String leftIcon = null;
-    private String rightIcon = null;
+    private String id;
+    private String label;
+    private String leftIcon;
+    private String rightIcon;
     private boolean active = true;
     private String category = null;
-    private Function<CustomContextMenuItem, Void> action = null;
-    private List<CustomContextMenuItem> subMenuItems = new ArrayList<>();
+    private Function<CustomContextMenuItem, Void> action;
+    private List<CustomContextMenuItem> subMenuItems;
     private boolean separator = false;
-
 
 
     public CustomContextMenuItem(String id, String label, String leftIcon, String rightIcon, Function<CustomContextMenuItem, Void> action, List<CustomContextMenuItem> subMenuItems) {
@@ -136,8 +135,7 @@ public class CustomContextMenuItem {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CustomContextMenuItem)) return false;
-        CustomContextMenuItem that = (CustomContextMenuItem) o;
+        if (!(o instanceof CustomContextMenuItem that)) return false;
         return Objects.equals(getId(), that.getId());
     }
 

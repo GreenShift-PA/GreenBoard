@@ -14,6 +14,11 @@ public class HTTPResponse<T> {
         this.body = body;
     }
 
+    public static <T> HTTPResponse<T> fromJson(String json, Class<T> type) {
+        Gson gson = new Gson();
+        return (HTTPResponse<T>) gson.fromJson(json, new HTTPResponseType<T>(type));
+    }
+
     public int getStatusCode() {
         return statusCode;
     }
@@ -43,11 +48,6 @@ public class HTTPResponse<T> {
         return gson.toJson(this);
     }
 
-    public static <T> HTTPResponse<T> fromJson(String json, Class<T> type) {
-        Gson gson = new Gson();
-        return (HTTPResponse<T>) gson.fromJson(json, new HTTPResponseType<T>(type));
-    }
-
     @Override
     public String toString() {
         return "HTTPResponse{" +
@@ -58,10 +58,8 @@ public class HTTPResponse<T> {
     }
 
     private static class HTTPResponseType<T> extends TypeToken<T> {
-        private Class<T> type;
 
         public HTTPResponseType(Class<T> type) {
-            this.type = type;
         }
     }
 }

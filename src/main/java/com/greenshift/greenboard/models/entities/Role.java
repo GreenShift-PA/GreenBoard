@@ -40,6 +40,16 @@ public class Role {
         this.users = users;
     }
 
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", users=" + users +
+                '}';
+    }
+
     // Constructor
 
     // Getters and Setters (not generated)

@@ -4,7 +4,6 @@ import com.greenshift.greenboard.controllers.MainController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,15 +21,15 @@ public class SceneManager {
         this.previousScene = null;
     }
 
-    public void init(Stage stage) {
-        this.primaryStage = stage;
-    }
-
     public static SceneManager getInstance() {
         if (instance == null) {
             instance = new SceneManager();
         }
         return instance;
+    }
+
+    public void init(Stage stage) {
+        this.primaryStage = stage;
     }
 
     public void switchToScene(String fxmlPath) {

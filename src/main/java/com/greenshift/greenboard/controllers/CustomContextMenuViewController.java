@@ -52,7 +52,7 @@ public class CustomContextMenuViewController implements Initializable {
         menuItemLabel.setText(labelText);
         // I don't want ellipsis to show up in the label
         // If the text is too long, it should be wrapped and increase the height of the component
-        if(labelText.length() > 20){
+        if (labelText.length() > 20) {
             menuItemLabel.setEllipsisString("");
             menuItemLabel.setPrefHeight(Float.MAX_VALUE);
             root.setPrefHeight(40);

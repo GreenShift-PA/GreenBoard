@@ -12,6 +12,7 @@ public class User {
     private String email;
     private String firstName;
     private String lastName;
+    private String password;
     private String passwordHash;
     private String avatar;
     private String username;
@@ -32,6 +33,7 @@ public class User {
     private List<Task> pinnedTasks;
     private List<Comment> pinnedComments;
     private List<Organization> pinnedOrganizations;
+    private List<Activity> activities;
 
     public User(String email, String firstName, String lastName) {
         this.id = UUID.randomUUID().toString();
@@ -270,8 +272,6 @@ public class User {
         this.activities = activities;
     }
 
-    private List<Activity> activities;
-
     @Override
     public String toString() {
         return "User{" +
@@ -304,5 +304,13 @@ public class User {
                 ", pinnedOrganizations=" + pinnedOrganizations +
                 ", activities=" + activities +
                 '}';
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

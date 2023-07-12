@@ -13,8 +13,12 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class CustomContextMenuExample extends Application {
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
         VBox vbox = new VBox(10);
         Scene scene = new Scene(vbox, 1320, 800);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/hierarchy.css")).toExternalForm());
@@ -30,9 +34,7 @@ public class CustomContextMenuExample extends Application {
         docs.getChildren().add(new TreeItem<>(new LeftMenuItem("Table by Category", null)));
         docs.getChildren().add(new TreeItem<>(new LeftMenuItem("All", null)));
         docs.getChildren().add(new TreeItem<>(new LeftMenuItem("Mine", null,
-                (item) -> {
-                    System.out.println("Clicked on menu item: " + item.getName());
-                })));
+                (item) -> System.out.println("Clicked on menu item: " + item.getName()))));
 
         root.getChildren().add(docs);
 
@@ -45,9 +47,5 @@ public class CustomContextMenuExample extends Application {
         stage.setTitle("Hierarchy !");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }

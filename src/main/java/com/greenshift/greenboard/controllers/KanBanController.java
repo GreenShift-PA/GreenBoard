@@ -39,15 +39,11 @@ public class KanBanController {
     private JFXListView<KanbanItem> draggedFrom;
     private Rectangle dragFeedback;
 
-    private ObservableList<KanbanItem> notStartedItems;
-    private ObservableList<KanbanItem> inProgressItems;
-    private ObservableList<KanbanItem> doneItems;
-
     public void initialize() {
 
-        notStartedItems = FXCollections.observableArrayList();
-        inProgressItems = FXCollections.observableArrayList();
-        doneItems = FXCollections.observableArrayList();
+        ObservableList<KanbanItem> notStartedItems = FXCollections.observableArrayList();
+        ObservableList<KanbanItem> inProgressItems = FXCollections.observableArrayList();
+        ObservableList<KanbanItem> doneItems = FXCollections.observableArrayList();
 
         notStartedListView.setCellFactory(new KanbanItemFactory());
         inProgressListView.setCellFactory(new KanbanItemFactory());
@@ -167,7 +163,6 @@ public class KanBanController {
                         .filter(i -> i.getId().equals(draggedItemId))
                         .findFirst()
                         .orElse(null);
-
 
 
                 if (item != null) {
@@ -326,6 +321,7 @@ public class KanBanController {
 
     private KanbanItem getCurrentSelectedItem() {
         JFXListView<KanbanItem> currentList = getCurrentList();
+        if(currentList == null) return null;
         return currentList.getSelectionModel().getSelectedItem();
     }
 

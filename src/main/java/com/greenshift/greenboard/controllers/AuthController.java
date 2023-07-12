@@ -12,6 +12,8 @@ import net.synedra.validatorfx.Check;
 import net.synedra.validatorfx.TooltipWrapper;
 import net.synedra.validatorfx.Validator;
 
+import java.util.Objects;
+
 public class AuthController {
 
     public Button loginWithGoogleBtn;
@@ -26,7 +28,7 @@ public class AuthController {
 
     public Label forgotPassword;
 
-    private Validator validator = new Validator();
+    private final Validator validator = new Validator();
 
     private boolean showPassword = false;
 
@@ -38,7 +40,6 @@ public class AuthController {
                     String email = c.get("email");
                     if (!email.contains("@")) {
                         c.error("Please enter a valid email address.");
-                    } else {
                     }
 
                 })
@@ -58,9 +59,7 @@ public class AuthController {
         credentialsVBox.getChildren().add(loginWithEmailWrapper);
 
         // when typing in email, recheck password
-        emailTextField.setOnKeyReleased(event -> {
-            emailCheck.recheck();
-        });
+        emailTextField.setOnKeyReleased(event -> emailCheck.recheck());
 
     }
 
@@ -88,9 +87,10 @@ public class AuthController {
             // if validator contains no errors, then login
             if (showPassword && !validator.containsErrorsProperty().get()) {
                 boolean authenticationSuccessful = AuthService.authenticate(emailTextField.getText(), passwordField.getText());
-                if(authenticationSuccessful) {
+                if (authenticationSuccessful) {
                     SceneManager.getInstance().switchToScene("/fxml/main-view.fxml", null, scene -> {
-                        scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/styles.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/kanban.css")).toExternalForm());
                     });
                 } else {
                     System.out.println("Authentication failed");

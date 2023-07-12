@@ -3,16 +3,8 @@ package com.greenshift.greenboard.singletons;
 import com.greenshift.greenboard.models.entities.User;
 
 public class UserSession {
-    @Override
-    public String toString() {
-        return "UserSession{" +
-                "currentUser=" + currentUser +
-                '}';
-    }
-
     private static UserSession instance;
     private User currentUser;
-
     private UserSession() {
     }
 
@@ -23,16 +15,23 @@ public class UserSession {
         return instance;
     }
 
+    @Override
+    public String toString() {
+        return "UserSession{" +
+                "currentUser=" + currentUser +
+                '}';
+    }
+
     public boolean isAuthenticated() {
         return currentUser != null;
     }
 
-    public void setCurrentUser(User user) {
-        this.currentUser = user;
-    }
-
     public User getCurrentUser() {
         return currentUser;
+    }
+
+    public void setCurrentUser(User user) {
+        this.currentUser = user;
     }
 
     public void logout() {

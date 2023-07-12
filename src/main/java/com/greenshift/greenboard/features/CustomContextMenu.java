@@ -15,11 +15,11 @@ import java.util.List;
 public class CustomContextMenu extends ContextMenu {
     public CustomContextMenu() {
     }
+
     public CustomContextMenu(List<CustomContextMenuItem> customContextMenuItems) {
         super();
         buildMenuItems(customContextMenuItems);
     }
-
 
 
     public void buildMenuItems(List<CustomContextMenuItem> customContextMenuItems) {

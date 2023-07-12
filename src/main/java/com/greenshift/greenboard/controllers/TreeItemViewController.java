@@ -10,6 +10,11 @@ import org.kordamp.ikonli.javafx.FontIcon;
 
 public class TreeItemViewController {
 
+    private static final String CHEVRON_DOWN_ICON_CODE = "fas-chevron-down";
+    private static final String CHEVRON_RIGHT_ICON_CODE = "fas-chevron-right";
+    private static final String CIRCLE_ICON_CODE = "fas-circle";
+    private static final String ELLIPSIS_ICON_CODE = "fas-ellipsis-h";
+    private static final String PLUS_ICON_CODE = "anto-plus";
     @FXML
     public AnchorPane root;
     @FXML
@@ -25,13 +30,6 @@ public class TreeItemViewController {
     public FontIcon options;
     @FXML
     public FontIcon add;
-
-
-    private static final String CHEVRON_DOWN_ICON_CODE = "fas-chevron-down";
-    private static final String CHEVRON_RIGHT_ICON_CODE = "fas-chevron-right";
-    private static final String CIRCLE_ICON_CODE = "fas-circle";
-    private static final String ELLIPSIS_ICON_CODE = "fas-ellipsis-h";
-    private static final String PLUS_ICON_CODE = "anto-plus";
 
     public void initialize() {
         actions.setVisible(false); // Hide actions by default

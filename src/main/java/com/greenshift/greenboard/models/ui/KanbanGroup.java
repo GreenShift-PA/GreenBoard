@@ -41,20 +41,20 @@ public class KanbanGroup {
         return id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
     public void setId(String id) {
         this.id = id;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getIcon() {
+        return icon;
     }
 
     public void setIcon(String icon) {

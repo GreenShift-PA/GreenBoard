@@ -6,6 +6,26 @@ import java.util.List;
 public class Person {
     public String name;
     public int age;
+    List<Person> friends;
+    private LocalDateTime createdAt;
+
+    public Person(String name, int age, List<Person> friends, LocalDateTime createdAt) {
+        this.name = name;
+        this.age = age;
+        this.friends = friends;
+        this.createdAt = createdAt;
+    }
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public Person(String name, int age, LocalDateTime createdAt) {
+        this.name = name;
+        this.age = age;
+        this.createdAt = createdAt;
+    }
 
     @Override
     public String toString() {
@@ -25,33 +45,11 @@ public class Person {
         this.friends = friends;
     }
 
-    public Person(String name, int age, List<Person> friends, LocalDateTime createdAt) {
-        this.name = name;
-        this.age = age;
-        this.friends = friends;
-        this.createdAt = createdAt;
-    }
-
-    List<Person> friends;
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
     public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    private LocalDateTime createdAt;
-
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    public Person(String name, int age, LocalDateTime createdAt) {
-        this.name = name;
-        this.age = age;
         this.createdAt = createdAt;
     }
 

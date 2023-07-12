@@ -1,7 +1,7 @@
 package com.greenshift.greenboard.utils;
 
-import com.greenshift.greenboard.models.HTTPResponse;
 import com.google.gson.Gson;
+import com.greenshift.greenboard.models.HTTPResponse;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -18,7 +18,7 @@ public class HTTPRequest {
     private final String method;
     private final String requestBody;
     private final Map<String, String> headers;
-    private final Gson gson;
+    protected final Gson gson;
 
     private HTTPRequest(Builder builder) {
         this.url = builder.url;
