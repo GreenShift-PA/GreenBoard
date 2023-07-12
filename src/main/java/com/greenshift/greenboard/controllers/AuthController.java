@@ -88,7 +88,7 @@ public class AuthController {
             if (showPassword && !validator.containsErrorsProperty().get()) {
                 boolean authenticationSuccessful = AuthService.authenticate(emailTextField.getText(), passwordField.getText());
                 if (authenticationSuccessful) {
-                    SceneManager.getInstance().switchToScene("/fxml/main-view.fxml", null, scene -> {
+                    SceneManager.getInstance().switchToScene("/fxml/main-view.fxml", null, null, scene -> {
                         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/styles.css")).toExternalForm());
                         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/kanban.css")).toExternalForm());
                     });

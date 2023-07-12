@@ -48,7 +48,7 @@ public class KanBanController {
 
         taskService = new TaskService("http://localhost:3000/api/v1/tasks");
 
-        buildKanbanColumns();
+        // buildKanbanColumns();
     }
 
     private void setupDragAndDropSupport(JFXListView<KanbanItem> listView) {

@@ -8,6 +8,8 @@ public class Team {
     private String id;
     private String name;
     private String description;
+    private String icon;
+    private String color;
     private List<Project> projects;
     private List<User> members;
     private LocalDateTime createdAt;
@@ -19,6 +21,13 @@ public class Team {
     private List<User> pinnedUsers;
     private Organization organization;
     private String organizationId;
+
+    public Team(String name, String description, String icon, String color) {
+        this.name = name;
+        this.description = description;
+        this.icon = icon;
+        this.color = color;
+    }
 
     public String getId() {
         return id;
@@ -132,12 +141,30 @@ public class Team {
         this.organizationId = organizationId;
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
         return "Team{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", icon='" + icon + '\'' +
+                ", color='" + color + '\'' +
                 ", projects=" + projects +
                 ", members=" + members +
                 ", createdAt=" + createdAt +

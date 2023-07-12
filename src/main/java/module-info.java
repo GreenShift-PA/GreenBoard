@@ -35,4 +35,6 @@ module com.greenshift.greenboard {
     exports com.greenshift.greenboard.controllers;
     exports com.greenshift.greenboard.models;
     exports com.greenshift.greenboard.services;
+    exports com.greenshift.greenboard.converters;
+    opens com.greenshift.greenboard.converters to javafx.fxml;
 }

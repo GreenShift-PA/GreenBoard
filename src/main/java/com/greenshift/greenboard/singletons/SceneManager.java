@@ -32,17 +32,12 @@ public class SceneManager {
         this.primaryStage = stage;
     }
 
-    public void switchToScene(String fxmlPath) {
-        switchToScene(fxmlPath, null, null);
-    }
-
-    public void switchToScene(String fxmlPath, Consumer<Stage> stageConsumer) {
-        switchToScene(fxmlPath, stageConsumer, null);
-    }
-
-    public void switchToScene(String fxmlPath, Consumer<Stage> stageConsumer, Consumer<Scene> sceneConsumer) {
+    public void switchToScene(String fxmlPath, Consumer<FXMLLoader> loaderConsumer, Consumer<Stage> stageConsumer, Consumer<Scene> sceneConsumer) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            if(loaderConsumer != null) {
+                loaderConsumer.accept(loader);
+            }
             Parent root = loader.load();
             Scene scene = new Scene(root);
 
@@ -63,6 +58,13 @@ public class SceneManager {
         }
     }
 
+    public void switchToScene(Scene scene) {
+        setPreviousScene(primaryStage.getScene()); // Store the previous scene
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+
     public Stage getPrimaryStage() {
         return primaryStage;
     }
@@ -81,5 +83,11 @@ public class SceneManager {
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
+    }
+
+    public void goBack() {
+        if (previousScene != null) {
+            switchToScene(previousScene);
+        }
     }
 }

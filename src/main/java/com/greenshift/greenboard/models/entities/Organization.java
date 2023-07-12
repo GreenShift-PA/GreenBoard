@@ -19,6 +19,17 @@ public class Organization {
     private String metadata;
     private List<User> pinnedUsers;
 
+    public Organization(String name, String description, String icon, String color) {
+        this.name = name;
+        this.description = description;
+        this.icon = icon;
+        this.color = color;
+    }
+
+    public Organization() {
+
+    }
+
     public String getId() {
         return id;
     }

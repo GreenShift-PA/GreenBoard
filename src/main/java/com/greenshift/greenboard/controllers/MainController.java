@@ -4,23 +4,28 @@ import com.greenshift.greenboard.TopBarController;
 import com.greenshift.greenboard.cells.LeftMenuItemCell;
 import com.greenshift.greenboard.interfaces.IContentLoadedCallback;
 import com.greenshift.greenboard.models.ui.LeftMenuItem;
+import com.greenshift.greenboard.singletons.SceneManager;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXTreeView;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class MainController {
-
     @FXML
     public JFXDialog dialog;
 
@@ -39,9 +44,13 @@ public class MainController {
 
     @FXML
     public AnchorPane rightContent;
-
-    @FXML
-    private Label welcomeText;
+    public FontAwesomeIconView teamMenuButton;
+    public FontIcon createNewTeamButton;
+    public FontAwesomeIconView projectMenuButton;
+    public FontIcon createNewProjectButton;
+    public FontAwesomeIconView topBarHamburger;
+    public HBox leftMenuSettingsButton;
+    public HBox leftMenuNewOrganizationButton;
     @FXML
     private SplitPane split;
 
@@ -65,13 +74,15 @@ public class MainController {
 
     /* print a message on startup */
     public void initialize() {
+
+        SceneManager.getInstance().setMainController(this);
+
         System.out.println("Application started!");
         split.setMinSize(0, 0);
 
         context = root;
         root.getChildren().remove(dialog);
         dialog.getContent().setPadding(new javafx.geometry.Insets(0));
-
 
         initTeamTreeView();
         initProjectTreeView();
@@ -133,11 +144,33 @@ public class MainController {
         projectTreeView.setCellFactory(p -> new LeftMenuItemCell());
     }
 
-
     public void openSettings(MouseEvent mouseEvent) {
-        System.out.println("Clicked on settings");
-        dialog.setTransitionType(JFXDialog.DialogTransition.CENTER);
-        dialog.show(context);
+        openModal("/fxml/settings-base-view.fxml");
+    }
+
+    public void openNewOrganization(MouseEvent mouseEvent) {
+        SceneManager.getInstance().switchToScene("/fxml/create-new-organization.fxml", null, null, scene -> {
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/organization.css")).toExternalForm());
+        });
+    }
+
+    public void openNewTeam(MouseEvent mouseEvent) {
+        openModal("/fxml/team-create-view.fxml");
+    }
+
+    public void openNewProject(MouseEvent mouseEvent) {
+        openModal("/fxml/project-create-view.fxml");
+    }
+
+    public void openModal(String fxmlFile) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+        try {
+            dialog.setContent(loader.load());
+            dialog.setTransitionType(JFXDialog.DialogTransition.CENTER);
+            dialog.show(context);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void loadContent(String fxmlFile, IContentLoadedCallback callback) {

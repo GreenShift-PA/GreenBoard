@@ -31,6 +31,8 @@ public class UserSession {
     }
 
     public void setCurrentUser(User user) {
+
+        System.out.println("UserSession.setCurrentUser: " + user);
         this.currentUser = user;
     }
 

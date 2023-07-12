@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox spacing="10.0" styleClass="light-gray-bg" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER">
+         <children>
+            <Label text="Invite teammates">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="Get the most out of Greenboard by inviting your teammates" textFill="#727272">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="292.0" prefWidth="800.0" spacing="50.0">
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="287.0" prefWidth="245.0" spacing="10.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <VBox prefHeight="44.0" prefWidth="225.0">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="14.0" prefWidth="90.0" text="Send invites" textAlignment="CENTER" textFill="#656565">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <FontIcon iconColor="#2383e2" iconLiteral="fas-link" />
+                                    <Label text="Get shareable link" textFill="#2383e2">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <VBox spacing="10.0">
+                           <children>
+                              <TextField fx:id="emailTextField" promptText="Email address" styleClass="input" />
+                              <TextField fx:id="emailTextField1" promptText="Email address" styleClass="input" />
+                              <TextField fx:id="emailTextField2" promptText="Email address" styleClass="input" />
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                                 <children>
+                                    <FontIcon iconColor="#797878" iconLiteral="anto-plus" />
+                                    <Label text="Add more or invite in bulk" textFill="#868686">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <Separator prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Separator>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
