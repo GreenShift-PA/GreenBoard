@@ -1,6 +1,7 @@
 package com.greenshift.greenboard.models.ui;
 
 import com.greenshift.greenboard.models.entities.Project;
+import com.greenshift.greenboard.models.entities.Task;
 import com.greenshift.greenboard.models.entities.User;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -19,7 +20,7 @@ public class KanbanItem extends ReadOnlyObjectWrapper<KanbanItem> {
     private LocalDateTime dueDate;
     private Project project;
     private List<User> users;
-    private KanbanGroup group;
+    private String group;
 
     public KanbanItem(String title, String icon, LocalDateTime dueDate, Project project) {
         this.id = UUID.randomUUID().toString();
@@ -51,6 +52,16 @@ public class KanbanItem extends ReadOnlyObjectWrapper<KanbanItem> {
         this.title = title;
         this.icon = icon;
         this.users = new ArrayList<>();
+    }
+
+    public static KanbanItem fromTask(Task task) {
+        if(task == null) return null;
+
+        KanbanItem item = new KanbanItem(task.getName(), task.getIcon(), task.getDueDate(), task.getProject());
+        item.setUsers(task.getAssignedUsers());
+        item.setProject(task.getProject());
+
+        return item;
     }
 
     public String getId() {
@@ -117,37 +128,17 @@ public class KanbanItem extends ReadOnlyObjectWrapper<KanbanItem> {
         this.users.remove(user);
     }
 
-    public KanbanGroup getGroup() {
-        return group;
-    }
-
-    public void setGroup(KanbanGroup group) {
-        this.group = group;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof KanbanItem)) return false;
-        KanbanItem that = (KanbanItem) o;
+        if (!(o instanceof KanbanItem that)) return false;
         return Objects.equals(getId(), that.getId());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getId());
-    }
-
-    @Override
-    public String toString() {
-        return "KanbanItem{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", icon='" + icon + '\'' +
-                ", dueDate=" + dueDate +
-                ", project=" + project +
-                ", users=" + users +
-                '}';
     }
 
     @Override
@@ -158,5 +149,27 @@ public class KanbanItem extends ReadOnlyObjectWrapper<KanbanItem> {
     @Override
     public ReadOnlyObjectProperty<KanbanItem> getReadOnlyProperty() {
         return this;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    @Override
+    public String toString() {
+        return "KanbanItem{" +
+                "id='" + id + '\'' +
+                ", order=" + order +
+                ", title='" + title + '\'' +
+                ", icon='" + icon + '\'' +
+                ", dueDate=" + dueDate +
+                ", project=" + project +
+                ", users=" + users +
+                ", group='" + group + '\'' +
+                '}';
     }
 }

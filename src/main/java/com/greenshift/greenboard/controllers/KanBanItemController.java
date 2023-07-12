@@ -56,7 +56,7 @@ public class KanBanItemController {
             projectHBox.setManaged(false);
         }
 
-        if (item.getUsers().size() > 0) {
+        if (item.getUsers() != null && item.getUsers().size() > 0) {
             userDisplayName.setText(item.getUsers().get(0).getFirstName() + " " + item.getUsers().get(0).getLastName());
             if (item.getUsers().get(0).getAvatar() != null) {
                 Image image = new Image(item.getUsers().get(0).getAvatar());

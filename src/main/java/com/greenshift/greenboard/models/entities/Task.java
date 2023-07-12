@@ -7,11 +7,13 @@ public class Task {
     private String id;
     private String name;
     private String description;
+    private String icon;
+    private String color;
     private Project project;
     private String projectId;
     private Team team;
     private String teamId;
-    private String status;
+    private TaskStatus status;
     private String priority;
     private String type;
     private LocalDateTime dueDate;
@@ -27,32 +29,6 @@ public class Task {
     private Task parentTask;
     private String parentTaskId;
     private List<User> pinnedUsers;
-
-    public Task(String id, String name, String description, Project project, String projectId, Team team, String teamId, String status, String priority, String type, LocalDateTime dueDate, LocalDateTime createdAt, LocalDateTime updatedAt, List<User> assignedUsers, User author, String authorId, List<Comment> comments, List<Tag> tags, List<TaskAttachment> attachments, List<Task> subTasks, Task parentTask, String parentTaskId, List<User> pinnedUsers) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.project = project;
-        this.projectId = projectId;
-        this.team = team;
-        this.teamId = teamId;
-        this.status = status;
-        this.priority = priority;
-        this.type = type;
-        this.dueDate = dueDate;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.assignedUsers = assignedUsers;
-        this.author = author;
-        this.authorId = authorId;
-        this.comments = comments;
-        this.tags = tags;
-        this.attachments = attachments;
-        this.subTasks = subTasks;
-        this.parentTask = parentTask;
-        this.parentTaskId = parentTaskId;
-        this.pinnedUsers = pinnedUsers;
-    }
 
     public String getId() {
         return id;
@@ -110,11 +86,11 @@ public class Task {
         this.teamId = teamId;
     }
 
-    public String getStatus() {
+    public TaskStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TaskStatus status) {
         this.status = status;
     }
 
@@ -238,17 +214,35 @@ public class Task {
         this.pinnedUsers = pinnedUsers;
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", icon='" + icon + '\'' +
+                ", color='" + color + '\'' +
                 ", project=" + project +
                 ", projectId='" + projectId + '\'' +
                 ", team=" + team +
                 ", teamId='" + teamId + '\'' +
-                ", status='" + status + '\'' +
+                ", status=" + status +
                 ", priority='" + priority + '\'' +
                 ", type='" + type + '\'' +
                 ", dueDate=" + dueDate +

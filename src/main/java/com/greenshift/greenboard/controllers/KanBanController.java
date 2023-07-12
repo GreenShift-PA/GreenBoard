@@ -1,12 +1,13 @@
 package com.greenshift.greenboard.controllers;
 
 import com.greenshift.greenboard.builders.CustomContextMenuBuilder;
-import com.greenshift.greenboard.factories.KanbanItemFactory;
+import com.greenshift.greenboard.cells.KanbanItemCell;
 import com.greenshift.greenboard.features.CustomContextMenu;
-import com.greenshift.greenboard.models.entities.Project;
-import com.greenshift.greenboard.models.entities.User;
+import com.greenshift.greenboard.models.entities.Task;
+import com.greenshift.greenboard.models.entities.TaskStatus;
 import com.greenshift.greenboard.models.ui.CustomContextMenuItem;
 import com.greenshift.greenboard.models.ui.KanbanItem;
+import com.greenshift.greenboard.services.TaskService;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,69 +19,36 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class KanBanController {
 
     @FXML
     public HBox columns;
+
+    public HashMap<TaskStatus, JFXListView<KanbanItem>> columnsListViews;
     public JFXListView<KanbanItem> notStartedListView;
     public JFXListView<KanbanItem> inProgressListView;
     public JFXListView<KanbanItem> doneListView;
 
     private JFXListView<KanbanItem> sourceList;
 
+    private TaskService taskService;
     private String draggedItemId;
     private JFXListView<KanbanItem> draggedFrom;
     private Rectangle dragFeedback;
 
     public void initialize() {
 
-        ObservableList<KanbanItem> notStartedItems = FXCollections.observableArrayList();
-        ObservableList<KanbanItem> inProgressItems = FXCollections.observableArrayList();
-        ObservableList<KanbanItem> doneItems = FXCollections.observableArrayList();
+        taskService = new TaskService("http://localhost:3000/api/v1/tasks");
 
-        notStartedListView.setCellFactory(new KanbanItemFactory());
-        inProgressListView.setCellFactory(new KanbanItemFactory());
-        doneListView.setCellFactory(new KanbanItemFactory());
-
-        User user = new User("abdoudu78130@gmail.com", "Abdou", "Dia");
-        Project project = new Project("Project 1", "It's a project", "fas-file", "#ecf0f1");
-
-        List<User> users = new ArrayList<>();
-        users.add(user);
-
-        notStartedItems.add(new KanbanItem("Item 1", "fas-file"));
-        notStartedItems.add(new KanbanItem("Find a free host for the application", "fas-file", LocalDateTime.now(), project, users));
-        notStartedItems.add(new KanbanItem("Item 4", "fas-file"));
-        notStartedItems.add(new KanbanItem("Item 7", "fas-file"));
-        notStartedItems.add(new KanbanItem("Item 10", "fas-file"));
-
-        inProgressItems.add(new KanbanItem("Item 2", "fas-file"));
-        inProgressItems.add(new KanbanItem("Item 5", "fas-file"));
-        inProgressItems.add(new KanbanItem("Item 8", "fas-file"));
-        inProgressItems.add(new KanbanItem("Item 11", "fas-file"));
-        inProgressItems.add(new KanbanItem("Item 13", "fas-file", LocalDateTime.now(), project, users));
-
-        doneItems.add(new KanbanItem("Item 3", "fas-file"));
-        doneItems.add(new KanbanItem("Item 6", "fas-file"));
-        doneItems.add(new KanbanItem("Item 9", "fas-file"));
-        doneItems.add(new KanbanItem("Item 12", "fas-file"));
-        doneItems.add(new KanbanItem("Item 14", "fas-file"));
-
-        notStartedListView.setItems(notStartedItems);
-        inProgressListView.setItems(inProgressItems);
-        doneListView.setItems(doneItems);
-
-        setupDragAndDropSupport(notStartedListView);
-        setupDragAndDropSupport(inProgressListView);
-        setupDragAndDropSupport(doneListView);
-        setupContextMenu();
+        buildKanbanColumns();
     }
 
     private void setupDragAndDropSupport(JFXListView<KanbanItem> listView) {
@@ -181,7 +149,7 @@ public class KanBanController {
         });
     }
 
-    private void setupContextMenu() {
+    private void setupContextMenu(JFXListView<KanbanItem> listView) {
         CustomContextMenu contextMenu = new CustomContextMenu();
         List<CustomContextMenuItem> customContextMenuItems = new ArrayList<>();
 
@@ -313,15 +281,12 @@ public class KanBanController {
 
         contextMenu.buildMenuItems(customContextMenuItems);
 
-        // Set the context menu to each list view
-        notStartedListView.setContextMenu(contextMenu);
-        inProgressListView.setContextMenu(contextMenu);
-        doneListView.setContextMenu(contextMenu);
+        listView.setContextMenu(contextMenu);
     }
 
     private KanbanItem getCurrentSelectedItem() {
         JFXListView<KanbanItem> currentList = getCurrentList();
-        if(currentList == null) return null;
+        if (currentList == null) return null;
         return currentList.getSelectionModel().getSelectedItem();
     }
 
@@ -335,4 +300,62 @@ public class KanBanController {
         }
         return null;
     }
+
+    private void buildKanbanColumns() {
+        this.columnsListViews = new HashMap<>();
+
+        List<Task> allTasks = Arrays.stream(taskService.getAll(Task[].class)).toList();
+        // Group the tasks by their status name
+        Map<TaskStatus, List<Task>> groupedTasks = allTasks.stream()
+                .collect(Collectors.groupingBy(Task::getStatus));
+
+        // Create a JFXListView for each status and populate it with KanbanItems
+        groupedTasks.forEach((status, tasks) -> {
+
+            KanBanColumnController controller = null;
+            JFXListView<KanbanItem> listView = null;
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/kanban-column.fxml"));
+            try {
+                VBox column = loader.load();
+                controller = loader.getController();
+                listView = controller.listview;
+                listView.setCellFactory(param -> new KanbanItemCell());
+
+                columns.getChildren().add(column);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
+            setupDragAndDropSupport(listView);
+            setupContextMenu(listView);
+
+
+            // Create KanbanItems for each task in the status
+            List<KanbanItem> kanbanItems = tasks.stream()
+                    .map(task -> {
+                        KanbanItem kanbanItem = KanbanItem.fromTask(task);
+                        kanbanItem.setGroup(status.getName());
+                        return kanbanItem;
+                    })
+                    .collect(Collectors.toList());
+
+            // Add the KanbanItems to the ListView
+            ObservableList<KanbanItem> kanbanItemsObservable = FXCollections.observableArrayList(kanbanItems);
+            listView.setItems(kanbanItemsObservable);
+            controller.init(status, listView.getItems().size());
+
+
+            // Add the ListView to the HBox
+            columnsListViews.put(status, listView);
+        });
+
+        columnsListViews.forEach((statusName, listView) -> {
+
+        });
+
+    }
+
+
 }
