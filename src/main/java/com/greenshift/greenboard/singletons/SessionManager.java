@@ -1,16 +1,18 @@
 package com.greenshift.greenboard.singletons;
 
+import com.greenshift.greenboard.models.entities.Role;
 import com.greenshift.greenboard.models.entities.User;
+import com.greenshift.greenboard.services.UserService;
 
-public class UserSession {
-    private static UserSession instance;
+public class SessionManager {
+    private static SessionManager instance;
     private User currentUser;
-    private UserSession() {
+    private SessionManager() {
     }
 
-    public static UserSession getInstance() {
+    public static SessionManager getInstance() {
         if (instance == null) {
-            instance = new UserSession();
+            instance = new SessionManager();
         }
         return instance;
     }
@@ -34,6 +36,11 @@ public class UserSession {
 
         System.out.println("UserSession.setCurrentUser: " + user);
         this.currentUser = user;
+    }
+
+    public void useDummyUser() {
+        UserService userService = new UserService("http://localhost:3000/api/v1/users");
+        this.currentUser = userService.getById("180d6478-50c0-42d6-9dda-4b941b90551b", User.class);
     }
 
     public void logout() {

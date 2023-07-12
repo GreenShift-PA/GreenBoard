@@ -1,0 +1,35 @@
+.scroll-pane {
+    -fx-background-color: white;
+}
+
+.setting-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #000000;
+}
+
+.setting-description {
+    -fx-font-size: 12px;
+    -fx-text-fill: rgba(55, 53, 47, 0.65);
+}
+
+.delete {
+    -fx-text-fill: #EB5757;
+}
+
+.setting-button {
+    -fx-text-fill: #37352f;
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #37352F;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5;
+}
+
+.text-field-input {
+    -fx-background-color: rgba(242, 241, 238, 0.6);
+    -fx-border-color: rgba(55, 53, 47, 0.15);
+    -fx-border-width: 1px;
+    -fx-border-radius: 5;
+    -fx-text-fill: rgb(55, 53, 47);
+    -fx-effect: dropshadow(three-pass-box, rgba(15, 15, 15, 0.1), 0, 0, 0, 1);
+}

@@ -22,7 +22,7 @@
        <JFXDialog fx:id="dialog" prefHeight="600" prefWidth="800" styleClass="custom-jfx-dialog">
           <JFXDialogLayout prefWidth="800" styleClass="custom-jfx">
              <body>
-                <fx:include source="settings-base-view.fxml" />
+                <fx:include source="settings-view.fxml" />
              </body>
           </JFXDialogLayout>
        </JFXDialog>

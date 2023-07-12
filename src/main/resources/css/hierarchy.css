@@ -61,7 +61,7 @@
 }
 
 /* transparent textfield */
-.text-field {
+.jfx-tree-view .text-field {
     -fx-background-color: transparent;
     -fx-background-insets: 0;
     -fx-background-radius: 0;

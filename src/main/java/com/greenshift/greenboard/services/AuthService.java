@@ -6,7 +6,7 @@ import com.greenshift.greenboard.adapters.LocalDateTimeTypeAdapter;
 import com.greenshift.greenboard.exceptions.AuthenticationFailedException;
 import com.greenshift.greenboard.models.HTTPResponse;
 import com.greenshift.greenboard.models.entities.User;
-import com.greenshift.greenboard.singletons.UserSession;
+import com.greenshift.greenboard.singletons.SessionManager;
 import com.greenshift.greenboard.utils.HTTPRequest;
 
 import java.time.LocalDateTime;
@@ -72,7 +72,7 @@ public class AuthService {
                     throw new AuthenticationFailedException();
                 }
 
-                UserSession.getInstance().setCurrentUser(user);
+                SessionManager.getInstance().setCurrentUser(user);
 
                 return user;
             }
@@ -112,7 +112,7 @@ public class AuthService {
 
         System.out.println("Authentication: " + authenticationSucceeded);
 
-        System.out.println("Session: " + UserSession.getInstance());
+        System.out.println("Session: " + SessionManager.getInstance());
 
     }
 

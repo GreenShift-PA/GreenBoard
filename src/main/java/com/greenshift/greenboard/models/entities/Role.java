@@ -8,6 +8,11 @@ public class Role {
     private String description;
     private List<User> users;
 
+    public Role(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public String getId() {
         return id;
     }

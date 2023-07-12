@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.TextFlow?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="470.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.settings.MyAccountController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <TextFlow>
+         <children>
+            <Label text="Your current email is " />
+            <Label fx:id="updateEmailLabel" text="address@email.com" />
+            <Label text="." />
+            <Label text="We've sent a temporary verification code to this email." />
+         </children>
+      </TextFlow>
+      <TextField fx:id="updateEmailVerificationCodeTextfield" promptText="e.g: xxxx-xxxx-xxxx">
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin>
+      </TextField>
+      <Label text="Please enter a new email and we will send you a verification code." />
+      <TextField fx:id="updateEmailNewEmailTextfield" promptText="Enter new mail" />
+      <JFXButton fx:id="updateEmailBtn" prefHeight="33.0" prefWidth="429.0" text="Send verification code" />
+   </children>
+</VBox>

@@ -33,6 +33,7 @@ module com.greenshift.greenboard {
     exports com.greenshift.greenboard;
     exports com.greenshift.greenboard.applications;
     exports com.greenshift.greenboard.controllers;
+    exports com.greenshift.greenboard.controllers.settings;
     exports com.greenshift.greenboard.models;
     exports com.greenshift.greenboard.services;
     exports com.greenshift.greenboard.converters;

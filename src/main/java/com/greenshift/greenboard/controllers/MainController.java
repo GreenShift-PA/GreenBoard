@@ -11,8 +11,6 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.input.MouseEvent;
@@ -145,7 +143,7 @@ public class MainController {
     }
 
     public void openSettings(MouseEvent mouseEvent) {
-        openModal("/fxml/settings-base-view.fxml");
+        openModal("/fxml/settings-view.fxml");
     }
 
     public void openNewOrganization(MouseEvent mouseEvent) {
