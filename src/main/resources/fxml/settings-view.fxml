@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <SplitPane dividerPositions="0.2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.SettingsController">
   <items>
@@ -67,7 +68,7 @@
                   </HBox>
                   <HBox fx:id="preferenceTab" alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                      <children>
-                        <FontAwesomeIconView fill="#a8a8a8" glyphName="GEAR" />
+                        <FontIcon iconColor="#a8a8a8" iconLiteral="fas-sliders-h" />
                         <Label text="Préferences" textAlignment="RIGHT" textFill="#545454">
                            <font>
                               <Font name="Roboto" size="11.0" />
@@ -80,7 +81,7 @@
                   </HBox>
                   <HBox fx:id="notificationsTab" alignment="CENTER_LEFT" layoutX="15.0" layoutY="50.0" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                      <children>
-                        <FontAwesomeIconView fill="#a8a8a8" glyphName="BELL" />
+                        <FontIcon iconColor="#a8a8a8" iconLiteral="anto-bell" />
                         <Label text="Notifications" textAlignment="RIGHT" textFill="#545454">
                            <font>
                               <Font name="Roboto" size="11.0" />
@@ -117,9 +118,35 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
+                  <HBox fx:id="importExportTab" alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                     <children>
+                        <FontIcon iconColor="#a8a8a8" iconLiteral="mdi2d-database-import-outline" />
+                        <Label text="Importer | Exporter" textAlignment="RIGHT" textFill="#545454">
+                           <font>
+                              <Font name="Roboto" size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="updateTab" alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                     <children>
+                        <FontIcon iconColor="#a8a8a8" iconLiteral="mdi2r-reload" />
+                        <Label text="Mettre a niveau" textAlignment="RIGHT" textFill="#545454">
+                           <font>
+                              <Font name="Roboto" size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
                </children>
             </VBox>
-            <VBox layoutY="212.0" prefHeight="206.0" prefWidth="207.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="212.0">
+            <VBox layoutY="277.0" prefHeight="321.0" prefWidth="212.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="277.0">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
@@ -136,9 +163,9 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                  <HBox fx:id="organizationSettingsTab" alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                      <children>
-                        <FontAwesomeIconView fill="#a8a8a8" glyphName="COMPASS" />
+                        <FontAwesomeIconView fill="#a8a8a8" glyphName="GEAR" />
                         <Label text="Paramètres" textAlignment="RIGHT" textFill="#545454">
                            <font>
                               <Font name="Roboto" size="11.0" />
@@ -149,10 +176,10 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                  <HBox fx:id="organizationTeamsTab" alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                      <children>
-                        <FontAwesomeIconView fill="#a8a8a8" glyphName="BOOK" />
-                        <Label text="Membres" textAlignment="RIGHT" textFill="#545454">
+                        <FontIcon iconColor="#a8a8a8" iconLiteral="far-building" />
+                        <Label text="Équipes et Organisations" textAlignment="RIGHT" textFill="#545454">
                            <font>
                               <Font name="Roboto" size="11.0" />
                            </font>
@@ -162,20 +189,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="50.0" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
-                     <children>
-                        <FontAwesomeIconView fill="#a8a8a8" glyphName="FILE" />
-                        <Label text="Mettre a niveau" textAlignment="RIGHT" textFill="#545454">
-                           <font>
-                              <Font name="Roboto" size="11.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                  <HBox alignment="CENTER_LEFT" disable="true" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                      <children>
                         <FontAwesomeIconView fill="#a8a8a8" glyphName="CALENDAR" />
                         <Label text="Facturation" textAlignment="RIGHT" textFill="#545454">
@@ -188,7 +202,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                  <HBox alignment="CENTER_LEFT" disable="true" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                      <children>
                         <FontAwesomeIconView fill="#a8a8a8" glyphName="USERS" />
                         <Label text="Sécurité" textAlignment="RIGHT" textFill="#545454">
@@ -201,23 +215,10 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                  <HBox alignment="CENTER_LEFT" disable="true" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                      <children>
                         <FontAwesomeIconView fill="#a8a8a8" glyphName="CHECK" />
                         <Label text="Identité et provisionnement" textAlignment="RIGHT" textFill="#545454">
-                           <font>
-                              <Font name="Roboto" size="11.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="184.0" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
-                     <children>
-                        <FontAwesomeIconView fill="#a8a8a8" glyphName="DOWNLOAD" />
-                        <Label text="Importer" textAlignment="RIGHT" textFill="#545454">
                            <font>
                               <Font name="Roboto" size="11.0" />
                            </font>

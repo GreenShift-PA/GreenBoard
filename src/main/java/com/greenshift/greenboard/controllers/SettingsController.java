@@ -15,6 +15,10 @@ public class SettingsController {
     public HBox languageTab;
     public Label settingsViewTitle;
     public VBox settingsView;
+    public HBox importExportTab;
+    public HBox updateTab;
+    public HBox organizationSettingsTab;
+    public HBox organizationTeamsTab;
 
     private String currentTab = "my-account";
 
@@ -23,10 +27,15 @@ public class SettingsController {
     public void initialize() {
 
         tabNames.put("my-account", "My Account");
-        tabNames.put("preference", "Preference");
+        tabNames.put("preferences", "Preferences");
         tabNames.put("notifications", "Notifications");
-        tabNames.put("connexions", "Connexions");
+        tabNames.put("connections", "Connections");
         tabNames.put("language", "Language");
+        tabNames.put("import-export", "Import/Export");
+        tabNames.put("update", "Update");
+        tabNames.put("organization-settings", "Organization Settings");
+        tabNames.put("organization-teams", "Organization Teams");
+
 
         myAccountTab.setOnMouseClicked(event -> {
             System.out.println("My Account");
@@ -34,9 +43,9 @@ public class SettingsController {
             settingsViewTitle.setText(tabNames.get("my-account"));
         });
         preferenceTab.setOnMouseClicked(event -> {
-            System.out.println("Preference");
-            loadTab("preference");
-            settingsViewTitle.setText(tabNames.get("preference"));
+            System.out.println("Preferences");
+            loadTab("preferences");
+            settingsViewTitle.setText(tabNames.get("preferences"));
         });
         notificationsTab.setOnMouseClicked(event -> {
             System.out.println("Notifications");
@@ -44,15 +53,41 @@ public class SettingsController {
             settingsViewTitle.setText(tabNames.get("notifications"));
         });
         connexionsTab.setOnMouseClicked(event -> {
-            System.out.println("Connexions");
-            loadTab("connexions");
-            settingsViewTitle.setText(tabNames.get("connexions"));
+            System.out.println("Connections");
+            loadTab("connections");
+            settingsViewTitle.setText(tabNames.get("connections"));
         });
         languageTab.setOnMouseClicked(event -> {
             System.out.println("Language");
             loadTab("language");
             settingsViewTitle.setText(tabNames.get("language"));
         });
+
+        importExportTab.setOnMouseClicked(event -> {
+            System.out.println("Import/Export");
+            loadTab("import-export");
+            settingsViewTitle.setText(tabNames.get("import-export"));
+        });
+
+        updateTab.setOnMouseClicked(event -> {
+            System.out.println("Update");
+            loadTab("update");
+            settingsViewTitle.setText(tabNames.get("update"));
+        });
+
+        organizationSettingsTab.setOnMouseClicked(event -> {
+            System.out.println("Organization Settings");
+            loadTab("organization-settings");
+            settingsViewTitle.setText(tabNames.get("organization-settings"));
+        });
+
+        organizationTeamsTab.setOnMouseClicked(event -> {
+            System.out.println("Organization Teams");
+            loadTab("organization-teams");
+            settingsViewTitle.setText(tabNames.get("organization-teams"));
+        });
+
+        loadTab("my-account");
     }
 
     private void loadTab(String tabName) {
