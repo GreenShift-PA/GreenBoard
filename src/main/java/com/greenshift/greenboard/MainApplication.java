@@ -23,7 +23,7 @@ public class MainApplication extends Application {
 
         SessionManager.getInstance().useDummyUser();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/fxml/main-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/fxml/auth-view.fxml"));
         Parent root = fxmlLoader.load();
         // MainController controller = fxmlLoader.getController();
 

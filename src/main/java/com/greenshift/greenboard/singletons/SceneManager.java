@@ -4,6 +4,7 @@ import com.greenshift.greenboard.controllers.MainController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,6 +16,17 @@ public class SceneManager {
     private Stage primaryStage;
     private Scene previousScene;
     private MainController mainController;
+    private String currentTaskStatus = "TODO";
+
+    public StackPane getContext() {
+        return context;
+    }
+
+    public void setContext(StackPane context) {
+        this.context = context;
+    }
+
+    private StackPane context;
 
     private SceneManager() {
         this.primaryStage = new Stage();
@@ -89,5 +101,13 @@ public class SceneManager {
         if (previousScene != null) {
             switchToScene(previousScene);
         }
+    }
+
+    public String getCurrentTaskStatus() {
+        return currentTaskStatus;
+    }
+
+    public void setCurrentTaskStatus(String currentTaskStatus) {
+        this.currentTaskStatus = currentTaskStatus;
     }
 }

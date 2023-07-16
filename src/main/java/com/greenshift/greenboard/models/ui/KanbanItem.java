@@ -22,6 +22,10 @@ public class KanbanItem extends ReadOnlyObjectWrapper<KanbanItem> {
     private List<User> users;
     private String group;
 
+
+
+    private Task task;
+
     public KanbanItem(String title, String icon, LocalDateTime dueDate, Project project) {
         this.id = UUID.randomUUID().toString();
         this.title = title;
@@ -60,8 +64,17 @@ public class KanbanItem extends ReadOnlyObjectWrapper<KanbanItem> {
         KanbanItem item = new KanbanItem(task.getName(), task.getIcon(), task.getDueDate(), task.getProject());
         item.setUsers(task.getAssignedUsers());
         item.setProject(task.getProject());
+        item.setTask(task);
 
         return item;
+    }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
     }
 
     public String getId() {

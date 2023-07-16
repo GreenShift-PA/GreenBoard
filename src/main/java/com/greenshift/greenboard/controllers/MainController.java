@@ -113,6 +113,8 @@ public class MainController {
         root.getChildren().remove(dialog);
         dialog.getContent().setPadding(new javafx.geometry.Insets(0));
 
+        SceneManager.getInstance().setContext(root);
+
         initTeamTreeView();
         initProjectTreeView();
 

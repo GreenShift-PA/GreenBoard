@@ -1,55 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXDialog?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox fx:id="column" prefHeight="100.0" prefWidth="300.0" spacing="5.0" style="-fx-background-color: #fcfcfa; -fx-background-radius: 3;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.KanBanColumnController">
+
+<StackPane fx:id="root" maxWidth="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.KanBanColumnController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="200.0" spacing="10.0">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
-         </padding>
+      <VBox fx:id="column" prefHeight="100.0" prefWidth="300.0" spacing="5.0" style="-fx-background-color: #fcfcfa; -fx-background-radius: 3;">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="30.0" spacing="5.0" style="-fx-background-color: #f0efee; -fx-background-radius: 25;">
+            <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="200.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
                <padding>
-                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
                </padding>
                <children>
-                  <FontIcon fx:id="icon" iconColor="#91918e" iconLiteral="fas-circle" iconSize="9" />
-                  <Label fx:id="label" text="Not Started" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="30.0" spacing="5.0" style="-fx-background-color: #f0efee; -fx-background-radius: 25;">
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <FontIcon fx:id="icon" iconColor="#91918e" iconLiteral="fas-circle" iconSize="9" />
+                        <Label fx:id="label" text="Not Started" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="count" text="20" textFill="#91918e">
+                     <font>
+                        <Font name="Roboto Medium" size="13.0" />
+                     </font>
+                  </Label>
                </children>
             </HBox>
-            <Label fx:id="count" text="20" textFill="#91918e">
-               <font>
-                  <Font name="Roboto Medium" size="13.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <JFXListView fx:id="listview" prefWidth="290.0" />
-      <HBox fx:id="newHBox" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="290.0" spacing="5.0">
-         <children>
-            <FontIcon iconColor="#91918e" iconLiteral="anto-plus" iconSize="20" />
-            <Label text="New" textFill="#91918e">
-               <font>
-                  <Font name="Roboto Bold" size="14.0" />
-               </font>
-            </Label>
+            <JFXListView fx:id="listview" prefWidth="290.0" />
+            <HBox fx:id="newHBox" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="290.0" spacing="5.0">
+               <children>
+                  <FontIcon iconColor="#91918e" iconLiteral="anto-plus" iconSize="20" />
+                  <Label text="New" textFill="#91918e">
+                     <font>
+                        <Font name="Roboto Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
          </children>
          <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
-      </HBox>
+      </VBox>
+      <JFXDialog fx:id="dialog" />
    </children>
-   <padding>
-      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-   </padding>
-</VBox>
+</StackPane>

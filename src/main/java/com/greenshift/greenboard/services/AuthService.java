@@ -107,7 +107,7 @@ public class AuthService {
             return false;
         }
 
-        HTTPRequest httpRequest = new HTTPRequest.Builder("http://localhost:3000/api/v1/auth/ma", "DELETE")
+        HTTPRequest httpRequest = new HTTPRequest.Builder("http://localhost:3000/api/v1/auth/logout", "DELETE")
                 .addHeader("Authorization", "Bearer " + token)
                 .build();
 

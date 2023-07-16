@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" styleClass="task-view" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.TaskViewController">
+   <padding>
+      <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+   </padding>
+   <children>
+      <TextField fx:id="nameTextField" promptText="Task Name" style="-fx-font-size: 40px; -fx-font-weight: bold; -fx-background-color: transparent; -fx-border-color: transparent;" text="Untitled">
+         <font>
+            <Font size="64.0" />
+         </font></TextField>
+      <VBox prefHeight="200.0" prefWidth="203.0">
+         <children>
+            <HBox prefHeight="31.0" prefWidth="540.0" spacing="10.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="110.0" spacing="10.0" styleClass="task-property">
+                     <children>
+                        <FontIcon iconLiteral="anto-loading-3-quarters" />
+                        <Label text="Status">
+                           <font>
+                              <Font size="11.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="statusHBox" alignment="CENTER_LEFT" prefHeight="30.0" spacing="5.0" style="-fx-background-color: #f0efee;" styleClass="task-status">
+                     <children>
+                        <FontIcon iconColor="#91918e" iconLiteral="fas-circle" iconSize="9" />
+                        <Label fx:id="statusLabel" text="Not Started">
+                           <font>
+                              <Font size="11.0" />
+                           </font></Label>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="31.0" prefWidth="540.0" spacing="10.0" styleClass="task-property">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="110.0" spacing="10.0">
+                     <children>
+                        <FontIcon iconLiteral="mdi2a-account-group-outline" />
+                        <Label text="Assign">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label fx:id="assignLabel" disable="true" text="Empty" textFill="#5b5a5a">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="31.0" prefWidth="540.0" spacing="10.0" styleClass="task-property">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="110.0" spacing="10.0">
+                     <children>
+                        <FontIcon iconLiteral="mdi2c-calendar-month-outline" />
+                        <Label text="Due">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label fx:id="dueLabel" disable="true" text="Empty" textFill="#5b5a5a">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="31.0" prefWidth="540.0" spacing="10.0" styleClass="task-property">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="110.0" spacing="10.0">
+                     <children>
+                        <FontIcon iconLiteral="mdi2c-calendar-month-outline" />
+                        <Label text="Created At">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label fx:id="createdAtLabel" disable="true" text="Empty" textFill="#5b5a5a">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="31.0" prefWidth="540.0" spacing="10.0" styleClass="task-property">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="110.0" spacing="10.0">
+                     <children>
+                        <FontIcon iconLiteral="mdi2p-projector-screen" />
+                        <Label text="Project">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label fx:id="projectLabel" disable="true" text="Empty" textFill="#5b5a5a">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Separator prefWidth="200.0" />
+      <TextArea fx:id="descriptionTextArea" prefHeight="200.0" prefWidth="200.0" promptText="Describe the goals of your task" styleClass="task-textarea" />
+   </children>
+</VBox>

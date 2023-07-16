@@ -20,6 +20,8 @@ public class User {
     private Role role;
     private Team lastTeam;
     private String lastTeamId;
+    private Project lastProject;
+    private String lastProjectId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private List<Team> teams;
@@ -326,6 +328,8 @@ public class User {
                 ", role=" + role +
                 ", lastTeam=" + lastTeam +
                 ", lastTeamId='" + lastTeamId + '\'' +
+                ", lastProject=" + lastProject +
+                ", lastProjectId='" + lastProjectId + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 ", teams=" + teams +
@@ -344,5 +348,33 @@ public class User {
                 ", pinnedOrganizations=" + pinnedOrganizations +
                 ", activities=" + activities +
                 '}';
+    }
+
+    public void setLastTeam(Team lastTeam) {
+        this.lastTeam = lastTeam;
+    }
+
+    public String getLastTeamId() {
+        return lastTeamId;
+    }
+
+    public void setLastTeamId(String lastTeamId) {
+        this.lastTeamId = lastTeamId;
+    }
+
+    public Project getLastProject() {
+        return lastProject;
+    }
+
+    public void setLastProject(Project lastProject) {
+        this.lastProject = lastProject;
+    }
+
+    public String getLastProjectId() {
+        return lastProjectId;
+    }
+
+    public void setLastProjectId(String lastProjectId) {
+        this.lastProjectId = lastProjectId;
     }
 }

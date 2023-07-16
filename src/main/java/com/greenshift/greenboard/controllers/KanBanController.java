@@ -10,6 +10,7 @@ import com.greenshift.greenboard.models.ui.CustomContextMenuItem;
 import com.greenshift.greenboard.models.ui.KanbanItem;
 import com.greenshift.greenboard.services.TaskService;
 import com.greenshift.greenboard.services.TeamService;
+import com.greenshift.greenboard.singletons.SceneManager;
 import com.greenshift.greenboard.singletons.SessionManager;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
@@ -22,7 +23,7 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -36,16 +37,13 @@ public class KanBanController {
     public HBox columns;
 
     public HashMap<TaskStatus, JFXListView<KanbanItem>> columnsListViews;
-    public JFXListView<KanbanItem> notStartedListView;
-    public JFXListView<KanbanItem> inProgressListView;
-    public JFXListView<KanbanItem> doneListView;
-
-    private JFXListView<KanbanItem> sourceList;
 
     private final TaskService taskService = new TaskService("http://localhost:3000/api/v1/tasks");
     private String draggedItemId;
     private JFXListView<KanbanItem> draggedFrom;
     private Rectangle dragFeedback;
+
+    private String sourceTaskStatusName;
 
     public void initialize() {
         buildKanbanColumns();
@@ -62,7 +60,7 @@ public class KanBanController {
 */
     }
 
-    private void setupDragAndDropSupport(JFXListView<KanbanItem> listView) {
+    private void setupDragAndDropSupport(JFXListView<KanbanItem> listView, TaskStatus taskStatus) {
         listView.setOnDragDetected(e -> {
             KanbanItem item = listView.getSelectionModel().getSelectedItem();
             if (item == null) {
@@ -72,6 +70,7 @@ public class KanBanController {
 
             draggedItemId = item.getId();
             draggedFrom = listView;
+            sourceTaskStatusName = taskStatus.getName();
 
             Dragboard dragboard = listView.startDragAndDrop(TransferMode.MOVE);
             ClipboardContent content = new ClipboardContent();
@@ -116,6 +115,9 @@ public class KanBanController {
                 dragFeedback.setVisible(true);
             }
 
+
+            sourceTaskStatusName = taskStatus.getName();
+
             listView.setStyle("-fx-background-color: #3498db");
             e.consume();
         });
@@ -133,6 +135,7 @@ public class KanBanController {
             Dragboard dragboard = e.getDragboard();
             boolean success = false;
 
+
             JFXListView<KanbanItem> targetList = (JFXListView<KanbanItem>) e.getSource();
             ObservableList<KanbanItem> targetItems = targetList.getItems();
             ObservableList<KanbanItem> sourceItems = draggedFrom.getItems();
@@ -148,6 +151,10 @@ public class KanBanController {
                     sourceItems.remove(item);
                     targetItems.add(item);
                     success = true;
+                    TaskService taskService = new TaskService("http://localhost:3000/api/v1/tasks");
+                    Task draggedTask = item.getTask();
+                    draggedTask.setStatus(taskStatus);
+                    taskService.update(draggedTask, Task.class);
                 }
             }
 
@@ -295,22 +302,6 @@ public class KanBanController {
         listView.setContextMenu(contextMenu);
     }
 
-    private KanbanItem getCurrentSelectedItem() {
-        JFXListView<KanbanItem> currentList = getCurrentList();
-        if (currentList == null) return null;
-        return currentList.getSelectionModel().getSelectedItem();
-    }
-
-    private JFXListView<KanbanItem> getCurrentList() {
-        if (notStartedListView.isFocused()) {
-            return notStartedListView;
-        } else if (inProgressListView.isFocused()) {
-            return inProgressListView;
-        } else if (doneListView.isFocused()) {
-            return doneListView;
-        }
-        return null;
-    }
 
     private void buildKanbanColumns() {
         this.columnsListViews = new HashMap<>();
@@ -345,8 +336,10 @@ public class KanBanController {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/kanban-column.fxml"));
             try {
-                VBox column = loader.load();
+                StackPane column = loader.load();
                 controller = loader.getController();
+                controller.context = SceneManager.getInstance().getContext();
+                controller.taskStatus = status;
                 listView = controller.listview;
                 listView.setCellFactory(param -> new KanbanItemCell());
 
@@ -356,7 +349,7 @@ public class KanBanController {
             }
 
 
-            setupDragAndDropSupport(listView);
+            setupDragAndDropSupport(listView, controller.taskStatus);
             setupContextMenu(listView);
 
 

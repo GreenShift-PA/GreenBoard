@@ -145,3 +145,76 @@
     -fx-padding: 0;
 }
 
+.task-property {
+}
+
+.task-property .label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #37352fa6;
+}
+
+
+.task-property .ikonli-font-icon {
+    -fx-icon-size: 11px;
+    -fx-fill: #37352fa6;
+}
+
+.task-title .text-field {
+    -fx-font-size: 48px;
+    -fx-text-fill: #37352fa6;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+}
+
+.task-textarea .text-area {
+    -fx-font-size: 14px;
+    -fx-text-fill: #37352fa6;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+}
+
+.text-area {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.task-view .text-field .content {
+    -fx-background-color: transparent;
+}
+
+.task-view .text-field .content .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.task-status .label  {
+    -fx-font-size: 11px;
+    -fx-text-fill: #37352fa6;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+}
+
+.task-status {
+    -fx-background-radius: 25;
+}

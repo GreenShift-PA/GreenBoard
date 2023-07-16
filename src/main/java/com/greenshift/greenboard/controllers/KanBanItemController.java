@@ -1,13 +1,21 @@
 package com.greenshift.greenboard.controllers;
 
+import com.greenshift.greenboard.models.entities.Task;
 import com.greenshift.greenboard.models.ui.KanbanItem;
+import com.greenshift.greenboard.singletons.SceneManager;
+import com.jfoenix.controls.JFXDialog;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import org.kordamp.ikonli.javafx.FontIcon;
+
+import java.io.IOException;
 
 public class KanBanItemController {
     @FXML
@@ -24,6 +32,11 @@ public class KanBanItemController {
     public Label projectName;
     public HBox dueDateHBox;
     public Label dueDate;
+
+    public JFXDialog dialog;
+
+    public StackPane context;
+
 
     public void initialize() {
     }
@@ -66,5 +79,26 @@ public class KanBanItemController {
             assigneesHBox.setVisible(false);
             assigneesHBox.setManaged(false);
         }
+
+        root.setOnMouseClicked(e -> {
+            if(SceneManager.getInstance().getMainController() != null) {
+                context = SceneManager.getInstance().getMainController().context;
+                dialog = SceneManager.getInstance().getMainController().dialog;
+            }
+
+            Task task = item.getTask();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/task-view.fxml"));
+            try {
+                VBox taskViewRoot = loader.load();
+                TaskViewController controller = loader.getController();
+                controller.initWithTask(task);
+                dialog.setContent(taskViewRoot);
+                dialog.setTransitionType(JFXDialog.DialogTransition.CENTER);
+                dialog.show(context);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 }
