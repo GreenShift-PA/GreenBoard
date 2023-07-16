@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="10.0" styleClass="light-gray-bg" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="10.0" styleClass="light-gray-bg" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.CreateNewOrganizationNameController">
    <children>
       <VBox alignment="CENTER">
          <children>
@@ -52,7 +52,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <TextField styleClass="input" />
+                        <TextField fx:id="newOrganizationNameTextField" styleClass="input" />
                         <Label text="The name of your company or organization." textFill="#656565">
                            <font>
                               <Font size="11.0" />

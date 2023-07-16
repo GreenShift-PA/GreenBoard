@@ -108,8 +108,8 @@ public class MyAccountController {
                             return;
                         }
 
-                        SessionManager.getInstance().setCurrentUser(updatedUser);
-                        currentUser = updatedUser;
+                        SessionManager.getInstance().refetchCurrentUser();
+                        currentUser = SessionManager.getInstance().getCurrentUser();
 
                         updateEmailNewEmailTextfield.setText("");
                         updateEmailVerificationCodeTextfield.setText("");
@@ -141,8 +141,8 @@ public class MyAccountController {
                             return;
                         }
 
-                        SessionManager.getInstance().setCurrentUser(updatedUser);
-                        currentUser = updatedUser;
+                        SessionManager.getInstance().refetchCurrentUser();
+                        currentUser = SessionManager.getInstance().getCurrentUser();
 
                         currentPasswordTextField.setText("");
                         newPasswordTextField.setText("");
@@ -189,8 +189,8 @@ public class MyAccountController {
             return;
         }
 
-        SessionManager.getInstance().setCurrentUser(updatedUser);
-        currentUser = updatedUser;
+        SessionManager.getInstance().refetchCurrentUser();
+        currentUser = SessionManager.getInstance().getCurrentUser();
         updateUsernameBtn.setDisable(true);
     }
 

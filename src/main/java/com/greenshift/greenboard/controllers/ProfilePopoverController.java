@@ -30,7 +30,8 @@ public class ProfilePopoverController {
         List<Organization> organizations = currentUser.getTeams().stream().map(Team::getOrganization).toList();
 
         organizations.forEach(o -> {
-            organizationListView.getItems().add(new ProfilePopoverItem(o));
+            ProfilePopoverItem item = new ProfilePopoverItem(o);
+            organizationListView.getItems().add(item);
         });
 
         organizationListView.setCellFactory(param -> new ProfilePopoverItemCell());

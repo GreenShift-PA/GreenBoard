@@ -5,6 +5,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
@@ -28,11 +29,31 @@
                         <Label styleClass="setting-label" text="Name" textFill="#252525" />
                         <HBox spacing="10.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <TextField fx:id="usernameTextField" prefHeight="26.0" prefWidth="208.0" styleClass="text-field-input" HBox.hgrow="ALWAYS" />
-                              <JFXButton fx:id="updateUsernameBtn" disable="true" prefHeight="30.0" prefWidth="128.0" styleClass="setting-button" text="update" />
+                              <TextField fx:id="organizationNameTextField" prefHeight="26.0" prefWidth="208.0" styleClass="text-field-input" HBox.hgrow="ALWAYS" />
+                              <JFXButton fx:id="updateOrganizationNameButton" disable="true" prefHeight="30.0" prefWidth="128.0" styleClass="setting-button" text="update" />
                            </children>
                         </HBox>
                         <Label styleClass="setting-description" text="You can use your organization or company name. Keep it simple." textFill="#252525" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="103.0" prefWidth="799.0" spacing="10.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <VBox alignment="CENTER_LEFT" prefHeight="111.0" prefWidth="779.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="setting-label" text="Color" textFill="#252525" />
+                        <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <TextField fx:id="organizationColorTextField" prefHeight="26.0" prefWidth="175.0" styleClass="text-field-input" />
+                              <ColorPicker fx:id="organizationColorPicker" />
+                              <JFXButton fx:id="updateOrganizationColorButton" disable="true" prefHeight="30.0" prefWidth="128.0" styleClass="setting-button" text="update" />
+                           </children>
+                        </HBox>
+                        <Label styleClass="setting-description" text="Make your organization recognizable by using a color" textFill="#252525" />
                      </children>
                   </VBox>
                </children>
@@ -56,20 +77,26 @@
                         <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label styleClass="setting-label" text="Icon" />
-                              <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                                 <children>
-                                    <FontIcon iconColor="#a8a8a8" iconLiteral="mdi2d-dev-to" iconSize="64" />
-                                 </children>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </VBox>
+                                 <children>
+                                    <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                       <children>
+                                          <FontIcon fx:id="organizationIcon" iconColor="#a8a8a8" iconLiteral="mdi2d-dev-to" iconSize="64" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                    <TextField fx:id="organizationIconTextField" />
+                                 </children>
+                              </HBox>
                               <Label styleClass="setting-description" text="Upload an image or pick an emoji. It will show up in your sidebar and notifications" textFill="#252525" />
                            </children>
                         </VBox>
+                        <JFXButton fx:id="updateOrganizationIconButton" disable="true" prefHeight="30.0" prefWidth="128.0" styleClass="setting-button" text="update" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -126,7 +153,7 @@
                                     <Font size="11.0" />
                                  </font>
                               </Label>
-                              <JFXButton fx:id="deleteAccountBtn" prefWidth="118.0" styleClass="setting-button" text="Delete" />
+                              <JFXButton fx:id="deleteOrganizationButton" prefWidth="118.0" styleClass="setting-button" text="Delete" />
                            </children>
                         </VBox>
                      </children>

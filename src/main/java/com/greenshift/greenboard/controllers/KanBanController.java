@@ -61,6 +61,7 @@ public class KanBanController {
     }
 
     private void setupDragAndDropSupport(JFXListView<KanbanItem> listView, TaskStatus taskStatus) {
+
         listView.setOnDragDetected(e -> {
             KanbanItem item = listView.getSelectionModel().getSelectedItem();
             if (item == null) {
@@ -155,6 +156,16 @@ public class KanBanController {
                     Task draggedTask = item.getTask();
                     draggedTask.setStatus(taskStatus);
                     taskService.update(draggedTask, Task.class);
+
+                    SessionManager.getInstance().refetchCurrentUser();
+                    SceneManager.getInstance().switchToScene("/fxml/main-view.fxml", null, null, scene -> {
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/styles.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/kanban.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/hierarchy.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/settings.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/organization.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/popover.css")).toExternalForm());
+                    });
                 }
             }
 
@@ -313,8 +324,6 @@ public class KanBanController {
             System.out.println("No user logged in");
             return;
         }
-
-        System.out.println(currentUser.getLastTeam());
 
         if (currentUser.getLastTeam() == null) {
             System.out.println("No team assigned to the current user");

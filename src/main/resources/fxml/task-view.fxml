@@ -64,11 +64,15 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label fx:id="assignLabel" disable="true" text="Empty" textFill="#5b5a5a">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
+                  <HBox fx:id="assignHBox">
+                     <children>
+                        <Label fx:id="assignLabel" disable="true" text="Empty" textFill="#5b5a5a">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </HBox>
             <HBox prefHeight="31.0" prefWidth="540.0" spacing="10.0" styleClass="task-property">
@@ -86,11 +90,15 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label fx:id="dueLabel" disable="true" text="Empty" textFill="#5b5a5a">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
+                  <HBox fx:id="dueHBox">
+                     <children>
+                        <Label fx:id="dueLabel" disable="true" text="Empty" textFill="#5b5a5a">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </HBox>
             <HBox prefHeight="31.0" prefWidth="540.0" spacing="10.0" styleClass="task-property">
@@ -130,11 +138,15 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label fx:id="projectLabel" disable="true" text="Empty" textFill="#5b5a5a">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
+                  <HBox fx:id="projectHBox">
+                     <children>
+                        <Label fx:id="projectLabel" disable="true" text="Empty" textFill="#5b5a5a">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </HBox>
          </children>

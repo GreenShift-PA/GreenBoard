@@ -112,7 +112,6 @@ public class CreateOrganizationController {
         OrganizationService organizationService = new OrganizationService("http://localhost:3000/api/v1/organizations");
         Organization createdOrganization = organizationService.create(newOrganization, Organization.class);
 
-        System.out.println(createdOrganization);
 
         if (createdOrganization != null) {
             System.out.println("Organization created successfully.");

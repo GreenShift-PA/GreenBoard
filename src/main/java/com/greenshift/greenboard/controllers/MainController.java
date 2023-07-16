@@ -25,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 import javafx.stage.Popup;
 import org.kordamp.ikonli.javafx.FontIcon;
 
@@ -102,8 +103,11 @@ public class MainController {
         if (currentUser != null) {
             if (currentUser.getLastTeam() != null && currentUser.getLastTeam().getOrganization() != null) {
                 Organization organization = currentUser.getLastTeam().getOrganization();
-                if (organization.getIcon() != null && !organization.getIcon().isEmpty())
+                if (organization.getIcon() != null && !organization.getIcon().isEmpty()){
                     organizationIcon.setIconLiteral(organization.getIcon());
+                    if(organization.getColor() != null && !organization.getColor().isEmpty())
+                        organizationIcon.setIconColor(Paint.valueOf(organization.getColor()));
+                }
 
                 organizationNameLabel.setText(currentUser.getLastTeam().getOrganization().getName());
             }
@@ -131,9 +135,6 @@ public class MainController {
 
         currentUser.getTeams().forEach(team -> {
             TreeItem<LeftMenuItem> teamItem = new TreeItem<>(new LeftMenuItem(team.getName(), "mdi2f-file-document-outline"));
-            teamItem.getChildren().add(new TreeItem<>(new LeftMenuItem("Not Started", null)));
-            teamItem.getChildren().add(new TreeItem<>(new LeftMenuItem("In Progress", null)));
-            teamItem.getChildren().add(new TreeItem<>(new LeftMenuItem("Done", null)));
             teamItem.getChildren().add(new TreeItem<>(
                     new LeftMenuItem("Tasks", "mdi2f-file-document-outline", (item) -> {
 
@@ -144,7 +145,7 @@ public class MainController {
                         if(updatedUser != null)
                         {
                             currentUser = updatedUser;
-                            SessionManager.getInstance().setCurrentUser(currentUser);
+                            SessionManager.getInstance().refetchCurrentUser();
                         }else {
                             System.out.println("Failed to update user");
                         }
@@ -162,24 +163,37 @@ public class MainController {
 
     private void initProjectTreeView() {
 
-        TreeItem<LeftMenuItem> rootItem = new TreeItem<>(new LeftMenuItem("Graph Flow", "mdi2g-graph-outline"));
-        rootItem.getChildren().add(new TreeItem<>(new LeftMenuItem("Teamspace Home", "fas-compass")));
-        rootItem.getChildren().add(new TreeItem<>(new LeftMenuItem("Wiki", "mdi2b-book-open-variant")));
+        if (currentUser == null)
+            return;
 
-        TreeItem<LeftMenuItem> docs = new TreeItem<>(new LeftMenuItem("Docs", "mdi2f-file-document-outline"));
-        docs.getChildren().add(new TreeItem<>(new LeftMenuItem("Recently edited", null)));
-        docs.getChildren().add(new TreeItem<>(new LeftMenuItem("Table by Category", null)));
-        docs.getChildren().add(new TreeItem<>(new LeftMenuItem("All", null)));
-        docs.getChildren().add(new TreeItem<>(new LeftMenuItem("Mine", null,
-                (item) -> {
-                    System.out.println("Clicked on menu item: " + item.getName());
-                })));
+        TreeItem<LeftMenuItem> rootItem = new TreeItem<>(new LeftMenuItem("Projects", "mdi2g-graph-outline"));
+        teamTreeView.setRoot(rootItem);
 
-        rootItem.getChildren().add(docs);
+        if(currentUser.getLastTeam() != null) {
+            currentUser.getLastTeam().getProjects().forEach(team -> {
+                TreeItem<LeftMenuItem> teamItem = new TreeItem<>(new LeftMenuItem(team.getName(), "mdi2f-file-document-outline"));
+                teamItem.getChildren().add(new TreeItem<>(
+                        new LeftMenuItem("Tasks", "mdi2f-file-document-outline", (item) -> {
+                            UserService userService = new UserService("http://localhost:3000/api/v1/users");
+                            User updatedUser = userService.update(currentUser, User.class);
+                            if(updatedUser != null)
+                            {
+                                currentUser = updatedUser;
+                                SessionManager.getInstance().setCurrentUser(currentUser);
+                            }else {
+                                System.out.println("Failed to update user");
+                            }
 
-        projectTreeView.setRoot(rootItem);
-        projectTreeView.setEditable(true);
-        projectTreeView.setCellFactory(p -> new LeftMenuItemCell());
+                            loadContent("/fxml/kanban.fxml", (node) -> {
+                                System.out.println("Loaded kanban");
+                            });
+                        })));
+                teamTreeView.getRoot().getChildren().add(teamItem);
+            });
+        }
+
+        teamTreeView.setEditable(true);
+        teamTreeView.setCellFactory(p -> new LeftMenuItemCell());
     }
 
     public void openSettings(MouseEvent mouseEvent) {

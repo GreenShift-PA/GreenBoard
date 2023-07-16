@@ -22,9 +22,9 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="207.0" spacing="10.0" styleClass="cta">
                      <children>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../logos/Notion-logo.svg.png" />
+                              <Image url="@../logos/Greenshift.png" />
                            </image>
                         </ImageView>
                         <VBox>
@@ -146,7 +146,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox layoutY="277.0" prefHeight="321.0" prefWidth="212.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="277.0">
+            <VBox fx:id="organizationSettings" layoutY="277.0" prefHeight="321.0" prefWidth="212.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="277.0">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>

@@ -63,7 +63,9 @@ public class KanBanItemController {
 
         if (item.getProject() != null) {
             projectName.setText(item.getProject().getName());
-            projectIcon.setIconLiteral(item.getProject().getIcon());
+
+            if (item.getProject().getIcon() != null)
+                projectIcon.setIconLiteral(item.getProject().getIcon());
         } else {
             projectHBox.setVisible(false);
             projectHBox.setManaged(false);
@@ -81,7 +83,7 @@ public class KanBanItemController {
         }
 
         root.setOnMouseClicked(e -> {
-            if(SceneManager.getInstance().getMainController() != null) {
+            if (SceneManager.getInstance().getMainController() != null) {
                 context = SceneManager.getInstance().getMainController().context;
                 dialog = SceneManager.getInstance().getMainController().dialog;
             }

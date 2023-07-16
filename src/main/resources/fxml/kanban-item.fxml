@@ -50,7 +50,7 @@
                <children>
                   <ImageView fx:id="userPfp" fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../logos/Notion-logo.svg.png" />
+                        <Image url="@../logos/Greenshift.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="userDisplayName" text="Eh Eh">

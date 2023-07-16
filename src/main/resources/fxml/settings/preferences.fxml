@@ -21,7 +21,7 @@
                         <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label styleClass="setting-label" text="Appearance" />
-                              <Label fx:id="emailLabel" styleClass="setting-description" text="Customize how Notion looks on your device." textFill="#434343">
+                              <Label fx:id="emailLabel" styleClass="setting-description" text="Customize how Greenboard looks on your device." textFill="#434343">
                                  <font>
                                     <Font size="11.0" />
                                  </font>
@@ -36,7 +36,7 @@
                         <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label styleClass="setting-label" text="Open on start" />
-                              <Label styleClass="setting-description" text="Choose what to show when Notion starts or when you switch organizations" textFill="#434343">
+                              <Label styleClass="setting-description" text="Choose what to show when Greenboard starts or when you switch organizations" textFill="#434343">
                                  <font>
                                     <Font size="11.0" />
                                  </font>
