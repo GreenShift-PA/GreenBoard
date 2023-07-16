@@ -5,9 +5,12 @@ import com.greenshift.greenboard.cells.KanbanItemCell;
 import com.greenshift.greenboard.features.CustomContextMenu;
 import com.greenshift.greenboard.models.entities.Task;
 import com.greenshift.greenboard.models.entities.TaskStatus;
+import com.greenshift.greenboard.models.entities.User;
 import com.greenshift.greenboard.models.ui.CustomContextMenuItem;
 import com.greenshift.greenboard.models.ui.KanbanItem;
 import com.greenshift.greenboard.services.TaskService;
+import com.greenshift.greenboard.services.TeamService;
+import com.greenshift.greenboard.singletons.SessionManager;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,16 +42,24 @@ public class KanBanController {
 
     private JFXListView<KanbanItem> sourceList;
 
-    private TaskService taskService;
+    private final TaskService taskService = new TaskService("http://localhost:3000/api/v1/tasks");
     private String draggedItemId;
     private JFXListView<KanbanItem> draggedFrom;
     private Rectangle dragFeedback;
 
     public void initialize() {
+        buildKanbanColumns();
+/*
+        javafx.concurrent.Task<Void> task = new javafx.concurrent.Task<>() {
+            @Override
+            protected Void call() throws InterruptedException {
+                buildKanbanColumns();
+                return null;
+            }
+        };
 
-        taskService = new TaskService("http://localhost:3000/api/v1/tasks");
-
-        // buildKanbanColumns();
+        new Thread(task).start();
+*/
     }
 
     private void setupDragAndDropSupport(JFXListView<KanbanItem> listView) {
@@ -304,7 +315,24 @@ public class KanBanController {
     private void buildKanbanColumns() {
         this.columnsListViews = new HashMap<>();
 
-        List<Task> allTasks = Arrays.stream(taskService.getAll(Task[].class)).toList();
+        TeamService teamService = new TeamService("http://localhost:3000/api/v1/teams");
+
+        User currentUser = SessionManager.getInstance().getCurrentUser();
+        if (currentUser == null) {
+            System.out.println("No user logged in");
+            return;
+        }
+
+        System.out.println(currentUser.getLastTeam());
+
+        if (currentUser.getLastTeam() == null) {
+            System.out.println("No team assigned to the current user");
+            return;
+        }
+
+        List<Task> allTasks = Arrays.stream(teamService.getTasks(currentUser.getLastTeam().getId())).toList();
+        System.out.println("All tasks: " + allTasks);
+
         // Group the tasks by their status name
         Map<TaskStatus, List<Task>> groupedTasks = allTasks.stream()
                 .collect(Collectors.groupingBy(Task::getStatus));
@@ -354,7 +382,6 @@ public class KanBanController {
         columnsListViews.forEach((statusName, listView) -> {
 
         });
-
     }
 
 

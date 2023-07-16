@@ -40,6 +40,8 @@ public abstract class BaseCrudService<T> {
                 }
                 reader.close();
 
+                System.out.println(response);
+
                 return gson.fromJson(response.toString(), entityType);
             }
         } catch (IOException e) {

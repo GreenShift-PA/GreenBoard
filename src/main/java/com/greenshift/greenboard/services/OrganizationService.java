@@ -1,9 +1,9 @@
 package com.greenshift.greenboard.services;
 
+import com.google.gson.JsonObject;
 import com.greenshift.greenboard.models.entities.Organization;
 import com.greenshift.greenboard.models.entities.Project;
 import com.greenshift.greenboard.models.entities.Team;
-import com.greenshift.greenboard.models.entities.User;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +30,9 @@ public class OrganizationService extends BaseCrudService<Organization> {
         Organization organization = organizationService.getById(organizationId, Organization.class);
         System.out.println("Organization: " + organization);
 
-        String metadata = gson.toJson("{ \"key\": \"value\" }");
+        JsonObject metadata = new JsonObject();
+        metadata.add("key", new JsonObject());
+        metadata.get("key").getAsJsonObject().addProperty("value", "value");
 
         organization.setName("Dark Bulls");
         organization.setDescription("L'equipe dans Naruto la");

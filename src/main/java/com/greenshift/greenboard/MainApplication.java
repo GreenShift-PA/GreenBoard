@@ -21,6 +21,8 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+        SessionManager.getInstance().useDummyUser();
+
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/fxml/main-view.fxml"));
         Parent root = fxmlLoader.load();
         // MainController controller = fxmlLoader.getController();
@@ -30,13 +32,13 @@ public class MainApplication extends Application {
         scene.getStylesheets().add(Objects.requireNonNull(MainApplication.class.getResource("/css/hierarchy.css")).toExternalForm());
         scene.getStylesheets().add(Objects.requireNonNull(MainApplication.class.getResource("/css/kanban.css")).toExternalForm());
         scene.getStylesheets().add(Objects.requireNonNull(MainApplication.class.getResource("/css/settings.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(MainApplication.class.getResource("/css/popover.css")).toExternalForm());
         scene.setFill(Color.TRANSPARENT);
         stage.initStyle(StageStyle.UNIFIED);
         stage.setResizable(false);
         stage.setScene(scene);
 
         SceneManager.getInstance().init(stage);
-        SessionManager.getInstance().useDummyUser();
         // SceneManager.getInstance().setMainController(controller);
 
         stage.show();

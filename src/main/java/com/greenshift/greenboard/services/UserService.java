@@ -12,11 +12,12 @@ public class UserService extends BaseCrudService<User> {
 
     public static void main(String[] args) {
         UserService userService = new UserService("http://localhost:3000/api/v1/users");
-        String userId = "5128b647-5d7c-431e-a8a4-49718dedcecb";
+        String userId = "0c3a60af-b13e-40b8-ab58-edca130ec2b4";
 
         User user = userService.getById(userId, User.class);
         System.out.println("User: " + user);
 
+/*
         user.setFirstName("Adia");
         user.setLastName("Dev");
         user.setUsername("adia-dev");
@@ -37,6 +38,7 @@ public class UserService extends BaseCrudService<User> {
 
         User deletedUser = userService.delete(newUser.getId(), User.class);
         System.out.println("Deleted User: " + deletedUser);
+*/
     }
 
     @Override

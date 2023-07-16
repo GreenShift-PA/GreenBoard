@@ -16,7 +16,7 @@ public class AuthService {
 
     public static final String AUTH_URL = "http://localhost:3000/api/v1/auth/authenticate/email";
 
-    public static boolean authenticate(String email, String password) {
+    public static String authenticate(String email, String password) {
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeTypeAdapter())
@@ -37,15 +37,17 @@ public class AuthService {
 
             if (response.getStatusCode() == 200) {
                 HashMap<String, String> responseBody = gson.fromJson(response.getBody(), HashMap.class);
-                System.out.println(responseBody.get("token"));
+                String token = responseBody.get("token");
 
-                return true;
+                SessionManager.getInstance().setToken(token);
+
+                return token;
             }
         } catch (Exception e) {
             System.out.println("Error occurred: " + e.getMessage());
         }
 
-        return false;
+        return null;
     }
 
     public static User fetchUser(String token) {
@@ -100,17 +102,39 @@ public class AuthService {
         }
     }
 
+    public static boolean logout(String token) {
+        if (token == null || token.isEmpty()) {
+            return false;
+        }
+
+        HTTPRequest httpRequest = new HTTPRequest.Builder("http://localhost:3000/api/v1/auth/ma", "DELETE")
+                .addHeader("Authorization", "Bearer " + token)
+                .build();
+
+        try {
+            HTTPResponse<String> response = httpRequest.sendRequest();
+            return response.getStatusCode() == 200;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void main(String[] args) throws Exception {
-        boolean authenticationSucceeded = AuthService.authenticate("abdoudu78130@gmail.com", "Respons11");
+        boolean userExists = AuthService.userExists("abdoudu78130@gmail.com");
 
-        boolean userExists = AuthService.userExists("admin@mail.com");
+        if(!userExists) {
+            System.out.println("User does not exist");
+            return;
+        }
 
-        User fetchedUser = AuthService.fetchUser("eyJhbGciOiJSUzI1NiIsImtpZCI6ImE1MWJiNGJkMWQwYzYxNDc2ZWIxYjcwYzNhNDdjMzE2ZDVmODkzMmIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZ2YtZ3JlZW5ib2FyZCIsImF1ZCI6ImdmLWdyZWVuYm9hcmQiLCJhdXRoX3RpbWUiOjE2ODkwMDA3NTksInVzZXJfaWQiOiJ0QjhzSGxlM3lHZlNmRGRqc3FSTVNNY1Z3THAxIiwic3ViIjoidEI4c0hsZTN5R2ZTZkRkanNxUk1TTWNWd0xwMSIsImlhdCI6MTY4OTAwMDc1OSwiZXhwIjoxNjg5MDA0MzU5LCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImFkbWluQG1haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.ZCoqG3yHy_R9jzBqLiOEKCxY7WmUDlzcSeCiMEBqh6h--ur33B6bGJVACzrcV0G_GsuGR5665yOwHKn5NSA1wSpS3QH0ne0rxzaX6f4uYNfNOwqq57qSdjtEWF3LrqPyL3HU7IygzRr1JQE9KZVBmj0nqxJz-BX-61iP1dZCwfpWetEWSgN35bbfA56lkzmfLEtV_jx9HQm7_aMa5aW1j83QylXYCZGgz3cD42P1_b0HZa3OkS5pIUHQ6LMuas6RFp2BdpYwnqPgea6bymfEvz7cwernbpYWPnnO-350TNQB5UdHgKq0wiYOGgBfbOuuZUikfUvNMn8bX48zid2wjA");
+        String token = AuthService.authenticate("abdoudu78130@gmail.com", "Respons11");
+
+        User fetchedUser = AuthService.fetchUser(token);
         System.out.println("Fetched user: " + fetchedUser);
 
         System.out.println("User exists: " + userExists);
 
-        System.out.println("Authentication: " + authenticationSucceeded);
+        System.out.println("Authentication token: " + token);
 
         System.out.println("Session: " + SessionManager.getInstance());
 

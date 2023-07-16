@@ -2,11 +2,16 @@ package com.greenshift.greenboard.singletons;
 
 import com.greenshift.greenboard.models.entities.Role;
 import com.greenshift.greenboard.models.entities.User;
+import com.greenshift.greenboard.services.AuthService;
 import com.greenshift.greenboard.services.UserService;
+
+import java.util.Objects;
 
 public class SessionManager {
     private static SessionManager instance;
     private User currentUser;
+    private String token;
+
     private SessionManager() {
     }
 
@@ -15,13 +20,6 @@ public class SessionManager {
             instance = new SessionManager();
         }
         return instance;
-    }
-
-    @Override
-    public String toString() {
-        return "UserSession{" +
-                "currentUser=" + currentUser +
-                '}';
     }
 
     public boolean isAuthenticated() {
@@ -33,17 +31,50 @@ public class SessionManager {
     }
 
     public void setCurrentUser(User user) {
-
-        System.out.println("UserSession.setCurrentUser: " + user);
         this.currentUser = user;
     }
 
     public void useDummyUser() {
-        UserService userService = new UserService("http://localhost:3000/api/v1/users");
-        this.currentUser = userService.getById("180d6478-50c0-42d6-9dda-4b941b90551b", User.class);
+        String token = AuthService.authenticate("admin@mail.com", "Respons11");
+        User user = AuthService.fetchUser(token);
+        setCurrentUser(user);
     }
 
     public void logout() {
+        AuthService.logout(token);
         currentUser = null;
+/*
+        SceneManager.getInstance().switchToScene("/fxml/auth-view.fxml", null, null, scene -> {
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/styles.css")).toExternalForm());
+        });
+*/
+
+    }
+
+    public static void main(String[] args) {
+        SessionManager sessionManager = SessionManager.getInstance();
+        sessionManager.useDummyUser();
+        System.out.println("SessionManager.main: " + sessionManager);
+        System.out.println("SessionManager.main: " + sessionManager.isAuthenticated());
+        System.out.println("SessionManager.main: " + sessionManager.getCurrentUser());
+        sessionManager.logout();
+        System.out.println("SessionManager.main: " + sessionManager.isAuthenticated());
+        System.out.println("SessionManager.main: " + sessionManager.getCurrentUser());
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    @Override
+    public String toString() {
+        return "SessionManager{" +
+                "currentUser=" + currentUser +
+                ", token='" + token + '\'' +
+                '}';
     }
 }

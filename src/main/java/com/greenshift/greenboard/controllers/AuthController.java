@@ -65,11 +65,6 @@ public class AuthController {
 
     @FXML
     public void loginWithEmail() {
-        System.out.println("Login with email");
-        System.out.println("Email: " + emailTextField.getText());
-        System.out.println("Password: " + passwordField.getText());
-
-
         boolean userExists = AuthService.userExists(emailTextField.getText());
 
         if (userExists) {
@@ -86,11 +81,16 @@ public class AuthController {
 
             // if validator contains no errors, then login
             if (showPassword && !validator.containsErrorsProperty().get()) {
-                boolean authenticationSuccessful = AuthService.authenticate(emailTextField.getText(), passwordField.getText());
-                if (authenticationSuccessful) {
+                String authToken = AuthService.authenticate(emailTextField.getText(), passwordField.getText());
+                if (authToken != null) {
+                    AuthService.fetchUser(authToken);
                     SceneManager.getInstance().switchToScene("/fxml/main-view.fxml", null, null, scene -> {
                         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/styles.css")).toExternalForm());
                         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/kanban.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/hierarchy.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/settings.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/organization.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/popover.css")).toExternalForm());
                     });
                 } else {
                     System.out.println("Authentication failed");

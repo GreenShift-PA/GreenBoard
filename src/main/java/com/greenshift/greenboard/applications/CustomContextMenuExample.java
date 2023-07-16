@@ -1,7 +1,9 @@
 package com.greenshift.greenboard.applications;
 
 import com.greenshift.greenboard.cells.LeftMenuItemCell;
+import com.greenshift.greenboard.models.entities.User;
 import com.greenshift.greenboard.models.ui.LeftMenuItem;
+import com.greenshift.greenboard.singletons.SessionManager;
 import com.jfoenix.controls.JFXTreeView;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -35,6 +37,20 @@ public class CustomContextMenuExample extends Application {
         docs.getChildren().add(new TreeItem<>(new LeftMenuItem("All", null)));
         docs.getChildren().add(new TreeItem<>(new LeftMenuItem("Mine", null,
                 (item) -> System.out.println("Clicked on menu item: " + item.getName()))));
+
+        SessionManager.getInstance().useDummyUser();
+        User currentUser = SessionManager.getInstance().getCurrentUser();
+
+        if(currentUser != null) {
+            currentUser.getTeams().forEach(team -> {
+                TreeItem<LeftMenuItem> teamItem = new TreeItem<>(new LeftMenuItem(team.getName(), null));
+                team.getMembers().forEach(member -> {
+                    TreeItem<LeftMenuItem> memberItem = new TreeItem<>(new LeftMenuItem(member.getFirstName(), null));
+                    teamItem.getChildren().add(memberItem);
+                });
+                root.getChildren().add(teamItem);
+            });
+        }
 
         root.getChildren().add(docs);
 

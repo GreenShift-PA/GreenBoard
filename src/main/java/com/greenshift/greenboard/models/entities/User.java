@@ -7,6 +7,7 @@ import java.util.UUID;
 public class User {
     private String id;
     private String firebaseId;
+    private LocalDateTime lastLogin;
     private boolean active;
     private boolean confirmed;
     private String email;
@@ -17,6 +18,8 @@ public class User {
     private String avatar;
     private String username;
     private Role role;
+    private Team lastTeam;
+    private String lastTeamId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private List<Team> teams;
@@ -42,6 +45,7 @@ public class User {
         this.firebaseId = UUID.randomUUID().toString();
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
+        this.lastLogin = LocalDateTime.now();
 
         this.email = email;
         this.firstName = firstName;
@@ -272,20 +276,56 @@ public class User {
         this.activities = activities;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public LocalDateTime getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(LocalDateTime lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
+    public Team getLastTeam() {
+        return lastTeam;
+    }
+
+    public void setlastTeam(Team lastTeam) {
+        this.lastTeam = lastTeam;
+    }
+
+    public String getlastTeamId() {
+        return lastTeamId;
+    }
+
+    public void setlastTeamId(String lastTeamId) {
+        this.lastTeamId = lastTeamId;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
                 ", firebaseId='" + firebaseId + '\'' +
+                ", lastLogin=" + lastLogin +
                 ", active=" + active +
                 ", confirmed=" + confirmed +
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
                 ", passwordHash='" + passwordHash + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", username='" + username + '\'' +
                 ", role=" + role +
+                ", lastTeam=" + lastTeam +
+                ", lastTeamId='" + lastTeamId + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 ", teams=" + teams +
@@ -304,13 +344,5 @@ public class User {
                 ", pinnedOrganizations=" + pinnedOrganizations +
                 ", activities=" + activities +
                 '}';
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

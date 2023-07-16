@@ -1,6 +1,9 @@
 package com.greenshift.greenboard.models.entities;
 
+import com.google.gson.JsonObject;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Organization {
@@ -8,6 +11,8 @@ public class Organization {
     private String name;
     private String description;
     private String icon;
+    private String plan;
+    private String type;
     private String color;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -16,7 +21,7 @@ public class Organization {
     private List<Tag> tags;
     private User createdBy;
     private String createdById;
-    private String metadata;
+    private JsonObject metadata;
     private List<User> pinnedUsers;
 
     public Organization(String name, String description, String icon, String color) {
@@ -24,10 +29,11 @@ public class Organization {
         this.description = description;
         this.icon = icon;
         this.color = color;
+        this.teams = new ArrayList<>();
     }
 
     public Organization() {
-
+        this.teams = new ArrayList<>();
     }
 
     public String getId() {
@@ -126,11 +132,11 @@ public class Organization {
         this.createdById = createdById;
     }
 
-    public String getMetadata() {
+    public JsonObject getMetadata() {
         return metadata;
     }
 
-    public void setMetadata(String metadata) {
+    public void setMetadata(JsonObject metadata) {
         this.metadata = metadata;
     }
 
@@ -142,6 +148,22 @@ public class Organization {
         this.pinnedUsers = pinnedUsers;
     }
 
+    public String getPlan() {
+        return plan;
+    }
+
+    public void setPlan(String plan) {
+        this.plan = plan;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "Organization{" +
@@ -149,6 +171,8 @@ public class Organization {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", icon='" + icon + '\'' +
+                ", plan='" + plan + '\'' +
+                ", type='" + type + '\'' +
                 ", color='" + color + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +

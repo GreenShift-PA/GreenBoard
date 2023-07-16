@@ -1,8 +1,14 @@
 package com.greenshift.greenboard.services;
 
+import com.greenshift.greenboard.models.entities.Task;
 import com.greenshift.greenboard.models.entities.Team;
 import com.greenshift.greenboard.models.entities.User;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,32 +18,39 @@ public class TeamService extends BaseCrudService<Team> {
         super(baseUrl);
     }
 
+    public Task[] getTasks(String teamId) {
+        try {
+            URL url = new URL(BASE_URL + "/" + teamId + "/tasks");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+
+            int responseCode = connection.getResponseCode();
+
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                StringBuilder response = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
+                reader.close();
+
+                return gson.fromJson(response.toString(), Task[].class);
+            }
+        } catch (IOException e) {
+            System.out.println("Error occurred: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+
     public static void main(String[] args) {
         TeamService teamService = new TeamService("http://localhost:3000/api/v1/teams");
-        UserService userService = new UserService("http://localhost:3000/api/v1/users");
-        String teamId = "1df95aaa-34d4-4483-a5d1-ccf850de94fc";
-        List<User> allUsers = Arrays.stream(userService.getAll(User[].class)).toList();
+        String teamId = "fd8e89d8-e33b-457b-8550-cfd026bd9fdc";
 
-        Team team = teamService.getById(teamId, Team.class);
-        System.out.println("Team: " + team);
-
-        team.setName("Equipe 7");
-        team.setDescription("L'equipe dans Naruto la");
-        team.setMembers(allUsers);
-        Team updatedTeam = teamService.update(team, Team.class);
-        System.out.println("Updated Team: " + updatedTeam);
-
-        team.setName("Akatsuki");
-        team.setDescription("Association de malfaiteurs");
-        team.setId(null);
-        Team newTeam = teamService.create(team, Team.class);
-        System.out.println("New Team: " + newTeam);
-
-        Team[] teams = teamService.getAll(Team[].class);
-        System.out.println("All Teams: " + Arrays.toString(teams));
-
-        Team deletedTeam = teamService.delete(newTeam.getId(), Team.class);
-        System.out.println("Deleted Team: " + deletedTeam);
+        List<Task> tasks = Arrays.stream(teamService.getTasks(teamId)).toList();
+        System.out.println("Tasks: " + tasks);
     }
 
     @Override

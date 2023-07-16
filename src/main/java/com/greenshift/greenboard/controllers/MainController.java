@@ -3,14 +3,21 @@ package com.greenshift.greenboard.controllers;
 import com.greenshift.greenboard.TopBarController;
 import com.greenshift.greenboard.cells.LeftMenuItemCell;
 import com.greenshift.greenboard.interfaces.IContentLoadedCallback;
+import com.greenshift.greenboard.models.entities.Organization;
+import com.greenshift.greenboard.models.entities.User;
 import com.greenshift.greenboard.models.ui.LeftMenuItem;
+import com.greenshift.greenboard.services.UserService;
 import com.greenshift.greenboard.singletons.SceneManager;
+import com.greenshift.greenboard.singletons.SessionManager;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXTreeView;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.input.MouseEvent;
@@ -18,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Popup;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.IOException;
@@ -32,6 +40,7 @@ public class MainController {
 
     public StackPane context;
 
+    public HBox profileMenuButton;
     @FXML
     public VBox teamTreeViewVBox;
     @FXML
@@ -46,11 +55,22 @@ public class MainController {
     public FontIcon createNewTeamButton;
     public FontAwesomeIconView projectMenuButton;
     public FontIcon createNewProjectButton;
+    public FontIcon organizationIcon;
     public FontAwesomeIconView topBarHamburger;
     public HBox leftMenuSettingsButton;
     public HBox leftMenuNewOrganizationButton;
+    public VBox organizationIconVBox;
+    public Label organizationNameLabel;
+    public HBox leftMenuSearchButton;
+    public HBox leftMenuHistoryButton;
+    public HBox leftMenuAllTeams;
+    public ScrollPane kanban;
     @FXML
     private SplitPane split;
+
+    private Popup popover;
+    private boolean isPopoverOpen;
+
 
     private boolean isLeftMenuOpen = false;
 
@@ -58,6 +78,8 @@ public class MainController {
     private TopBarController topBarController;
 
     private String currentRightContent = "";
+
+    private User currentUser = null;
 
     @FXML
     protected void toggleLeftMenu() {
@@ -75,8 +97,17 @@ public class MainController {
 
         SceneManager.getInstance().setMainController(this);
 
-        System.out.println("Application started!");
-        split.setMinSize(0, 0);
+        currentUser = SessionManager.getInstance().getCurrentUser();
+
+        if (currentUser != null) {
+            if (currentUser.getLastTeam() != null && currentUser.getLastTeam().getOrganization() != null) {
+                Organization organization = currentUser.getLastTeam().getOrganization();
+                if (organization.getIcon() != null && !organization.getIcon().isEmpty())
+                    organizationIcon.setIconLiteral(organization.getIcon());
+
+                organizationNameLabel.setText(currentUser.getLastTeam().getOrganization().getName());
+            }
+        }
 
         context = root;
         root.getChildren().remove(dialog);
@@ -84,38 +115,45 @@ public class MainController {
 
         initTeamTreeView();
         initProjectTreeView();
+
+        profileMenuButton.setOnMouseClicked(event -> togglePopover(profileMenuButton));
     }
 
     private void initTeamTreeView() {
 
-        TreeItem<LeftMenuItem> rootItem = new TreeItem<>(new LeftMenuItem("Graph Flow", "mdi2g-graph-outline"));
-        rootItem.getChildren().add(new TreeItem<>(new LeftMenuItem("Teamspace Home", "fas-compass")));
-        rootItem.getChildren().add(new TreeItem<>(new LeftMenuItem("Wiki", "mdi2b-book-open-variant")));
+        if (currentUser == null)
+            return;
 
-        TreeItem<LeftMenuItem> tasks = new TreeItem<>(new LeftMenuItem("Tasks", "mdi2f-file-document-outline", (item) -> {
-            loadContent("/fxml/kanban.fxml", (node) -> {
-                System.out.println("Loaded kanban");
-            });
-        }));
-
-        tasks.getChildren().add(new TreeItem<>(new LeftMenuItem("Not Started", null)));
-        tasks.getChildren().add(new TreeItem<>(new LeftMenuItem("In Progress", null)));
-        tasks.getChildren().add(new TreeItem<>(new LeftMenuItem("Done", null)));
-
-
-        TreeItem<LeftMenuItem> docs = new TreeItem<>(new LeftMenuItem("Docs", "mdi2f-file-document-outline"));
-        docs.getChildren().add(new TreeItem<>(new LeftMenuItem("Recently edited", null)));
-        docs.getChildren().add(new TreeItem<>(new LeftMenuItem("Table by Category", null)));
-        docs.getChildren().add(new TreeItem<>(new LeftMenuItem("All", null)));
-        docs.getChildren().add(new TreeItem<>(new LeftMenuItem("Mine", null,
-                (item) -> {
-                    System.out.println("Clicked on menu item: " + item.getName());
-                })));
-
-        rootItem.getChildren().add(docs);
-        rootItem.getChildren().add(tasks);
-
+        TreeItem<LeftMenuItem> rootItem = new TreeItem<>(new LeftMenuItem("Teams", "mdi2g-graph-outline"));
         teamTreeView.setRoot(rootItem);
+
+        currentUser.getTeams().forEach(team -> {
+            TreeItem<LeftMenuItem> teamItem = new TreeItem<>(new LeftMenuItem(team.getName(), "mdi2f-file-document-outline"));
+            teamItem.getChildren().add(new TreeItem<>(new LeftMenuItem("Not Started", null)));
+            teamItem.getChildren().add(new TreeItem<>(new LeftMenuItem("In Progress", null)));
+            teamItem.getChildren().add(new TreeItem<>(new LeftMenuItem("Done", null)));
+            teamItem.getChildren().add(new TreeItem<>(
+                    new LeftMenuItem("Tasks", "mdi2f-file-document-outline", (item) -> {
+
+                        currentUser.setlastTeam(team);
+                        currentUser.setlastTeamId(team.getId());
+                        UserService userService = new UserService("http://localhost:3000/api/v1/users");
+                        User updatedUser = userService.update(currentUser, User.class);
+                        if(updatedUser != null)
+                        {
+                            currentUser = updatedUser;
+                            SessionManager.getInstance().setCurrentUser(currentUser);
+                        }else {
+                            System.out.println("Failed to update user");
+                        }
+
+                        loadContent("/fxml/kanban.fxml", (node) -> {
+                            System.out.println("Loaded kanban");
+                        });
+                    })));
+            teamTreeView.getRoot().getChildren().add(teamItem);
+        });
+
         teamTreeView.setEditable(true);
         teamTreeView.setCellFactory(p -> new LeftMenuItemCell());
     }
@@ -172,10 +210,12 @@ public class MainController {
     }
 
     public void loadContent(String fxmlFile, IContentLoadedCallback callback) {
+/*
         if (fxmlFile.equals(currentRightContent)) {
             System.out.println("Already loaded");
             return;
         }
+*/
         currentRightContent = fxmlFile;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
@@ -189,4 +229,44 @@ public class MainController {
             e.printStackTrace();
         }
     }
+
+    private void togglePopover(HBox anchor) {
+        if (isPopoverOpen) {
+            closePopover();
+        } else {
+            openPopover(anchor);
+        }
+    }
+
+    private void openPopover(HBox anchor) {
+        popover = new Popup();
+        popover.setAutoHide(true);
+        popover.setAutoFix(true);
+
+        Bounds buttonBounds = anchor.localToScreen(anchor.getBoundsInLocal());
+        double popoverX = buttonBounds.getMinX();
+        double popoverY = buttonBounds.getMaxY();
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/profile-popover.fxml"));
+            AnchorPane root = fxmlLoader.load();
+            popover.getContent().add(root);
+            popover.show(anchor, popoverX, popoverY);
+            isPopoverOpen = true;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void closePopover() {
+        popover.hide();
+        isPopoverOpen = false;
+    }
+
+    private void handleSceneClicked(MouseEvent event) {
+        if (isPopoverOpen) {
+            closePopover();
+        }
+    }
+
 }

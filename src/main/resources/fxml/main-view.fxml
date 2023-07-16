@@ -8,8 +8,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -32,19 +30,19 @@
                <children>
                   <VBox layoutX="60.0" layoutY="22.0" prefHeight="55.0" prefWidth="414.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="207.0" spacing="10.0" styleClass="cta">
+                        <HBox fx:id="profileMenuButton" alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="207.0" spacing="10.0" styleClass="cta">
                            <children>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../logos/Notion-logo.svg.png" />
-                                 </image>
-                              </ImageView>
-                              <Label text="Abdoulaye Dia">
+                              <VBox fx:id="organizationIconVBox" alignment="CENTER_LEFT">
+                                 <children>
+                                    <FontIcon fx:id="organizationIcon" iconLiteral="mdi2a-alpha-g-box-outline" iconSize="24" />
+                                 </children>
+                              </VBox>
+                              <Label fx:id="organizationNameLabel" text="Organization">
                                  <font>
                                     <Font name="Roboto Bold" size="13.0" />
                                  </font>
                               </Label>
-                              <VBox alignment="CENTER" prefHeight="3.0" prefWidth="34.0">
+                              <VBox alignment="CENTER" prefHeight="27.0" prefWidth="21.0">
                                  <children>
                                     <FontAwesomeIconView fill="#a8a8a8" glyphName="ANGLE_UP" />
                                     <FontAwesomeIconView fill="#a8a8a8" glyphName="ANGLE_DOWN" />
@@ -62,7 +60,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                        <HBox fx:id="leftMenuSearchButton" alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                            <children>
                               <FontAwesomeIconView fill="#a8a8a8" glyphName="SEARCH" />
                               <Label text="Rechercher" textAlignment="RIGHT" textFill="#b2b2b2">
@@ -75,7 +73,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                        <HBox fx:id="leftMenuHistoryButton" alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                            <children>
                               <FontAwesomeIconView fill="#a8a8a8" glyphName="CLOCK_ALT" />
                               <Label text="Dernières Modifications" textAlignment="RIGHT" textFill="#b2b2b2">
@@ -88,7 +86,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="50.0" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                        <HBox fx:id="leftMenuAllTeams" alignment="CENTER_LEFT" layoutX="15.0" layoutY="50.0" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                            <children>
                               <FontAwesomeIconView fill="#a8a8a8" glyphName="BUILDING_ALT" />
                               <Label text="Toutes les équipes" textAlignment="RIGHT" textFill="#b2b2b2">

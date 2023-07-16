@@ -56,7 +56,6 @@ public class MyAccountController {
             // dialog.getContent().setPadding(new javafx.geometry.Insets(0, 0, 0, 0));
             currentUser = SessionManager.getInstance().getCurrentUser();
             if (currentUser == null) {
-                System.out.println("MyAccountController.initialize: currentUser is null");
                 return;
             }
 
