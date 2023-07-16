@@ -1,17 +1,9 @@
 package com.greenshift.greenboard.models.ui;
 
 import com.greenshift.greenboard.models.entities.Organization;
-import com.greenshift.greenboard.models.entities.Project;
-import com.greenshift.greenboard.models.entities.Task;
-import com.greenshift.greenboard.models.entities.User;
-import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 public class ProfilePopoverItem extends ReadOnlyObjectWrapper<ProfilePopoverItem> {
     private String id;
@@ -19,23 +11,44 @@ public class ProfilePopoverItem extends ReadOnlyObjectWrapper<ProfilePopoverItem
     private String icon;
     private String name;
     private String info;
+    private Organization organization;
+    private String color;
 
     public ProfilePopoverItem(String name, String info) {
         this.name = name;
         this.info = info;
     }
-    
+
     public ProfilePopoverItem(Organization organization) {
         this.id = organization.getId();
         this.icon = organization.getIcon();
         this.name = organization.getName();
-        this.info = String.format("%s - %d members", organization.getType(), organization.getTeams().stream().reduce(0, (subtotal, team) -> subtotal + team.getMembers().size(), Integer::sum));
+        this.organization = organization;
+        this.color = organization.getColor();
+        Integer members = organization.getTeams().stream().reduce(0, (subtotal, team) -> subtotal + team.getMembers().size(), Integer::sum);
+        this.info = String.format("%s - %d Teams", organization.getType(), organization.getTeams().size());
     }
 
     public ProfilePopoverItem(String icon, String name, String info) {
         this.icon = icon;
         this.name = name;
         this.info = info;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getId() {

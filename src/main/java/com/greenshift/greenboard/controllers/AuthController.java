@@ -16,20 +16,16 @@ import java.util.Objects;
 
 public class AuthController {
 
+    private final Validator validator = new Validator();
     public Button loginWithGoogleBtn;
     public Button loginWithAppleBtn;
-
     public VBox credentialsVBox;
     public VBox emailVBox;
     public TextField emailTextField;
     public VBox passwordVBox;
     public PasswordField passwordField;
     public Button loginWithEmailBtn;
-
     public Label forgotPassword;
-
-    private final Validator validator = new Validator();
-
     private boolean showPassword = false;
 
     public void initialize() {

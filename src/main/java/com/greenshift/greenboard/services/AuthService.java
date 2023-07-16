@@ -122,7 +122,7 @@ public class AuthService {
     public static void main(String[] args) throws Exception {
         boolean userExists = AuthService.userExists("abdoudu78130@gmail.com");
 
-        if(!userExists) {
+        if (!userExists) {
             System.out.println("User does not exist");
             return;
         }

@@ -12,8 +12,7 @@ public class LanguageController {
     private ObservableList<String> languages;
     private String selectedLanguage;
 
-    public void initialize()
-    {
+    public void initialize() {
         languages = FXCollections.observableArrayList();
 
         languages.add("English");
@@ -29,8 +28,7 @@ public class LanguageController {
         });
     }
 
-    public void changeLanguage()
-    {
+    public void changeLanguage() {
         System.out.println("Language changed to: " + selectedLanguage);
     }
 }

@@ -2,7 +2,6 @@ package com.greenshift.greenboard.services;
 
 import com.greenshift.greenboard.models.entities.Task;
 import com.greenshift.greenboard.models.entities.Team;
-import com.greenshift.greenboard.models.entities.User;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +15,14 @@ public class TeamService extends BaseCrudService<Team> {
 
     public TeamService(String baseUrl) {
         super(baseUrl);
+    }
+
+    public static void main(String[] args) {
+        TeamService teamService = new TeamService("http://localhost:3000/api/v1/teams");
+        String teamId = "fd8e89d8-e33b-457b-8550-cfd026bd9fdc";
+
+        List<Task> tasks = Arrays.stream(teamService.getTasks(teamId)).toList();
+        System.out.println("Tasks: " + tasks);
     }
 
     public Task[] getTasks(String teamId) {
@@ -42,15 +49,6 @@ public class TeamService extends BaseCrudService<Team> {
         }
 
         return null;
-    }
-
-
-    public static void main(String[] args) {
-        TeamService teamService = new TeamService("http://localhost:3000/api/v1/teams");
-        String teamId = "fd8e89d8-e33b-457b-8550-cfd026bd9fdc";
-
-        List<Task> tasks = Arrays.stream(teamService.getTasks(teamId)).toList();
-        System.out.println("Tasks: " + tasks);
     }
 
     @Override

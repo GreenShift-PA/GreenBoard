@@ -22,6 +22,8 @@ public class User {
     private String lastTeamId;
     private Project lastProject;
     private String lastProjectId;
+    private Organization lastOrganization;
+    private String lastOrganizationId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private List<Team> teams;
@@ -52,6 +54,20 @@ public class User {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.teams = List.of();
+        this.assignedTasks = List.of();
+        this.createdTasks = List.of();
+        this.createdTeams = List.of();
+        this.tokens = List.of();
+        this.comments = List.of();
+        this.notifications = List.of();
+        this.createdOrganizations = List.of();
+        this.activities = List.of();
+        this.pinnedProjects = List.of();
+        this.pinnedTeams = List.of();
+        this.pinnedTasks = List.of();
+        this.pinnedComments = List.of();
+        this.pinnedOrganizations = List.of();
     }
 
     public String getId() {
@@ -298,6 +314,10 @@ public class User {
         return lastTeam;
     }
 
+    public void setLastTeam(Team lastTeam) {
+        this.lastTeam = lastTeam;
+    }
+
     public void setlastTeam(Team lastTeam) {
         this.lastTeam = lastTeam;
     }
@@ -308,50 +328,6 @@ public class User {
 
     public void setlastTeamId(String lastTeamId) {
         this.lastTeamId = lastTeamId;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", firebaseId='" + firebaseId + '\'' +
-                ", lastLogin=" + lastLogin +
-                ", active=" + active +
-                ", confirmed=" + confirmed +
-                ", email='" + email + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", password='" + password + '\'' +
-                ", passwordHash='" + passwordHash + '\'' +
-                ", avatar='" + avatar + '\'' +
-                ", username='" + username + '\'' +
-                ", role=" + role +
-                ", lastTeam=" + lastTeam +
-                ", lastTeamId='" + lastTeamId + '\'' +
-                ", lastProject=" + lastProject +
-                ", lastProjectId='" + lastProjectId + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                ", teams=" + teams +
-                ", assignedTasks=" + assignedTasks +
-                ", createdTasks=" + createdTasks +
-                ", createdTeams=" + createdTeams +
-                ", tokens=" + tokens +
-                ", comments=" + comments +
-                ", mentionedComments=" + mentionedComments +
-                ", notifications=" + notifications +
-                ", createdOrganizations=" + createdOrganizations +
-                ", pinnedProjects=" + pinnedProjects +
-                ", pinnedTeams=" + pinnedTeams +
-                ", pinnedTasks=" + pinnedTasks +
-                ", pinnedComments=" + pinnedComments +
-                ", pinnedOrganizations=" + pinnedOrganizations +
-                ", activities=" + activities +
-                '}';
-    }
-
-    public void setLastTeam(Team lastTeam) {
-        this.lastTeam = lastTeam;
     }
 
     public String getLastTeamId() {
@@ -376,5 +352,63 @@ public class User {
 
     public void setLastProjectId(String lastProjectId) {
         this.lastProjectId = lastProjectId;
+    }
+
+    public Organization getLastOrganization() {
+        return lastOrganization;
+    }
+
+    public void setLastOrganization(Organization lastOrganization) {
+        this.lastOrganization = lastOrganization;
+    }
+
+    public String getLastOrganizationId() {
+        return lastOrganizationId;
+    }
+
+    public void setLastOrganizationId(String lastOrganizationId) {
+        this.lastOrganizationId = lastOrganizationId;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", firebaseId='" + firebaseId + '\'' +
+                ", lastLogin=" + lastLogin +
+                ", active=" + active +
+                ", confirmed=" + confirmed +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", passwordHash='" + passwordHash + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", username='" + username + '\'' +
+                ", role=" + role +
+                ", lastTeam=" + lastTeam +
+                ", lastTeamId='" + lastTeamId + '\'' +
+                ", lastProject=" + lastProject +
+                ", lastProjectId='" + lastProjectId + '\'' +
+                ", lastOrganization=" + lastOrganization +
+                ", lastOrganizationId='" + lastOrganizationId + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", teams=" + teams +
+                ", assignedTasks=" + assignedTasks +
+                ", createdTasks=" + createdTasks +
+                ", createdTeams=" + createdTeams +
+                ", tokens=" + tokens +
+                ", comments=" + comments +
+                ", mentionedComments=" + mentionedComments +
+                ", notifications=" + notifications +
+                ", createdOrganizations=" + createdOrganizations +
+                ", pinnedProjects=" + pinnedProjects +
+                ", pinnedTeams=" + pinnedTeams +
+                ", pinnedTasks=" + pinnedTasks +
+                ", pinnedComments=" + pinnedComments +
+                ", pinnedOrganizations=" + pinnedOrganizations +
+                ", activities=" + activities +
+                '}';
     }
 }

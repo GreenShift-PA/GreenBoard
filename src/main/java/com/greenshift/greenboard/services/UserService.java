@@ -2,8 +2,6 @@ package com.greenshift.greenboard.services;
 
 import com.greenshift.greenboard.models.entities.User;
 
-import java.util.Arrays;
-
 public class UserService extends BaseCrudService<User> {
 
     public UserService(String baseUrl) {

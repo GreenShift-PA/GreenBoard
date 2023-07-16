@@ -1,5 +1,7 @@
 package com.greenshift.greenboard.controllers;
 
+import com.greenshift.greenboard.models.entities.User;
+import com.greenshift.greenboard.singletons.SessionManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -15,6 +17,7 @@ public class SettingsController {
     public HBox languageTab;
     public Label settingsViewTitle;
     public VBox settingsView;
+    public VBox organizationSettings;
     public HBox importExportTab;
     public HBox updateTab;
     public HBox organizationSettingsTab;
@@ -24,7 +27,13 @@ public class SettingsController {
 
     private HashMap<String, String> tabNames = new HashMap<>();
 
+    private User currentUser;
+
     public void initialize() {
+
+        currentUser = SessionManager.getInstance().getCurrentUser();
+
+        initTabVisibility();
 
         tabNames.put("my-account", "My Account");
         tabNames.put("preferences", "Preferences");
@@ -88,6 +97,7 @@ public class SettingsController {
         });
 
         loadTab("my-account");
+
     }
 
     private void loadTab(String tabName) {
@@ -102,6 +112,18 @@ public class SettingsController {
             e.printStackTrace();
             settingsView.getChildren().clear();
             settingsView.getChildren().add(new Label("Error loading tab"));
+        }
+    }
+
+
+    private void initTabVisibility() {
+        if (currentUser == null)
+            return;
+
+        if (currentUser.getRole().getName().contains("ADMIN") || (currentUser.getLastTeam() != null && currentUser.getLastTeam().getOrganization().getType().equals("PERSONAL"))) {
+            organizationSettings.setVisible(true);
+        } else {
+            organizationSettings.setVisible(false);
         }
     }
 }

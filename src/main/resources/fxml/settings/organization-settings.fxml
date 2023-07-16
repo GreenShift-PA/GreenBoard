@@ -1,143 +1,180 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDialog?>
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-
-<StackPane fx:id="root" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.settings.OrganizationSettingsController">
-   <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-         <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="103.0" prefWidth="799.0" spacing="10.0">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-               <children>
-                  <VBox alignment="CENTER_LEFT" prefHeight="111.0" prefWidth="779.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Label styleClass="setting-label" text="Name" textFill="#252525" />
-                        <HBox spacing="10.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <TextField fx:id="usernameTextField" prefHeight="26.0" prefWidth="208.0" styleClass="text-field-input" HBox.hgrow="ALWAYS" />
-                              <JFXButton fx:id="updateUsernameBtn" disable="true" prefHeight="30.0" prefWidth="128.0" styleClass="setting-button" text="update" />
-                           </children>
+<?import java.lang.String?>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" xmlns="http://javafx.com/javafx/19"
+           fx:controller="com.greenshift.greenboard.controllers.settings.OrganizationSettingsController">
+    <children>
+        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="103.0" prefWidth="799.0" spacing="10.0">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                    <children>
+                        <VBox alignment="CENTER_LEFT" prefHeight="111.0" prefWidth="779.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="setting-label" text="Name" textFill="#252525"/>
+                                <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <TextField fx:id="organizationNameTextField" prefHeight="26.0" prefWidth="208.0"
+                                                   styleClass="text-field-input" HBox.hgrow="ALWAYS"/>
+                                        <JFXButton fx:id="updateOrganizationNameButton" disable="true" prefHeight="30.0"
+                                                   prefWidth="128.0" styleClass="setting-button" text="update"/>
+                                    </children>
+                                </HBox>
+                                <Label styleClass="setting-description"
+                                       text="You can use your organization or company name. Keep it simple."
+                                       textFill="#252525"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="103.0" prefWidth="799.0" spacing="10.0">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                    <children>
+                        <VBox alignment="CENTER_LEFT" prefHeight="111.0" prefWidth="779.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="setting-label" text="Color" textFill="#252525"/>
+                                <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <TextField fx:id="organizationColorTextField" prefHeight="26.0"
+                                                   prefWidth="175.0" styleClass="text-field-input"/>
+                                        <ColorPicker fx:id="organizationColorPicker"/>
+                                        <JFXButton fx:id="updateOrganizationColorButton" disable="true"
+                                                   prefHeight="30.0" prefWidth="128.0" styleClass="setting-button"
+                                                   text="update"/>
+                                    </children>
+                                </HBox>
+                                <Label styleClass="setting-description"
+                                       text="Make your organization recognizable by using a color" textFill="#252525"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <VBox>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="12.0" prefWidth="799.0" spacing="10.0">
+                            <children>
+                                <VBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="799.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Separator prefHeight="24.0" prefWidth="799.0"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0"/>
+                            </padding>
                         </HBox>
-                        <Label styleClass="setting-description" text="You can use your organization or company name. Keep it simple." textFill="#252525" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <VBox>
-               <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="12.0" prefWidth="799.0" spacing="10.0">
-                     <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="799.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Separator prefHeight="24.0" prefWidth="799.0" />
-                           </children>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0" spacing="10.0">
-                     <children>
-                        <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label styleClass="setting-label" text="Icon" />
-                              <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                                 <children>
-                                    <FontIcon iconColor="#a8a8a8" iconLiteral="mdi2d-dev-to" iconSize="64" />
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </VBox>
-                              <Label styleClass="setting-description" text="Upload an image or pick an emoji. It will show up in your sidebar and notifications" textFill="#252525" />
-                           </children>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
-               </children>
-            </VBox>
-            <VBox>
-               <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="799.0" spacing="10.0">
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
-                     <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="225.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label text="Danger zone">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Separator prefHeight="63.0" prefWidth="779.0" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
-                     <children>
-                        <VBox prefHeight="47.0" prefWidth="490.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label styleClass="setting-label" text="Organization's Manager" />
-                              <Label styleClass="setting-description" text="Choose the manager of the organization" textFill="#434343">
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <ChoiceBox fx:id="organizationManagerChoiceBox" prefWidth="150.0" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="95.0" prefWidth="799.0">
-                     <children>
-                        <VBox prefHeight="100.0" prefWidth="282.0" spacing="10.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label text="Delete the organization">
-                                 <styleClass>
-                                    <String fx:value="delete" />
-                                    <String fx:value="setting-label" />
-                                 </styleClass>
-                              </Label>
-                              <Label styleClass="setting-description" text="Permanently delete the account and remove access from all organizations" textFill="#434343">
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Label>
-                              <JFXButton fx:id="deleteAccountBtn" prefWidth="118.0" styleClass="setting-button" text="Delete" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <JFXDialog fx:id="dialog" />
-         </children>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
-      </VBox>
-   </children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0" spacing="10.0">
+                            <children>
+                                <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label styleClass="setting-label" text="Icon"/>
+                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                            <VBox.margin>
+                                                <Insets/>
+                                            </VBox.margin>
+                                            <children>
+                                                <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <FontIcon fx:id="organizationIcon" iconColor="#a8a8a8"
+                                                                  iconLiteral="mdi2d-dev-to" iconSize="64"/>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </padding>
+                                                </VBox>
+                                                <TextField fx:id="organizationIconTextField"/>
+                                            </children>
+                                        </HBox>
+                                        <Label styleClass="setting-description"
+                                               text="Upload an image or pick an emoji. It will show up in your sidebar and notifications"
+                                               textFill="#252525"/>
+                                    </children>
+                                </VBox>
+                                <JFXButton fx:id="updateOrganizationIconButton" disable="true" prefHeight="30.0"
+                                           prefWidth="128.0" styleClass="setting-button" text="update"/>
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                        </HBox>
+                    </children>
+                </VBox>
+                <VBox>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="799.0" spacing="10.0">
+                            <padding>
+                                <Insets bottom="10.0" top="10.0"/>
+                            </padding>
+                            <children>
+                                <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="225.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label text="Danger zone">
+                                            <font>
+                                                <Font size="18.0"/>
+                                            </font>
+                                        </Label>
+                                        <Separator prefHeight="63.0" prefWidth="779.0"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
+                            <children>
+                                <VBox prefHeight="47.0" prefWidth="490.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label styleClass="setting-label" text="Organization's Manager"/>
+                                        <Label styleClass="setting-description"
+                                               text="Choose the manager of the organization" textFill="#434343">
+                                            <font>
+                                                <Font size="11.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <ChoiceBox fx:id="organizationManagerChoiceBox" prefWidth="150.0"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="95.0" prefWidth="799.0">
+                            <children>
+                                <VBox prefHeight="100.0" prefWidth="282.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label text="Delete the organization">
+                                            <styleClass>
+                                                <String fx:value="delete"/>
+                                                <String fx:value="setting-label"/>
+                                            </styleClass>
+                                        </Label>
+                                        <Label styleClass="setting-description"
+                                               text="Permanently delete the account and remove access from all organizations"
+                                               textFill="#434343">
+                                            <font>
+                                                <Font size="11.0"/>
+                                            </font>
+                                        </Label>
+                                        <JFXButton fx:id="deleteOrganizationButton" prefWidth="118.0"
+                                                   styleClass="setting-button" text="Delete"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <JFXDialog fx:id="dialog"/>
+            </children>
+            <padding>
+                <Insets top="10.0"/>
+            </padding>
+        </VBox>
+    </children>
 </StackPane>

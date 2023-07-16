@@ -3,56 +3,56 @@
 <?import com.jfoenix.controls.JFXDialog?>
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<StackPane fx:id="root" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.settings.PreferencesController">
-   <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-         <children>
-            <VBox>
-               <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
-                     <children>
-                        <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label styleClass="setting-label" text="Appearance" />
-                              <Label fx:id="emailLabel" styleClass="setting-description" text="Customize how Notion looks on your device." textFill="#434343">
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <ChoiceBox prefWidth="150.0" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
-                     <children>
-                        <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label styleClass="setting-label" text="Open on start" />
-                              <Label styleClass="setting-description" text="Choose what to show when Notion starts or when you switch organizations" textFill="#434343">
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <JFXToggleButton fx:id="openOnStartToggle" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <JFXDialog fx:id="dialog" />
-         </children>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
-      </VBox>
-   </children>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" xmlns="http://javafx.com/javafx/19"
+           fx:controller="com.greenshift.greenboard.controllers.settings.PreferencesController">
+    <children>
+        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+            <children>
+                <VBox>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
+                            <children>
+                                <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label styleClass="setting-label" text="Appearance"/>
+                                        <Label fx:id="emailLabel" styleClass="setting-description"
+                                               text="Customize how Greenboard looks on your device." textFill="#434343">
+                                            <font>
+                                                <Font size="11.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <ChoiceBox prefWidth="150.0"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
+                            <children>
+                                <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label styleClass="setting-label" text="Open on start"/>
+                                        <Label styleClass="setting-description"
+                                               text="Choose what to show when Greenboard starts or when you switch organizations"
+                                               textFill="#434343">
+                                            <font>
+                                                <Font size="11.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <JFXToggleButton fx:id="openOnStartToggle"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <JFXDialog fx:id="dialog"/>
+            </children>
+            <padding>
+                <Insets top="10.0"/>
+            </padding>
+        </VBox>
+    </children>
 </StackPane>

@@ -2,39 +2,41 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-
-<AnchorPane fx:id="root" styleClass="popover-item" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.ProfilePopoverItemController">
-   <children>
-      <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <HBox alignment="CENTER_LEFT">
-               <children>
-                  <FontIcon fx:id="orderIcon" iconColor="#616161" iconLiteral="mdi2d-dots-grid" iconSize="16" />
-                  <FontIcon fx:id="organizationIcon" iconColor="#469e38" iconLiteral="mdi2a-alpha-g-box-outline" iconSize="24" />
-               </children>
-            </HBox>
-            <VBox HBox.hgrow="ALWAYS">
-               <children>
-                  <Label fx:id="nameLabel" text="Bomberman">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="infoLabel" text="Personal - 4 members">
-                     <font>
-                        <Font size="9.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-         </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding></HBox>
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" styleClass="popover-item"
+            xmlns="http://javafx.com/javafx/19"
+            fx:controller="com.greenshift.greenboard.controllers.ProfilePopoverItemController">
+    <children>
+        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" spacing="10.0" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox alignment="CENTER_LEFT">
+                    <children>
+                        <FontIcon fx:id="orderIcon" iconColor="#616161" iconLiteral="mdi2d-dots-grid" iconSize="16"/>
+                        <FontIcon fx:id="organizationIcon" iconColor="#469e38" iconLiteral="mdi2a-alpha-g-box-outline"
+                                  iconSize="24"/>
+                    </children>
+                </HBox>
+                <VBox HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label fx:id="nameLabel" text="Bomberman">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="infoLabel" text="Personal - 4 members">
+                            <font>
+                                <Font size="9.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+        </HBox>
+    </children>
 </AnchorPane>

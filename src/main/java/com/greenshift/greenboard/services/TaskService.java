@@ -2,13 +2,7 @@ package com.greenshift.greenboard.services;
 
 import com.greenshift.greenboard.models.entities.Task;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Arrays;
-import java.util.List;
 
 public class TaskService extends BaseCrudService<Task> {
 

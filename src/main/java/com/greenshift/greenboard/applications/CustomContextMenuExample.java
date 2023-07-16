@@ -11,7 +11,6 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.Objects;
 
 public class CustomContextMenuExample extends Application {
@@ -41,7 +40,7 @@ public class CustomContextMenuExample extends Application {
         SessionManager.getInstance().useDummyUser();
         User currentUser = SessionManager.getInstance().getCurrentUser();
 
-        if(currentUser != null) {
+        if (currentUser != null) {
             currentUser.getTeams().forEach(team -> {
                 TreeItem<LeftMenuItem> teamItem = new TreeItem<>(new LeftMenuItem(team.getName(), null));
                 team.getMembers().forEach(member -> {

@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    -fx-font-family: 'Poppins', sans-serif;
+}
+
 .root {
     -fx-background-color: #ffffff;
 }
 
 .scroll-pane {
-    -fx-background-color:transparent;
+    -fx-background-color: transparent;
 }
 
 .split-pane:horizontal > .split-pane-divider,
@@ -189,12 +195,12 @@
     -fx-background-color: transparent;
 }
 
-.text-area .scroll-pane .viewport{
+.text-area .scroll-pane .viewport {
     -fx-background-color: transparent;
 }
 
 
-.text-area .scroll-pane .content{
+.text-area .scroll-pane .content {
     -fx-background-color: transparent;
 }
 
@@ -206,7 +212,7 @@
     -fx-background-color: transparent;
 }
 
-.task-status .label  {
+.task-status .label {
     -fx-font-size: 11px;
     -fx-text-fill: #37352fa6;
     -fx-background-color: transparent;

@@ -19,6 +19,7 @@ import java.util.function.Consumer;
 
 
 public class MyAccountController {
+    private final Validator validator = new Validator();
     public StackPane root;
     public TextField usernameTextField;
     public Label emailLabel;
@@ -30,7 +31,6 @@ public class MyAccountController {
     public JFXButton logoutSessionsBtn;
     public JFXButton deleteAccountBtn;
     public JFXButton updateUsernameBtn;
-
     @FXML
     public JFXDialog dialog;
     public Label updateEmailLabel;
@@ -41,12 +41,8 @@ public class MyAccountController {
     public TextField newPasswordTextField;
     public TextField confirmPasswordTextField;
     public JFXButton updatePasswordBtn;
-
     private StackPane context;
-
     private User currentUser;
-
-    private final Validator validator = new Validator();
 
     public void initialize() {
 
@@ -108,8 +104,8 @@ public class MyAccountController {
                             return;
                         }
 
-                        SessionManager.getInstance().setCurrentUser(updatedUser);
-                        currentUser = updatedUser;
+                        SessionManager.getInstance().refetchCurrentUser();
+                        currentUser = SessionManager.getInstance().getCurrentUser();
 
                         updateEmailNewEmailTextfield.setText("");
                         updateEmailVerificationCodeTextfield.setText("");
@@ -141,8 +137,8 @@ public class MyAccountController {
                             return;
                         }
 
-                        SessionManager.getInstance().setCurrentUser(updatedUser);
-                        currentUser = updatedUser;
+                        SessionManager.getInstance().refetchCurrentUser();
+                        currentUser = SessionManager.getInstance().getCurrentUser();
 
                         currentPasswordTextField.setText("");
                         newPasswordTextField.setText("");
@@ -160,7 +156,7 @@ public class MyAccountController {
 
     private String hiddenEmail(String email) {
 
-        if(email == null || email.length()  <= 3) {
+        if (email == null || email.length() <= 3) {
             return email;
         }
 
@@ -189,8 +185,8 @@ public class MyAccountController {
             return;
         }
 
-        SessionManager.getInstance().setCurrentUser(updatedUser);
-        currentUser = updatedUser;
+        SessionManager.getInstance().refetchCurrentUser();
+        currentUser = SessionManager.getInstance().getCurrentUser();
         updateUsernameBtn.setDisable(true);
     }
 

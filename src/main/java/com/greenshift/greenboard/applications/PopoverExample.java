@@ -1,6 +1,5 @@
 package com.greenshift.greenboard.applications;
 
-import com.greenshift.greenboard.controllers.ProfilePopoverController;
 import com.greenshift.greenboard.singletons.SessionManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +7,6 @@ import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;

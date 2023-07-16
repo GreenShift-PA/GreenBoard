@@ -1,189 +1,199 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDialog?>
-<?import com.jfoenix.controls.JFXToggleButton?>
-<?import java.lang.String?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
-<StackPane fx:id="root" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.settings.MyAccountController">
-   <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-         <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="799.0" spacing="10.0">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-               <children>
-                  <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/megumi.png" />
-                     </image>
-                  </ImageView>
-                  <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="225.0">
-                     <children>
-                        <Label text="Prefered name" textFill="#252525" />
-                        <HBox spacing="10.0">
-                           <children>
-                              <TextField fx:id="usernameTextField" prefHeight="26.0" prefWidth="208.0" styleClass="text-field-input" />
-                              <JFXButton fx:id="updateUsernameBtn" disable="true" prefHeight="30.0" prefWidth="128.0" styleClass="setting-button" text="update" />
-                           </children>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" xmlns="http://javafx.com/javafx/19"
+           fx:controller="com.greenshift.greenboard.controllers.settings.MyAccountController">
+    <children>
+        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="799.0" spacing="10.0">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                    <children>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/megumi.png"/>
+                            </image>
+                        </ImageView>
+                        <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="225.0">
+                            <children>
+                                <Label text="Prefered name" textFill="#252525"/>
+                                <HBox spacing="10.0">
+                                    <children>
+                                        <TextField fx:id="usernameTextField" prefHeight="26.0" prefWidth="208.0"
+                                                   styleClass="text-field-input"/>
+                                        <JFXButton fx:id="updateUsernameBtn" disable="true" prefHeight="30.0"
+                                                   prefWidth="128.0" styleClass="setting-button" text="update"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <VBox>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="799.0" spacing="10.0">
+                            <children>
+                                <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="225.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label text="Account security">
+                                            <font>
+                                                <Font size="18.0"/>
+                                            </font>
+                                        </Label>
+                                        <Separator prefHeight="63.0" prefWidth="779.0"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0"/>
+                            </padding>
                         </HBox>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <VBox>
-               <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="799.0" spacing="10.0">
-                     <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="225.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label text="Account security">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Separator prefHeight="63.0" prefWidth="779.0" />
-                           </children>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
-                     <children>
-                        <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label styleClass="setting-label" text="Email" />
-                              <Label fx:id="emailLabel" styleClass="setting-description" text="address@email.com" textFill="#434343">
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <JFXButton fx:id="changeEmailBtn" prefWidth="118.0" styleClass="setting-button" text="Change email" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
-                     <children>
-                        <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label styleClass="setting-label" text="Password" />
-                              <Label styleClass="setting-description" text="Set a password to login to your account" textFill="#434343">
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <JFXButton fx:id="changePasswordBtn" prefHeight="33.0" prefWidth="161.0" styleClass="setting-button" text="Change password" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
-                     <children>
-                        <VBox disable="true" prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label styleClass="setting-label" text="2-step verification" />
-                              <Label styleClass="setting-description" text="Add an additional layer of security to your account during login" textFill="#434343">
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <JFXToggleButton fx:id="set2FAToggle" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <VBox>
-               <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="799.0" spacing="10.0">
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
-                     <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="225.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label text="Account security">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Separator prefHeight="63.0" prefWidth="779.0" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefWidth="799.0">
-                     <children>
-                        <VBox prefHeight="54.0" prefWidth="681.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label styleClass="setting-label" text="Support access" />
-                              <Label prefHeight="54.0" prefWidth="681.0" styleClass="setting-description" text="Grant Greenboard support temporary access to your account so we can troubleshoot problems or recover content on your behalf. You can revoke access at any time." textFill="#434343" wrapText="true">
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <JFXToggleButton fx:id="setSupportAccessToggle" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
-                     <children>
-                        <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label styleClass="setting-label" text="Log out of all devices" />
-                              <Label styleClass="setting-description" text="Log out of all other active sessions on other devices besides this one" textFill="#434343">
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <JFXButton fx:id="logoutSessionsBtn" prefWidth="118.0" styleClass="setting-button" text="Log out" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
-                     <children>
-                        <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label text="Delete my account">
-                                 <styleClass>
-                                    <String fx:value="delete" />
-                                    <String fx:value="setting-label" />
-                                 </styleClass>
-                              </Label>
-                              <Label styleClass="setting-description" text="Permanently delete the account and remove access from all organizations" textFill="#434343">
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <JFXButton fx:id="deleteAccountBtn" prefWidth="118.0" styleClass="setting-button" text="Change email" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <JFXDialog fx:id="dialog" />
-         </children>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
-      </VBox>
-   </children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
+                            <children>
+                                <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label styleClass="setting-label" text="Email"/>
+                                        <Label fx:id="emailLabel" styleClass="setting-description"
+                                               text="address@email.com" textFill="#434343">
+                                            <font>
+                                                <Font size="11.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <JFXButton fx:id="changeEmailBtn" prefWidth="118.0" styleClass="setting-button"
+                                           text="Change email"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
+                            <children>
+                                <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label styleClass="setting-label" text="Password"/>
+                                        <Label styleClass="setting-description"
+                                               text="Set a password to login to your account" textFill="#434343">
+                                            <font>
+                                                <Font size="11.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <JFXButton fx:id="changePasswordBtn" prefHeight="33.0" prefWidth="161.0"
+                                           styleClass="setting-button" text="Change password"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
+                            <children>
+                                <VBox disable="true" prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label styleClass="setting-label" text="2-step verification"/>
+                                        <Label styleClass="setting-description"
+                                               text="Add an additional layer of security to your account during login"
+                                               textFill="#434343">
+                                            <font>
+                                                <Font size="11.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <JFXToggleButton fx:id="set2FAToggle"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <VBox>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="799.0" spacing="10.0">
+                            <padding>
+                                <Insets bottom="10.0" top="10.0"/>
+                            </padding>
+                            <children>
+                                <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="225.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label text="Account security">
+                                            <font>
+                                                <Font size="18.0"/>
+                                            </font>
+                                        </Label>
+                                        <Separator prefHeight="63.0" prefWidth="779.0"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefWidth="799.0">
+                            <children>
+                                <VBox prefHeight="54.0" prefWidth="681.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label styleClass="setting-label" text="Support access"/>
+                                        <Label prefHeight="54.0" prefWidth="681.0" styleClass="setting-description"
+                                               text="Grant Greenboard support temporary access to your account so we can troubleshoot problems or recover content on your behalf. You can revoke access at any time."
+                                               textFill="#434343" wrapText="true">
+                                            <font>
+                                                <Font size="11.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <JFXToggleButton fx:id="setSupportAccessToggle"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
+                            <children>
+                                <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label styleClass="setting-label" text="Log out of all devices"/>
+                                        <Label styleClass="setting-description"
+                                               text="Log out of all other active sessions on other devices besides this one"
+                                               textFill="#434343">
+                                            <font>
+                                                <Font size="11.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <JFXButton fx:id="logoutSessionsBtn" prefWidth="118.0" styleClass="setting-button"
+                                           text="Log out"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="799.0">
+                            <children>
+                                <VBox prefHeight="100.0" prefWidth="282.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label text="Delete my account">
+                                            <styleClass>
+                                                <String fx:value="delete"/>
+                                                <String fx:value="setting-label"/>
+                                            </styleClass>
+                                        </Label>
+                                        <Label styleClass="setting-description"
+                                               text="Permanently delete the account and remove access from all organizations"
+                                               textFill="#434343">
+                                            <font>
+                                                <Font size="11.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <JFXButton fx:id="deleteAccountBtn" prefWidth="118.0" styleClass="setting-button"
+                                           text="Change email"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <JFXDialog fx:id="dialog"/>
+            </children>
+            <padding>
+                <Insets top="10.0"/>
+            </padding>
+        </VBox>
+    </children>
 </StackPane>

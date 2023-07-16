@@ -148,7 +148,6 @@ public abstract class BaseCrudService<T> {
                         response.append(line);
                     }
                     reader.close();
-                    System.out.println(response);
                     System.out.println("Error occurred: " + responseCode);
                 }
             }

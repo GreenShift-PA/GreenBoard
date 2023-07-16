@@ -23,7 +23,6 @@ public class KanbanItem extends ReadOnlyObjectWrapper<KanbanItem> {
     private String group;
 
 
-
     private Task task;
 
     public KanbanItem(String title, String icon, LocalDateTime dueDate, Project project) {
@@ -59,7 +58,7 @@ public class KanbanItem extends ReadOnlyObjectWrapper<KanbanItem> {
     }
 
     public static KanbanItem fromTask(Task task) {
-        if(task == null) return null;
+        if (task == null) return null;
 
         KanbanItem item = new KanbanItem(task.getName(), task.getIcon(), task.getDueDate(), task.getProject());
         item.setUsers(task.getAssignedUsers());

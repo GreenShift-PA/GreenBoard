@@ -1,9 +1,7 @@
 package com.greenshift.greenboard.singletons;
 
-import com.greenshift.greenboard.models.entities.Role;
 import com.greenshift.greenboard.models.entities.User;
 import com.greenshift.greenboard.services.AuthService;
-import com.greenshift.greenboard.services.UserService;
 
 import java.util.Objects;
 
@@ -22,6 +20,17 @@ public class SessionManager {
         return instance;
     }
 
+    public static void main(String[] args) {
+        SessionManager sessionManager = SessionManager.getInstance();
+        sessionManager.useDummyUser();
+        System.out.println("SessionManager.main: " + sessionManager);
+        System.out.println("SessionManager.main: " + sessionManager.isAuthenticated());
+        System.out.println("SessionManager.main: " + sessionManager.getCurrentUser());
+        sessionManager.logout();
+        System.out.println("SessionManager.main: " + sessionManager.isAuthenticated());
+        System.out.println("SessionManager.main: " + sessionManager.getCurrentUser());
+    }
+
     public boolean isAuthenticated() {
         return currentUser != null;
     }
@@ -34,6 +43,17 @@ public class SessionManager {
         this.currentUser = user;
     }
 
+    public void refetchCurrentUser() {
+        if (currentUser == null) {
+            return;
+        }
+        currentUser = AuthService.fetchUser(this.token);
+
+        if (currentUser == null) {
+            logout();
+        }
+    }
+
     public void useDummyUser() {
         String token = AuthService.authenticate("admin@mail.com", "Respons11");
         User user = AuthService.fetchUser(token);
@@ -43,23 +63,10 @@ public class SessionManager {
     public void logout() {
         AuthService.logout(token);
         currentUser = null;
-/*
         SceneManager.getInstance().switchToScene("/fxml/auth-view.fxml", null, null, scene -> {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/styles.css")).toExternalForm());
         });
-*/
 
-    }
-
-    public static void main(String[] args) {
-        SessionManager sessionManager = SessionManager.getInstance();
-        sessionManager.useDummyUser();
-        System.out.println("SessionManager.main: " + sessionManager);
-        System.out.println("SessionManager.main: " + sessionManager.isAuthenticated());
-        System.out.println("SessionManager.main: " + sessionManager.getCurrentUser());
-        sessionManager.logout();
-        System.out.println("SessionManager.main: " + sessionManager.isAuthenticated());
-        System.out.println("SessionManager.main: " + sessionManager.getCurrentUser());
     }
 
     public String getToken() {

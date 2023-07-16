@@ -14,12 +14,12 @@ import javafx.scene.paint.Color;
 import net.synedra.validatorfx.Check;
 import net.synedra.validatorfx.Validator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class CreateOrganizationController {
 
+    private final Validator validator = new Validator();
     public TextField nameTextField;
     public ColorPicker colorPicker;
     public TextField colorTextField;
@@ -27,9 +27,6 @@ public class CreateOrganizationController {
     public JFXComboBox usersComboBox;
     public JFXButton createButton;
     public HBox learnButton;
-
-    private final Validator validator = new Validator();
-
     private List<User> users;
 
     public void initialize() {
@@ -97,7 +94,7 @@ public class CreateOrganizationController {
 
     private boolean createOrganization() {
 
-        if(!validator.validate()) {
+        if (!validator.validate()) {
             return false;
         }
 
@@ -112,7 +109,6 @@ public class CreateOrganizationController {
         OrganizationService organizationService = new OrganizationService("http://localhost:3000/api/v1/organizations");
         Organization createdOrganization = organizationService.create(newOrganization, Organization.class);
 
-        System.out.println(createdOrganization);
 
         if (createdOrganization != null) {
             System.out.println("Organization created successfully.");

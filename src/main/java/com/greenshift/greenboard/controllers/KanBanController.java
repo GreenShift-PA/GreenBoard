@@ -33,12 +33,10 @@ import java.util.stream.Collectors;
 
 public class KanBanController {
 
+    private final TaskService taskService = new TaskService("http://localhost:3000/api/v1/tasks");
     @FXML
     public HBox columns;
-
     public HashMap<TaskStatus, JFXListView<KanbanItem>> columnsListViews;
-
-    private final TaskService taskService = new TaskService("http://localhost:3000/api/v1/tasks");
     private String draggedItemId;
     private JFXListView<KanbanItem> draggedFrom;
     private Rectangle dragFeedback;
@@ -61,6 +59,7 @@ public class KanBanController {
     }
 
     private void setupDragAndDropSupport(JFXListView<KanbanItem> listView, TaskStatus taskStatus) {
+
         listView.setOnDragDetected(e -> {
             KanbanItem item = listView.getSelectionModel().getSelectedItem();
             if (item == null) {
@@ -155,6 +154,16 @@ public class KanBanController {
                     Task draggedTask = item.getTask();
                     draggedTask.setStatus(taskStatus);
                     taskService.update(draggedTask, Task.class);
+
+                    SessionManager.getInstance().refetchCurrentUser();
+                    SceneManager.getInstance().switchToScene("/fxml/main-view.fxml", null, null, scene -> {
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/styles.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/kanban.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/hierarchy.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/settings.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/organization.css")).toExternalForm());
+                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/popover.css")).toExternalForm());
+                    });
                 }
             }
 
@@ -313,8 +322,6 @@ public class KanBanController {
             System.out.println("No user logged in");
             return;
         }
-
-        System.out.println(currentUser.getLastTeam());
 
         if (currentUser.getLastTeam() == null) {
             System.out.println("No team assigned to the current user");

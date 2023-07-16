@@ -34,7 +34,7 @@ public class KanBanColumnController {
         context = root;
 
         newHBox.setOnMouseClicked(e -> {
-            if(SceneManager.getInstance().getMainController() != null)
+            if (SceneManager.getInstance().getMainController() != null)
                 context = SceneManager.getInstance().getMainController().context;
 
             SceneManager.getInstance().setCurrentTaskStatus(taskStatus.getName());

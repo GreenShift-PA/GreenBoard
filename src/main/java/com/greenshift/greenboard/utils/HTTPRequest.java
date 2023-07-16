@@ -13,12 +13,11 @@ import java.util.Map;
 
 public class HTTPRequest {
     private static final int MAX_RESPONSE_LENGTH = 1024;
-
+    protected final Gson gson;
     private final String url;
     private final String method;
     private final String requestBody;
     private final Map<String, String> headers;
-    protected final Gson gson;
 
     private HTTPRequest(Builder builder) {
         this.url = builder.url;

@@ -6,7 +6,6 @@ import com.greenshift.greenboard.models.entities.User;
 import com.greenshift.greenboard.services.TeamService;
 import com.greenshift.greenboard.services.UserService;
 import com.jfoenix.controls.JFXButton;
-import javafx.collections.ListChangeListener;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -21,18 +20,14 @@ import java.util.List;
 
 public class CreateTeamController {
 
+    private final Validator validator = new Validator();
     public TextField nameTextField;
     public ColorPicker colorPicker;
     public TextField colorTextField;
     public TextArea descriptionTextArea;
     public JFXButton createButton;
     public HBox learnButton;
-
     public CheckComboBox<User> userCheckComboBox;
-
-    private final Validator validator = new Validator();
-
-
     private List<User> users;
 
     public void initialize() {

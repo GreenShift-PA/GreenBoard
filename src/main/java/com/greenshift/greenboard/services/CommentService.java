@@ -25,10 +25,10 @@ public class CommentService extends BaseCrudService<Comment> {
         Comment comment = commentService.getById(commentId, Comment.class);
         System.out.println("Comment: " + comment);
 
-        if(allUsers.size() > 0){
+        if (allUsers.size() > 0) {
             comment.setAuthor(allUsers.get(0));
         }
-        if(allTasks.size() > 0){
+        if (allTasks.size() > 0) {
             comment.setTask(allTasks.get(0));
         }
         comment.setMentions(allUsers);

@@ -2,6 +2,7 @@ package com.greenshift.greenboard.models.entities;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Team {
@@ -10,11 +11,11 @@ public class Team {
     private String description;
     private String icon;
     private String color;
-    private List<Project> projects;
-    private List<User> members;
+    private List<Project> projects = new ArrayList<>();
+    private List<User> members = new ArrayList<>();
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private List<Task> tasks;
+    private List<Task> tasks = new ArrayList<>();
     private User createdBy;
     private String createdById;
     private List<Tag> tags;
@@ -27,6 +28,13 @@ public class Team {
         this.description = description;
         this.icon = icon;
         this.color = color;
+
+        this.projects = new ArrayList<>();
+        this.members = new ArrayList<>();
+        this.tasks = new ArrayList<>();
+        this.tags = new ArrayList<>();
+        this.pinnedUsers = new ArrayList<>();
+
     }
 
     public String getId() {

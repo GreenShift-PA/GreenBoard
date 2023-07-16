@@ -5,16 +5,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-
-<HBox fx:id="root" alignment="CENTER_LEFT" maxHeight="100.0" prefHeight="21.0" prefWidth="250.0" spacing="10.0" style="-fx-background-radius: 5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.CustomContextMenuViewController">
-   <FontIcon fx:id="leftIcon" fill="#7c7c7c" iconLiteral="fas-chevron-right" HBox.hgrow="NEVER" />
-    <Label fx:id="menuItemLabel" prefHeight="15.0" prefWidth="211.0" text="Dernière modification par Eh Eh 29 avr. 2021 à 15:00" textFill="#7c7c7c" wrapText="true" HBox.hgrow="ALWAYS">
-      <font>
-         <Font name="Roboto" size="13.0" />
-      </font></Label>
-   <FontIcon fx:id="rightIcon" fill="#7c7c7c" iconLiteral="fas-chevron-right" HBox.hgrow="NEVER" />
-   <padding>
-      <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-   </padding>
+<HBox xmlns:fx="http://javafx.com/fxml/1" fx:id="root" alignment="CENTER_LEFT" maxHeight="100.0" prefHeight="21.0" prefWidth="250.0"
+      spacing="10.0" style="-fx-background-radius: 5;" xmlns="http://javafx.com/javafx/19"
+      fx:controller="com.greenshift.greenboard.controllers.CustomContextMenuViewController">
+    <FontIcon fx:id="leftIcon" fill="#7c7c7c" iconLiteral="fas-chevron-right" HBox.hgrow="NEVER"/>
+    <Label fx:id="menuItemLabel" prefHeight="15.0" prefWidth="211.0"
+           text="Dernière modification par Eh Eh 29 avr. 2021 à 15:00" textFill="#7c7c7c" wrapText="true"
+           HBox.hgrow="ALWAYS">
+        <font>
+            <Font name="Roboto" size="13.0"/>
+        </font>
+    </Label>
+    <FontIcon fx:id="rightIcon" fill="#7c7c7c" iconLiteral="fas-chevron-right" HBox.hgrow="NEVER"/>
+    <padding>
+        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0"/>
+    </padding>
 
 </HBox>

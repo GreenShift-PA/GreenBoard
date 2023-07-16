@@ -17,15 +17,6 @@ public class SceneManager {
     private Scene previousScene;
     private MainController mainController;
     private String currentTaskStatus = "TODO";
-
-    public StackPane getContext() {
-        return context;
-    }
-
-    public void setContext(StackPane context) {
-        this.context = context;
-    }
-
     private StackPane context;
 
     private SceneManager() {
@@ -40,6 +31,14 @@ public class SceneManager {
         return instance;
     }
 
+    public StackPane getContext() {
+        return context;
+    }
+
+    public void setContext(StackPane context) {
+        this.context = context;
+    }
+
     public void init(Stage stage) {
         this.primaryStage = stage;
     }
@@ -47,7 +46,7 @@ public class SceneManager {
     public void switchToScene(String fxmlPath, Consumer<FXMLLoader> loaderConsumer, Consumer<Stage> stageConsumer, Consumer<Scene> sceneConsumer) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            if(loaderConsumer != null) {
+            if (loaderConsumer != null) {
                 loaderConsumer.accept(loader);
             }
             Parent root = loader.load();
