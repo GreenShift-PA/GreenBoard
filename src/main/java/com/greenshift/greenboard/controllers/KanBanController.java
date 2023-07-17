@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 
 public class KanBanController {
 
-    private final TaskService taskService = new TaskService("http://localhost:3000/api/v1/tasks");
+    private final TaskService taskService = new TaskService();
     @FXML
     public HBox columns;
     public HashMap<TaskStatus, JFXListView<KanbanItem>> columnsListViews;
@@ -150,10 +150,10 @@ public class KanBanController {
                     sourceItems.remove(item);
                     targetItems.add(item);
                     success = true;
-                    TaskService taskService = new TaskService("http://localhost:3000/api/v1/tasks");
+                    TaskService taskService = new TaskService();
                     Task draggedTask = item.getTask();
                     draggedTask.setStatus(taskStatus);
-                    taskService.update(draggedTask, Task.class);
+                    taskService.update(draggedTask);
 
                     SessionManager.getInstance().refetchCurrentUser();
                     SceneManager.getInstance().switchToScene("/fxml/main-view.fxml", null, null, scene -> {
@@ -315,7 +315,7 @@ public class KanBanController {
     private void buildKanbanColumns() {
         this.columnsListViews = new HashMap<>();
 
-        TeamService teamService = new TeamService("http://localhost:3000/api/v1/teams");
+        TeamService teamService = new TeamService();
 
         User currentUser = SessionManager.getInstance().getCurrentUser();
         if (currentUser == null) {

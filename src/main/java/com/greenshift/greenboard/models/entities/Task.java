@@ -1,10 +1,11 @@
 package com.greenshift.greenboard.models.entities;
 
+import com.greenshift.greenboard.interfaces.IVisitor;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Task {
-    private String id;
+public class Task extends BaseEntity {
     private String name;
     private String description;
     private String icon;
@@ -31,7 +32,7 @@ public class Task {
     private List<User> pinnedUsers;
 
     public Task(String id, String name, String description, String icon, String color, Project project, String projectId, Team team, String teamId, TaskStatus status, String priority, String type, LocalDateTime dueDate, LocalDateTime createdAt, LocalDateTime updatedAt, List<User> assignedUsers, User author, String authorId, List<Comment> comments, List<Tag> tags, List<TaskAttachment> attachments, List<Task> subTasks, Task parentTask, String parentTaskId, List<User> pinnedUsers) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.description = description;
         this.icon = icon;
@@ -56,14 +57,6 @@ public class Task {
         this.parentTask = parentTask;
         this.parentTaskId = parentTaskId;
         this.pinnedUsers = pinnedUsers;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -287,6 +280,11 @@ public class Task {
                 ", parentTaskId='" + parentTaskId + '\'' +
                 ", pinnedUsers=" + pinnedUsers +
                 '}';
+    }
+
+    @Override
+    public void accept(IVisitor visitor) {
+        visitor.visit(this);
     }
 
     // taskBuilder

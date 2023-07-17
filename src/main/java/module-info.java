@@ -23,6 +23,7 @@ module com.greenshift.greenboard {
     requires eu.hansolo.tilesfx;
     requires com.google.gson;
     requires com.jfoenix;
+    requires com.google.api.services.translate;
 
     opens com.greenshift.greenboard to javafx.fxml;
     opens com.greenshift.greenboard.applications to javafx.fxml;
@@ -38,4 +39,7 @@ module com.greenshift.greenboard {
     exports com.greenshift.greenboard.services;
     exports com.greenshift.greenboard.converters;
     opens com.greenshift.greenboard.converters to javafx.fxml;
+    exports com.greenshift.greenboard.utils;
+
+
 }

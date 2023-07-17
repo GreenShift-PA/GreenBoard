@@ -95,9 +95,9 @@ public class MyAccountController {
 
                     updateEmailBtn.setOnAction(e -> {
                         System.out.println("MyAccountController.initialize: updateEmailBtn clicked");
-                        UserService userService = new UserService("http://localhost:3000/api/v1/users");
+                        UserService userService = new UserService();
                         currentUser.setEmail(updateEmailNewEmailTextfield.getText());
-                        User updatedUser = userService.update(currentUser, User.class);
+                        User updatedUser = userService.update(currentUser);
 
                         if (updatedUser == null) {
                             System.out.println("MyAccountController.initialize: updatedUser is null");
@@ -128,9 +128,9 @@ public class MyAccountController {
 
                     updatePasswordBtn.setOnAction(e -> {
                         System.out.println("MyAccountController.initialize: updatePasswordBtn clicked");
-                        UserService userService = new UserService("http://localhost:3000/api/v1/users");
+                        UserService userService = new UserService();
                         currentUser.setPassword(newPasswordTextField.getText());
-                        User updatedUser = userService.update(currentUser, User.class);
+                        User updatedUser = userService.update(currentUser);
 
                         if (updatedUser == null) {
                             System.out.println("MyAccountController.initialize: updatedUser is null");
@@ -176,9 +176,9 @@ public class MyAccountController {
             return;
         }
 
-        UserService userService = new UserService("http://localhost:3000/api/v1/users");
+        UserService userService = new UserService();
         currentUser.setUsername(usernameTextField.getText());
-        User updatedUser = userService.update(currentUser, User.class);
+        User updatedUser = userService.update(currentUser);
 
         if (updatedUser == null) {
             System.out.println("MyAccountController.updateUsername: updatedUser is null");

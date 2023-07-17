@@ -1,9 +1,10 @@
 package com.greenshift.greenboard.models.entities;
 
+import com.greenshift.greenboard.interfaces.IVisitor;
+
 import java.util.List;
 
-public class Role {
-    private String id;
+public class Role extends BaseEntity {
     private String name;
     private String description;
     private List<User> users;
@@ -11,14 +12,6 @@ public class Role {
     public Role(String name, String description) {
         this.name = name;
         this.description = description;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -53,6 +46,11 @@ public class Role {
                 ", description='" + description + '\'' +
                 ", users=" + users +
                 '}';
+    }
+
+    @Override
+    public void accept(IVisitor visitor) {
+        visitor.visit(this);
     }
 
     // Constructor

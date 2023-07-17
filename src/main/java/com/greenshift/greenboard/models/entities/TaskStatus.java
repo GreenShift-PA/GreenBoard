@@ -1,25 +1,18 @@
 package com.greenshift.greenboard.models.entities;
 
+import com.greenshift.greenboard.interfaces.IVisitor;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
-public class TaskStatus {
-    private String id;
+public class TaskStatus extends BaseEntity {
     private String name;
     private String color;
     private String icon;
     private List<Task> tasks;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -93,5 +86,10 @@ public class TaskStatus {
     @Override
     public int hashCode() {
         return Objects.hash(getId());
+    }
+
+    @Override
+    public void accept(IVisitor visitor) {
+        visitor.visit(this);
     }
 }

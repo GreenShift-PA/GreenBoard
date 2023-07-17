@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class OrganizationSettingsController {
     private final Validator validator = new Validator();
-    private final OrganizationService organizationService = new OrganizationService("http://localhost:3000/api/v1/organizations");
+    private final OrganizationService organizationService = new OrganizationService();
     public TextField organizationNameTextField;
     public TextField organizationColorTextField;
     public ColorPicker organizationColorPicker;
@@ -167,7 +167,7 @@ public class OrganizationSettingsController {
             organization.setIcon(organizationIconTextField.getText());
 
 
-        organizationService.update(organization, Organization.class);
+        organizationService.update(organization);
         SessionManager.getInstance().refetchCurrentUser();
 
         SceneManager.getInstance().switchToScene("/fxml/main-view.fxml", null, null, scene -> {

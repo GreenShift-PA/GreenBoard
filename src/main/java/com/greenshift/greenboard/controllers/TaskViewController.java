@@ -25,7 +25,7 @@ public class TaskViewController {
     public ComboBox<User> assignComboBox = new ComboBox<>();
     public DatePicker dueDatePicker = new DatePicker();
     public ComboBox<Project> projectComboBox = new ComboBox<>();
-    TaskService taskService = new TaskService("http://localhost:3000/api/v1/tasks");
+    TaskService taskService = new TaskService();
     List<Project> projects = new ArrayList<>();
     List<User> users = new ArrayList<>();
     private Task task;
@@ -47,14 +47,14 @@ public class TaskViewController {
             if (!newValue) {
                 String nameValue = nameTextField.getText().isEmpty() ? "Untitled" : nameTextField.getText();
                 task.setName(nameValue);
-                task = taskService.update(task, Task.class);
+                task = taskService.update(task);
             }
         });
 
         descriptionTextArea.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 task.setDescription(descriptionTextArea.getText());
-                task = taskService.update(task, Task.class);
+                task = taskService.update(task);
             }
         });
 
@@ -75,7 +75,7 @@ public class TaskViewController {
                 // Code to set the due date of the task
 
                 task.setDueDate(dueDatePicker.getValue().atStartOfDay());
-                task = taskService.update(task, Task.class);
+                task = taskService.update(task);
 
                 dueHBox.getChildren().clear();
                 dueHBox.getChildren().add(dueLabel);
@@ -119,7 +119,7 @@ public class TaskViewController {
                 .build();
 
 
-        task = taskService.create(task, Task.class);
+        task = taskService.create(task);
     }
 
     public void initWithTask(Task task) {

@@ -1,12 +1,13 @@
 package com.greenshift.greenboard.models.entities;
 
 
+import com.greenshift.greenboard.interfaces.IVisitor;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Team {
-    private String id;
+public class Team extends BaseEntity {
     private String name;
     private String description;
     private String icon;
@@ -35,14 +36,6 @@ public class Team {
         this.tags = new ArrayList<>();
         this.pinnedUsers = new ArrayList<>();
 
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -185,6 +178,11 @@ public class Team {
                 ", organization=" + organization +
                 ", organizationId='" + organizationId + '\'' +
                 '}';
+    }
+
+    @Override
+    public void accept(IVisitor visitor) {
+       visitor.visit(this);
     }
 
     // Constructor

@@ -1,10 +1,11 @@
 package com.greenshift.greenboard.models.entities;
 
+import com.greenshift.greenboard.interfaces.IVisitor;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Comment {
-    private String id;
+public class Comment extends BaseEntity {
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -18,12 +19,8 @@ public class Comment {
     private List<Comment> answers;
     private List<User> pinnedUsers;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public Comment(String id) {
+        super(id);
     }
 
     public String getContent() {
@@ -139,6 +136,11 @@ public class Comment {
                 ", answers=" + answers +
                 ", pinnedUsers=" + pinnedUsers +
                 '}';
+    }
+
+    @Override
+    public void accept(IVisitor visitor) {
+        visitor.visit(this);
     }
 
     // Constructor

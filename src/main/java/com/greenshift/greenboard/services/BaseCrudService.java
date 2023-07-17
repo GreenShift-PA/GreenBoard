@@ -2,15 +2,18 @@ package com.greenshift.greenboard.services;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.greenshift.greenboard.adapters.LocalDateTimeTypeAdapter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public abstract class BaseCrudService<T> {
 
@@ -23,7 +26,7 @@ public abstract class BaseCrudService<T> {
         this.BASE_URL = baseUrl;
     }
 
-    public T getById(String id, Class<T> entityType) {
+    public T getById(String id) {
         try {
             URL url = new URL(BASE_URL + "/" + id);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -42,7 +45,7 @@ public abstract class BaseCrudService<T> {
 
                 System.out.println(response);
 
-                return gson.fromJson(response.toString(), entityType);
+                return gson.fromJson(response.toString(), getTypeToken().getType());
             }
         } catch (IOException e) {
             System.out.println("Error occurred: " + e.getMessage());
@@ -51,7 +54,7 @@ public abstract class BaseCrudService<T> {
         return null;
     }
 
-    public T create(T entity, Class<T> entityType) {
+    public T create(T entity) {
         if (entity == null) {
             return null;
         }
@@ -84,7 +87,7 @@ public abstract class BaseCrudService<T> {
                     }
 
                     reader.close();
-                    return gson.fromJson(response.toString(), entityType);
+                    return gson.fromJson(response.toString(), getTypeToken().getType());
                 }
                 default -> {
                     BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
@@ -105,7 +108,7 @@ public abstract class BaseCrudService<T> {
         return null;
     }
 
-    public T update(T entity, Class<T> entityType) {
+    public T update(T entity) {
         if (entity == null) {
             return null;
         }
@@ -138,7 +141,7 @@ public abstract class BaseCrudService<T> {
                     }
 
                     reader.close();
-                    return gson.fromJson(response.toString(), entityType);
+                    return gson.fromJson(response.toString(), getTypeToken().getType());
                 }
                 default -> {
                     BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
@@ -158,7 +161,7 @@ public abstract class BaseCrudService<T> {
         return null;
     }
 
-    public T delete(String id, Class<T> entityType) {
+    public T delete(String id) {
         try {
             URL url = new URL(BASE_URL + "/" + id);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -175,7 +178,7 @@ public abstract class BaseCrudService<T> {
                 }
                 reader.close();
 
-                return gson.fromJson(response.toString(), entityType);
+                return gson.fromJson(response.toString(), getTypeToken().getType());
             }
         } catch (IOException e) {
             System.out.println("Error occurred: " + e.getMessage());
@@ -184,7 +187,8 @@ public abstract class BaseCrudService<T> {
         return null;
     }
 
-    public T[] getAll(Class<T[]> entityArrayType) {
+
+    public T[] getAll() {
         try {
             URL url = new URL(BASE_URL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -201,7 +205,7 @@ public abstract class BaseCrudService<T> {
                 }
                 reader.close();
 
-                return gson.fromJson(response.toString(), entityArrayType);
+                return gson.fromJson(response.toString(), getArrayTypeToken().getType());
             }
         } catch (IOException e) {
             System.out.println("Error occurred: " + e.getMessage());
@@ -210,5 +214,9 @@ public abstract class BaseCrudService<T> {
         return null;
     }
 
+
     protected abstract String getEntityId(T entity);
+
+    protected abstract TypeToken<T> getTypeToken();
+    protected abstract TypeToken<T[]> getArrayTypeToken();
 }

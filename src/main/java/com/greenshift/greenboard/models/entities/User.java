@@ -1,11 +1,12 @@
 package com.greenshift.greenboard.models.entities;
 
+import com.greenshift.greenboard.interfaces.IVisitor;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-public class User {
-    private String id;
+public class User extends BaseEntity {
     private String firebaseId;
     private LocalDateTime lastLogin;
     private boolean active;
@@ -68,14 +69,6 @@ public class User {
         this.pinnedTasks = List.of();
         this.pinnedComments = List.of();
         this.pinnedOrganizations = List.of();
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getFirebaseId() {
@@ -410,5 +403,10 @@ public class User {
                 ", pinnedOrganizations=" + pinnedOrganizations +
                 ", activities=" + activities +
                 '}';
+    }
+
+    @Override
+    public void accept(IVisitor visitor) {
+       visitor.visit(this);
     }
 }

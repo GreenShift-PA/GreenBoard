@@ -64,10 +64,10 @@ public class CreateNewOrganizationController {
             } else {
                 User currentUser = SessionManager.getInstance().getCurrentUser();
 
-                OrganizationService organizationService = new OrganizationService("http://localhost:3000/api/v1/organizations");
-                TeamService teamService = new TeamService("http://localhost:3000/api/v1/teams");
+                OrganizationService organizationService = new OrganizationService();
+                TeamService teamService = new TeamService();
                 Team newTeam = new Team("Me", "Just me and me", "anto-user", null);
-                newTeam = teamService.create(newTeam, Team.class);
+                newTeam = teamService.create(newTeam);
 
                 List<User> members = new ArrayList<>();
                 members.add(currentUser);
@@ -76,10 +76,10 @@ public class CreateNewOrganizationController {
                 List<Team> teams = new ArrayList<>();
                 teams.add(newTeam);
                 organization.setTeams(teams);
-                Organization createdOrganization = organizationService.create(organization, Organization.class);
+                Organization createdOrganization = organizationService.create(organization);
 
                 newTeam.setOrganization(createdOrganization);
-                teamService.update(newTeam, Team.class);
+                teamService.update(newTeam);
 
                 if (createdOrganization != null) {
 

@@ -1,18 +1,21 @@
 package com.greenshift.greenboard.services;
 
+import com.google.gson.reflect.TypeToken;
 import com.greenshift.greenboard.models.entities.User;
+
+import java.util.ArrayList;
 
 public class UserService extends BaseCrudService<User> {
 
-    public UserService(String baseUrl) {
-        super(baseUrl);
+    public UserService() {
+        super("http://localhost:3000/api/v1/users");
     }
 
     public static void main(String[] args) {
-        UserService userService = new UserService("http://localhost:3000/api/v1/users");
+        UserService userService = new UserService();
         String userId = "0c3a60af-b13e-40b8-ab58-edca130ec2b4";
 
-        User user = userService.getById(userId, User.class);
+        User user = userService.getById(userId);
         System.out.println("User: " + user);
 
 /*
@@ -42,5 +45,15 @@ public class UserService extends BaseCrudService<User> {
     @Override
     protected String getEntityId(User entity) {
         return entity.getId();
+    }
+
+    @Override
+    protected TypeToken<User> getTypeToken() {
+        return new TypeToken<>() {};
+    }
+
+    @Override
+    protected TypeToken<User[]> getArrayTypeToken() {
+        return new TypeToken<>() {};
     }
 }

@@ -140,8 +140,8 @@ public class MainController {
 
                         currentUser.setlastTeam(team);
                         currentUser.setlastTeamId(team.getId());
-                        UserService userService = new UserService("http://localhost:3000/api/v1/users");
-                        User updatedUser = userService.update(currentUser, User.class);
+                        UserService userService = new UserService();
+                        User updatedUser = userService.update(currentUser);
                         if (updatedUser != null) {
                             currentUser = updatedUser;
                             SessionManager.getInstance().refetchCurrentUser();
@@ -173,8 +173,8 @@ public class MainController {
                 TreeItem<LeftMenuItem> teamItem = new TreeItem<>(new LeftMenuItem(team.getName(), "mdi2f-file-document-outline"));
                 teamItem.getChildren().add(new TreeItem<>(
                         new LeftMenuItem("Tasks", "mdi2f-file-document-outline", (item) -> {
-                            UserService userService = new UserService("http://localhost:3000/api/v1/users");
-                            User updatedUser = userService.update(currentUser, User.class);
+                            UserService userService = new UserService();
+                            User updatedUser = userService.update(currentUser);
                             if (updatedUser != null) {
                                 currentUser = updatedUser;
                                 SessionManager.getInstance().setCurrentUser(currentUser);

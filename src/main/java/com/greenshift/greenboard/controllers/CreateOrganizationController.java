@@ -31,8 +31,8 @@ public class CreateOrganizationController {
 
     public void initialize() {
 
-        UserService userService = new UserService("http://localhost:3000/api/v1/users");
-        users = Arrays.stream(userService.getAll(User[].class)).toList();
+        UserService userService = new UserService();
+        users = Arrays.stream(userService.getAll()).toList();
 
         usersComboBox.getItems().addAll(users);
 
@@ -106,8 +106,8 @@ public class CreateOrganizationController {
         System.out.println("Learn more: " + learnButton);
 
         Organization newOrganization = new Organization(nameTextField.getText(), descriptionTextArea.getText(), "mdi2p-plus-circle", colorTextField.getText());
-        OrganizationService organizationService = new OrganizationService("http://localhost:3000/api/v1/organizations");
-        Organization createdOrganization = organizationService.create(newOrganization, Organization.class);
+        OrganizationService organizationService = new OrganizationService();
+        Organization createdOrganization = organizationService.create(newOrganization);
 
 
         if (createdOrganization != null) {

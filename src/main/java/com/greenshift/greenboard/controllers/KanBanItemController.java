@@ -83,6 +83,9 @@ public class KanBanItemController {
         }
 
         root.setOnMouseClicked(e -> {
+
+            if (e.getButton().toString().equals("SECONDARY")) return;
+
             if (SceneManager.getInstance().getMainController() != null) {
                 context = SceneManager.getInstance().getMainController().context;
                 dialog = SceneManager.getInstance().getMainController().dialog;

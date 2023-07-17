@@ -89,8 +89,8 @@ public class CreateProjectController {
         System.out.println("Learn more: " + learnButton);
 
         Project newProject = new Project(nameTextField.getText(), descriptionTextArea.getText(), "mdi2p-plus-circle", colorTextField.getText());
-        ProjectService projectService = new ProjectService("http://localhost:3000/api/v1/projects");
-        Project createdProject = projectService.create(newProject, Project.class);
+        ProjectService projectService = new ProjectService();
+        Project createdProject = projectService.create(newProject);
 
         if (createdProject != null) {
             System.out.println("Project created successfully.");

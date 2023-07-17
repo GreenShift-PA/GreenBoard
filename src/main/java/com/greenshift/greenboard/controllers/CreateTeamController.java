@@ -32,8 +32,8 @@ public class CreateTeamController {
 
     public void initialize() {
 
-        UserService userService = new UserService("http://localhost:3000/api/v1/users");
-        users = Arrays.stream(userService.getAll(User[].class)).toList();
+        UserService userService = new UserService();
+        users = Arrays.stream(userService.getAll()).toList();
 
         userCheckComboBox.setConverter(new UserCheckComboBoxConverter());
         userCheckComboBox.getItems().addAll(users);
@@ -108,8 +108,8 @@ public class CreateTeamController {
 
         Team newTeam = new Team(nameTextField.getText(), descriptionTextArea.getText(), "mdi2p-plus-circle", colorTextField.getText());
         newTeam.setMembers(userCheckComboBox.getCheckModel().getCheckedItems());
-        TeamService teamService = new TeamService("http://localhost:3000/api/v1/teams");
-        Team createdTeam = teamService.create(newTeam, Team.class);
+        TeamService teamService = new TeamService();
+        Team createdTeam = teamService.create(newTeam);
 
         System.out.println(createdTeam);
 
