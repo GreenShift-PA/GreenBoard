@@ -3,16 +3,20 @@ package com.greenshift.greenboard.exporters;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.greenshift.greenboard.adapters.LocalDateTimeTypeAdapter;
+import com.greenshift.greenboard.interfaces.IDumper;
 import com.greenshift.greenboard.models.entities.*;
-import com.greenshift.greenboard.services.UserService;
+import com.greenshift.greenboard.services.*;
+import com.greenshift.greenboard.singletons.ApplicationManager;
 import com.greenshift.greenboard.singletons.SessionManager;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
-public class JsonExporter extends BaseExporter {
+public class JsonExporter extends BaseExporter implements IDumper {
 
     private Gson gson;
     private JsonArray jsonArray = new JsonArray();
@@ -163,5 +167,52 @@ public class JsonExporter extends BaseExporter {
     @Override
     public void clear() {
         jsonArray = new JsonArray();
+    }
+
+    @Override
+    public String dump() {
+        System.out.println("[JSON] Dumping all data...");
+
+        CommentService commentService = new CommentService();
+        OrganizationService organizationService = new OrganizationService();
+        ProjectService projectService = new ProjectService();
+        RoleService roleService = new RoleService();
+        TagService tagService = new TagService();
+        TaskService taskService = new TaskService();
+        UserService userService = new UserService();
+
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.add("metadata", new JsonObject());
+
+        jsonObject.get("metadata").getAsJsonObject().addProperty("name", ApplicationManager.getInstance().getName());
+        jsonObject.get("metadata").getAsJsonObject().addProperty("author", ApplicationManager.getInstance().getAuthor());
+        jsonObject.get("metadata").getAsJsonObject().addProperty("version", ApplicationManager.getInstance().getVersion().toString());
+
+        jsonObject.add("data", new JsonObject());
+
+        jsonObject.get("data").getAsJsonObject().add("users", dumpEntities( Arrays.stream(userService.getAll()).toList()));
+        jsonObject.get("data").getAsJsonObject().add("comments", dumpEntities( Arrays.stream(commentService.getAll()).toList()));
+        jsonObject.get("data").getAsJsonObject().add("organizations", dumpEntities( Arrays.stream(organizationService.getAll()).toList()));
+        jsonObject.get("data").getAsJsonObject().add("projects", dumpEntities( Arrays.stream(projectService.getAll()).toList()));
+        jsonObject.get("data").getAsJsonObject().add("roles", dumpEntities( Arrays.stream(roleService.getAll()).toList()));
+        jsonObject.get("data").getAsJsonObject().add("tags", dumpEntities( Arrays.stream(tagService.getAll()).toList()));
+        jsonObject.get("data").getAsJsonObject().add("tasks", dumpEntities( Arrays.stream(taskService.getAll()).toList()));
+
+        System.out.println("[JSON] Dumping all data done.");
+
+        return jsonObject.toString();
+    }
+
+    @Override
+    public String getExtension() {
+        return "json";
+    }
+
+    public static JsonArray dumpEntities(List<? extends BaseEntity> entities) {
+        JsonExporter jsonExporter = new JsonExporter();
+        for (BaseEntity e : entities) {
+            e.accept(jsonExporter);
+        }
+        return jsonExporter.getJsonArray();
     }
 }

@@ -1,9 +1,11 @@
 package com.greenshift.greenboard.models.entities;
 
 import com.greenshift.greenboard.interfaces.IVisitor;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.util.List;
 
+@XmlRootElement
 public class Role extends BaseEntity {
     private String name;
     private String description;
@@ -12,6 +14,9 @@ public class Role extends BaseEntity {
     public Role(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public Role() {
     }
 
     public String getName() {

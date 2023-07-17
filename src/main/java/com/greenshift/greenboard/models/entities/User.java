@@ -1,11 +1,13 @@
 package com.greenshift.greenboard.models.entities;
 
 import com.greenshift.greenboard.interfaces.IVisitor;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+@XmlRootElement
 public class User extends BaseEntity {
     private String firebaseId;
     private LocalDateTime lastLogin;
@@ -69,6 +71,9 @@ public class User extends BaseEntity {
         this.pinnedTasks = List.of();
         this.pinnedComments = List.of();
         this.pinnedOrganizations = List.of();
+    }
+
+    public User() {
     }
 
     public String getFirebaseId() {
@@ -307,16 +312,9 @@ public class User extends BaseEntity {
         return lastTeam;
     }
 
-    public void setLastTeam(Team lastTeam) {
-        this.lastTeam = lastTeam;
-    }
 
     public void setlastTeam(Team lastTeam) {
         this.lastTeam = lastTeam;
-    }
-
-    public String getlastTeamId() {
-        return lastTeamId;
     }
 
     public void setlastTeamId(String lastTeamId) {

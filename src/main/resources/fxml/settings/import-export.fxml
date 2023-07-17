@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.settings.ImportExportController">
+   <children>
+      <VBox prefHeight="48.0" prefWidth="600.0" spacing="10.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <children>
+            <Label styleClass="setting-label" text="You can easily import data from any of the following sources" />
+            <Label styleClass="setting-description" text="If your data is located somewhere we don't support yet, you can try to add a plugin to support that format !">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <FlowPane fx:id="importExportOptionFlow" hgap="10.0" prefHeight="281.0" prefWidth="600.0" vgap="10.0" />
+      <VBox prefHeight="48.0" prefWidth="600.0" spacing="10.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <children>
+            <Label styleClass="setting-label" text="You can easily import data from any of the following sources" />
+            <Label styleClass="setting-description" text="If your data is located somewhere we don't support yet, you can try to add a plugin to support that format !">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER_LEFT" prefHeight="109.0" prefWidth="779.0">
+         <children>
+            <Label styleClass="setting-label" text="Path" textFill="#252525" />
+            <Label fx:id="statusMessageLabel" textFill="#252525">
+               <styleClass>
+                  <String fx:value="setting-description" />
+                  <String fx:value="success" />
+               </styleClass>
+            </Label>
+            <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="759.0" spacing="10.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <TextField fx:id="importExportPathTextField" prefHeight="26.0" prefWidth="208.0" styleClass="text-field-input" HBox.hgrow="ALWAYS" />
+                  <FontIcon fx:id="selectDirectoryDialogIcon" iconColor="#616161" iconLiteral="mdi2f-folder-open" iconSize="24" />
+                  <JFXButton fx:id="exportButton" disable="true" prefHeight="30.0" prefWidth="128.0" styleClass="setting-button" text="export" />
+               </children>
+            </HBox>
+            <Label fx:id="errorMessageLabel" textFill="#252525">
+               <styleClass>
+                  <String fx:value="setting-description" />
+                  <String fx:value="delete" />
+               </styleClass></Label>
+            <Label styleClass="setting-description" text="Please make sure the path is accessible and free of reading and writing permissions" textFill="#252525" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</VBox>

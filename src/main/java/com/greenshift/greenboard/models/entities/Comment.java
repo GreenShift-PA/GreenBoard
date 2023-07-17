@@ -1,10 +1,12 @@
 package com.greenshift.greenboard.models.entities;
 
 import com.greenshift.greenboard.interfaces.IVisitor;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@XmlRootElement
 public class Comment extends BaseEntity {
     private String content;
     private LocalDateTime createdAt;
@@ -21,6 +23,9 @@ public class Comment extends BaseEntity {
 
     public Comment(String id) {
         super(id);
+    }
+
+    public Comment() {
     }
 
     public String getContent() {

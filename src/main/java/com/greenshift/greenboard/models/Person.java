@@ -1,58 +1,51 @@
 package com.greenshift.greenboard.models;
 
-import java.time.LocalDateTime;
-import java.util.List;
 
+import com.greenshift.greenboard.services.UserService;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Person {
-    public String name;
-    public int age;
-    List<Person> friends;
-    private LocalDateTime createdAt;
+    private String name;
+    private int age;
 
-    public Person(String name, int age, List<Person> friends, LocalDateTime createdAt) {
+    private Person spouse;
+
+    public UserService getUserService() {
+        return userService;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    private UserService userService;
+
+    public Person() {
+        userService = new UserService();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public Person getSpouse() {
+        return spouse;
+    }
+
+    public void setSpouse(Person spouse) {
+        this.spouse = spouse;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
         this.age = age;
-        this.friends = friends;
-        this.createdAt = createdAt;
     }
-
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    public Person(String name, int age, LocalDateTime createdAt) {
-        this.name = name;
-        this.age = age;
-        this.createdAt = createdAt;
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", friends=" + friends +
-                ", createdAt=" + createdAt +
-                '}';
-    }
-
-    public List<Person> getFriends() {
-        return friends;
-    }
-
-    public void setFriends(List<Person> friends) {
-        this.friends = friends;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    // Getters and setters (or use lombok annotations)
-
 }

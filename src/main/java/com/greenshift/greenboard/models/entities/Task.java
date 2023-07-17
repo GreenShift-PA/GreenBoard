@@ -1,10 +1,12 @@
 package com.greenshift.greenboard.models.entities;
 
 import com.greenshift.greenboard.interfaces.IVisitor;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@XmlRootElement
 public class Task extends BaseEntity {
     private String name;
     private String description;
@@ -57,6 +59,9 @@ public class Task extends BaseEntity {
         this.parentTask = parentTask;
         this.parentTaskId = parentTaskId;
         this.pinnedUsers = pinnedUsers;
+    }
+
+    public Task() {
     }
 
     public String getName() {

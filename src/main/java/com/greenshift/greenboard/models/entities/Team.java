@@ -2,10 +2,13 @@ package com.greenshift.greenboard.models.entities;
 
 
 import com.greenshift.greenboard.interfaces.IVisitor;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+@XmlRootElement
 
 public class Team extends BaseEntity {
     private String name;
@@ -36,6 +39,9 @@ public class Team extends BaseEntity {
         this.tags = new ArrayList<>();
         this.pinnedUsers = new ArrayList<>();
 
+    }
+
+    public Team() {
     }
 
     public String getName() {

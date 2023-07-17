@@ -3,280 +3,250 @@
 <?import com.jfoenix.controls.JFXDialog?>
 <?import com.jfoenix.controls.JFXDialogLayout?>
 <?import com.jfoenix.controls.JFXTreeView?>
-<?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity"
-           minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1320.0"
-           xmlns="http://javafx.com/javafx/19" fx:controller="com.greenshift.greenboard.controllers.MainController">
+
+<StackPane fx:id="root" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.greenshift.greenboard.controllers.MainController">
     <children>
         <JFXDialog fx:id="dialog" prefHeight="600" prefWidth="800" styleClass="custom-jfx-dialog">
             <JFXDialogLayout prefWidth="800" styleClass="custom-jfx">
                 <body>
-                    <fx:include source="settings-view.fxml"/>
+                    <fx:include source="settings-view.fxml" />
                 </body>
             </JFXDialogLayout>
         </JFXDialog>
-        <SplitPane fx:id="split" dividerPositions="0.2" focusTraversable="true" layoutX="10.0" layoutY="10.0"
-                   prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+        <SplitPane fx:id="split" dividerPositions="0.2" focusTraversable="true" layoutX="10.0" layoutY="10.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
             <items>
-                <AnchorPane prefHeight="818.0" prefWidth="8.0" styleClass="light-gray"
-                            SplitPane.resizableWithParent="false">
+                <AnchorPane prefHeight="818.0" prefWidth="8.0" styleClass="light-gray" SplitPane.resizableWithParent="false">
                     <children>
-                        <VBox layoutX="60.0" layoutY="22.0" prefHeight="55.0" prefWidth="414.0" spacing="10.0"
-                              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                              AnchorPane.topAnchor="0.0">
+                        <VBox layoutX="60.0" layoutY="22.0" prefHeight="55.0" prefWidth="414.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <HBox fx:id="profileMenuButton" alignment="CENTER_LEFT" prefHeight="42.0"
-                                      prefWidth="207.0" spacing="10.0" styleClass="cta">
+                                <HBox fx:id="profileMenuButton" alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="207.0" spacing="10.0" styleClass="cta">
                                     <children>
                                         <VBox fx:id="organizationIconVBox" alignment="CENTER_LEFT">
                                             <children>
-                                                <FontIcon fx:id="organizationIcon"
-                                                          iconLiteral="mdi2a-alpha-g-box-outline" iconSize="24"/>
+                                                <FontIcon fx:id="organizationIcon" iconLiteral="mdi2a-alpha-g-box-outline" iconSize="24" />
                                             </children>
                                         </VBox>
                                         <Label fx:id="organizationNameLabel" text="Organization">
                                             <font>
-                                                <Font name="Roboto Bold" size="13.0"/>
+                                                <Font name="Roboto Bold" size="13.0" />
                                             </font>
                                         </Label>
                                         <VBox alignment="CENTER" prefHeight="27.0" prefWidth="21.0">
                                             <children>
-                                                <FontAwesomeIconView fill="#a8a8a8" glyphName="ANGLE_UP"/>
-                                                <FontAwesomeIconView fill="#a8a8a8" glyphName="ANGLE_DOWN"/>
+                                                <FontAwesomeIconView fill="#a8a8a8" glyphName="ANGLE_UP" />
+                                                <FontAwesomeIconView fill="#a8a8a8" glyphName="ANGLE_DOWN" />
                                             </children>
                                         </VBox>
                                     </children>
                                     <padding>
-                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                     </padding>
                                 </HBox>
                             </children>
                         </VBox>
-                        <VBox layoutY="62.0" prefHeight="120.0" prefWidth="207.0" AnchorPane.bottomAnchor="0.0"
-                              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
+                        <VBox layoutY="62.0" prefHeight="120.0" prefWidth="207.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
                             <padding>
-                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                             </padding>
                             <children>
-                                <HBox fx:id="leftMenuSearchButton" alignment="CENTER_LEFT" prefHeight="27.0"
-                                      prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;"
-                                      styleClass="cta">
+                                <HBox fx:id="leftMenuSearchButton" alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                                     <children>
-                                        <FontAwesomeIconView fill="#a8a8a8" glyphName="SEARCH"/>
+                                        <FontAwesomeIconView fill="#a8a8a8" glyphName="SEARCH" />
                                         <Label text="Rechercher" textAlignment="RIGHT" textFill="#b2b2b2">
                                             <font>
-                                                <Font name="Roboto" size="13.0"/>
+                                                <Font name="Roboto" size="13.0" />
                                             </font>
                                         </Label>
                                     </children>
                                     <padding>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                 </HBox>
-                                <HBox fx:id="leftMenuHistoryButton" alignment="CENTER_LEFT" prefHeight="27.0"
-                                      prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;"
-                                      styleClass="cta">
+                                <HBox fx:id="leftMenuHistoryButton" alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                                     <children>
-                                        <FontAwesomeIconView fill="#a8a8a8" glyphName="CLOCK_ALT"/>
+                                        <FontAwesomeIconView fill="#a8a8a8" glyphName="CLOCK_ALT" />
                                         <Label text="Dernières Modifications" textAlignment="RIGHT" textFill="#b2b2b2">
                                             <font>
-                                                <Font name="Roboto" size="13.0"/>
+                                                <Font name="Roboto" size="13.0" />
                                             </font>
                                         </Label>
                                     </children>
                                     <padding>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                 </HBox>
-                                <HBox fx:id="leftMenuAllTeams" alignment="CENTER_LEFT" layoutX="15.0" layoutY="50.0"
-                                      prefHeight="27.0" prefWidth="197.0" spacing="10.0"
-                                      style="-fx-background-radius: 5;" styleClass="cta">
+                                <HBox fx:id="leftMenuAllTeams" alignment="CENTER_LEFT" layoutX="15.0" layoutY="50.0" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                                     <children>
-                                        <FontAwesomeIconView fill="#a8a8a8" glyphName="BUILDING_ALT"/>
+                                        <FontAwesomeIconView fill="#a8a8a8" glyphName="BUILDING_ALT" />
                                         <Label text="Toutes les équipes" textAlignment="RIGHT" textFill="#b2b2b2">
                                             <font>
-                                                <Font name="Roboto" size="13.0"/>
+                                                <Font name="Roboto" size="13.0" />
                                             </font>
                                         </Label>
                                     </children>
                                     <padding>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                 </HBox>
-                                <HBox fx:id="leftMenuSettingsButton" alignment="CENTER_LEFT"
-                                      onMouseClicked="#openSettings" prefHeight="27.0" prefWidth="197.0" spacing="10.0"
-                                      style="-fx-background-radius: 5;" styleClass="cta">
+                                <HBox fx:id="leftMenuSettingsButton" alignment="CENTER_LEFT" onMouseClicked="#openSettings" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                                     <children>
-                                        <FontAwesomeIconView fill="#a8a8a8" glyphName="GEAR"/>
+                                        <FontAwesomeIconView fill="#a8a8a8" glyphName="GEAR" />
                                         <Label text="Paramètres" textAlignment="RIGHT" textFill="#b2b2b2">
                                             <font>
-                                                <Font name="Roboto" size="13.0"/>
+                                                <Font name="Roboto" size="13.0" />
                                             </font>
                                         </Label>
                                     </children>
                                     <padding>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                 </HBox>
-                                <HBox fx:id="leftMenuNewOrganizationButton" alignment="CENTER_LEFT"
-                                      onMouseClicked="#openNewOrganization" prefHeight="27.0" prefWidth="197.0"
-                                      spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
+                                <HBox fx:id="leftMenuNewOrganizationButton" alignment="CENTER_LEFT" onMouseClicked="#openNewOrganization" prefHeight="27.0" prefWidth="197.0" spacing="10.0" style="-fx-background-radius: 5;" styleClass="cta">
                                     <children>
-                                        <FontIcon iconColor="#a8a8a8" iconLiteral="mdi2p-plus-circle"/>
+                                        <FontIcon iconColor="#a8a8a8" iconLiteral="mdi2p-plus-circle" />
                                         <Label text="New Organization" textAlignment="RIGHT" textFill="#b2b2b2">
                                             <font>
-                                                <Font name="Roboto" size="13.0"/>
+                                                <Font name="Roboto" size="13.0" />
                                             </font>
                                         </Label>
                                     </children>
                                     <padding>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                 </HBox>
                             </children>
                         </VBox>
-                        <VBox layoutY="212.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0"
-                              AnchorPane.rightAnchor="0.0">
+                        <VBox layoutY="212.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <children>
                                 <VBox prefWidth="260.0">
                                     <padding>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                     <children>
-                                        <HBox alignment="CENTER_LEFT" prefHeight="22.0" prefWidth="197.0"
-                                              spacing="10.0">
+                                        <HBox alignment="CENTER_LEFT" prefHeight="22.0" prefWidth="197.0" spacing="10.0">
                                             <padding>
-                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                             </padding>
                                             <children>
-                                                <Label prefHeight="14.0" prefWidth="68.0" text="Équipe"
-                                                       textFill="#e1e1e1">
+                                                <Label prefHeight="14.0" prefWidth="68.0" text="Équipe" textFill="#e1e1e1">
                                                     <font>
-                                                        <Font name="Roboto" size="11.0"/>
+                                                        <Font name="Roboto" size="11.0" />
                                                     </font>
                                                 </Label>
-                                                <HBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="127.0"
-                                                      spacing="5.0" HBox.hgrow="ALWAYS">
+                                                <HBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="127.0" spacing="5.0" HBox.hgrow="ALWAYS">
                                                     <children>
-                                                        <FontAwesomeIconView fx:id="teamMenuButton" fill="#b2b2b2"
-                                                                             glyphName="ELLIPSIS_H"/>
-                                                        <FontIcon fx:id="createNewTeamButton" iconColor="#a8a8a8"
-                                                                  iconLiteral="anto-plus" iconSize="16"
-                                                                  onMouseClicked="#openNewTeam"/>
+                                                        <FontAwesomeIconView fx:id="teamMenuButton" fill="#b2b2b2" glyphName="ELLIPSIS_H" />
+                                                        <FontIcon fx:id="createNewTeamButton" iconColor="#a8a8a8" iconLiteral="anto-plus" iconSize="16" onMouseClicked="#openNewTeam" />
                                                     </children>
                                                     <padding>
-                                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                     </padding>
                                                 </HBox>
                                             </children>
                                         </HBox>
                                         <VBox fx:id="teamTreeViewVBox" prefHeight="213.0" prefWidth="250.0">
                                             <children>
-                                                <JFXTreeView fx:id="teamTreeView" VBox.vgrow="ALWAYS"/>
+                                                <JFXTreeView fx:id="teamTreeView" VBox.vgrow="ALWAYS" />
                                             </children>
                                         </VBox>
                                     </children>
                                 </VBox>
                                 <VBox prefWidth="207.0" visible="false">
                                     <padding>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                     <children>
-                                        <HBox alignment="CENTER_LEFT" prefHeight="22.0" prefWidth="197.0"
-                                              spacing="10.0">
+                                        <HBox alignment="CENTER_LEFT" prefHeight="22.0" prefWidth="197.0" spacing="10.0">
                                             <padding>
-                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                             </padding>
                                             <children>
-                                                <Label prefHeight="14.0" prefWidth="68.0" text="Projets"
-                                                       textFill="#e1e1e1">
+                                                <Label prefHeight="14.0" prefWidth="68.0" text="Projets" textFill="#e1e1e1">
                                                     <font>
-                                                        <Font name="Roboto" size="11.0"/>
+                                                        <Font name="Roboto" size="11.0" />
                                                     </font>
                                                 </Label>
-                                                <HBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="127.0"
-                                                      spacing="5.0" HBox.hgrow="ALWAYS">
+                                                <HBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="127.0" spacing="5.0" HBox.hgrow="ALWAYS">
                                                     <children>
-                                                        <FontAwesomeIconView fx:id="projectMenuButton" fill="#b2b2b2"
-                                                                             glyphName="ELLIPSIS_H"/>
-                                                        <FontIcon fx:id="createNewProjectButton" iconColor="#a8a8a8"
-                                                                  iconLiteral="anto-plus" iconSize="16"
-                                                                  onMouseClicked="#openNewProject"/>
+                                                        <FontAwesomeIconView fx:id="projectMenuButton" fill="#b2b2b2" glyphName="ELLIPSIS_H" />
+                                                        <FontIcon fx:id="createNewProjectButton" iconColor="#a8a8a8" iconLiteral="anto-plus" iconSize="16" onMouseClicked="#openNewProject" />
                                                     </children>
                                                     <padding>
-                                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                     </padding>
                                                 </HBox>
                                             </children>
                                         </HBox>
                                         <VBox fx:id="projectTreeViewVBox" prefHeight="213.0" prefWidth="209.0">
                                             <children>
-                                                <JFXTreeView fx:id="projectTreeView" VBox.vgrow="ALWAYS"/>
+                                                <JFXTreeView fx:id="projectTreeView" VBox.vgrow="ALWAYS" />
                                             </children>
                                         </VBox>
                                     </children>
                                 </VBox>
                             </children>
                         </VBox>
-                        <VBox fillWidth="false" layoutY="695.0" prefHeight="123.0" prefWidth="207.0"
-                              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                              AnchorPane.topAnchor="695.0">
+                        <VBox fillWidth="false" layoutY="695.0" prefHeight="123.0" prefWidth="207.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="695.0">
                             <children>
-                                <HBox alignment="CENTER_LEFT" prefHeight="17.0" prefWidth="207.0" spacing="10.0">
+                                <HBox fx:id="LeftMenuPluginsButton" alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="535.0" spacing="10.0" styleClass="cta">
                                     <padding>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                     <children>
-                                        <FontAwesomeIconView fill="#b2b2b2" glyphName="PLUG"/>
+                                        <FontAwesomeIconView fill="#b2b2b2" glyphName="PLUG" />
                                         <Label text="Plugins" textFill="#a49f9f" wrapText="true">
                                             <font>
-                                                <Font name="Roboto" size="11.0"/>
+                                                <Font name="Roboto" size="11.0" />
                                             </font>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox alignment="CENTER_LEFT" prefHeight="17.0" prefWidth="207.0" spacing="10.0">
+                                <HBox fx:id="LeftMenuImportButton" alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="779.0" spacing="10.0" styleClass="cta">
                                     <padding>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                     <children>
-                                        <FontAwesomeIconView fill="#b2b2b2" glyphName="DOWNLOAD"/>
+                                        <FontAwesomeIconView fill="#b2b2b2" glyphName="DOWNLOAD" />
                                         <Label text="Importer" textFill="#a49f9f" wrapText="true">
                                             <font>
-                                                <Font name="Roboto" size="11.0"/>
+                                                <Font name="Roboto" size="11.0" />
                                             </font>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox alignment="CENTER_LEFT" prefHeight="17.0" prefWidth="207.0" spacing="10.0">
+                                <HBox fx:id="LeftMenuExportButton" alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="535.0" spacing="10.0" styleClass="cta">
                                     <padding>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                     <children>
-                                        <FontAwesomeIconView fill="#b2b2b2" glyphName="SHARE"/>
+                                        <FontAwesomeIconView fill="#b2b2b2" glyphName="SHARE" />
                                         <Label text="Exporter" textFill="#a49f9f" wrapText="true">
                                             <font>
-                                                <Font name="Roboto" size="11.0"/>
+                                                <Font name="Roboto" size="11.0" />
                                             </font>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox alignment="CENTER_LEFT" prefHeight="17.0" prefWidth="207.0" spacing="10.0">
+                                <HBox fx:id="LeftMenuTrashButton" alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="697.0" spacing="10.0" styleClass="cta">
                                     <padding>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                     <children>
-                                        <FontAwesomeIconView fill="#b2b2b2" glyphName="TRASH"/>
+                                        <FontAwesomeIconView fill="#b2b2b2" glyphName="TRASH" />
                                         <Label text="Corbeille" textFill="#a49f9f" wrapText="true">
                                             <font>
-                                                <Font name="Roboto" size="11.0"/>
+                                                <Font name="Roboto" size="11.0" />
                                             </font>
                                         </Label>
                                     </children>
@@ -287,57 +257,51 @@
                 </AnchorPane>
                 <AnchorPane fx:id="rightContent" style="-fx-background-color: white;">
                     <children>
-                        <fx:include fx:id="kanban" source="kanban.fxml"/>
+                        <fx:include fx:id="kanban" source="kanban.fxml" />
                     </children>
                 </AnchorPane>
             </items>
             <StackPane.margin>
-                <Insets top="40.0"/>
+                <Insets top="40.0" />
             </StackPane.margin>
         </SplitPane>
-        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                    prefHeight="40.0" prefWidth="1320.0">
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="1320.0">
             <children>
-                <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="357.0"
-                      spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                      AnchorPane.topAnchor="0.0">
+                <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="357.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                     <children>
-                        <Label text="Dernière modification: Il y a 1j"/>
-                        <Label text="Partager"/>
-                        <FontAwesomeIconView fill="#b2b2b2" glyphName="CLOCK_ALT"/>
-                        <FontAwesomeIconView fill="#b2b2b2" glyphName="STAR"/>
-                        <FontAwesomeIconView fill="#b2b2b2" glyphName="ELLIPSIS_H"/>
+                        <Label text="Dernière modification: Il y a 1j" />
+                        <Label text="Partager" />
+                        <FontAwesomeIconView fill="#b2b2b2" glyphName="CLOCK_ALT" />
+                        <FontAwesomeIconView fill="#b2b2b2" glyphName="STAR" />
+                        <FontAwesomeIconView fill="#b2b2b2" glyphName="ELLIPSIS_H" />
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="207.0" spacing="10.0"
-                      AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1113.0"
-                      AnchorPane.topAnchor="0.0">
+                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="207.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1113.0" AnchorPane.topAnchor="0.0">
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                     <children>
-                        <FontAwesomeIconView fx:id="topBarHamburger" fill="#b2b2b2" glyphName="BARS"
-                                             onMouseClicked="#toggleLeftMenu" text=""/>
-                        <FontAwesomeIconView glyphName="CHEVRON_LEFT"/>
-                        <FontAwesomeIconView fill="#b2b2b2" glyphName="CHEVRON_RIGHT"/>
-                        <FontAwesomeIconView glyphName="PLUS"/>
+                        <FontAwesomeIconView fx:id="topBarHamburger" fill="#b2b2b2" glyphName="BARS" onMouseClicked="#toggleLeftMenu" text="" />
+                        <FontAwesomeIconView glyphName="CHEVRON_LEFT" />
+                        <FontAwesomeIconView fill="#b2b2b2" glyphName="CHEVRON_RIGHT" />
+                        <FontAwesomeIconView glyphName="PLUS" />
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                             <children>
-                                <FontAwesomeIconView fill="#b2b2b2" glyphName="CHECK"/>
+                                <FontAwesomeIconView fill="#b2b2b2" glyphName="CHECK" />
                                 <Label text="Green Shift" textFill="#b2b2b2">
                                     <font>
-                                        <Font size="11.0"/>
+                                        <Font size="11.0" />
                                     </font>
                                     <cursor>
-                                        <Cursor fx:constant="TEXT"/>
+                                        <Cursor fx:constant="TEXT" />
                                     </cursor>
                                 </Label>
                             </children>
                             <padding>
-                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                             </padding>
                         </HBox>
                     </children>

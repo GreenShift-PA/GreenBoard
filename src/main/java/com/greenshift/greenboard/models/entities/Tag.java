@@ -1,10 +1,12 @@
 package com.greenshift.greenboard.models.entities;
 
 import com.greenshift.greenboard.interfaces.IVisitor;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@XmlRootElement
 public class Tag extends BaseEntity {
     private String name;
     private String color;
@@ -14,6 +16,9 @@ public class Tag extends BaseEntity {
     private List<Team> teams;
     private List<Project> projects;
     private List<Organization> organizations;
+
+    public Tag() {
+    }
 
     public String getName() {
         return name;

@@ -2,7 +2,9 @@ package com.greenshift.greenboard.models.entities;
 
 import com.greenshift.greenboard.interfaces.IVisitable;
 import com.greenshift.greenboard.interfaces.IVisitor;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public abstract class BaseEntity implements IVisitable {
     protected String id;
 

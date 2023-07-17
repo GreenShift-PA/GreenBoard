@@ -1,11 +1,13 @@
 package com.greenshift.greenboard.models.entities;
 
 import com.greenshift.greenboard.interfaces.IVisitor;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+@XmlRootElement
 public class TaskStatus extends BaseEntity {
     private String name;
     private String color;
@@ -13,6 +15,9 @@ public class TaskStatus extends BaseEntity {
     private List<Task> tasks;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    public TaskStatus() {
+    }
 
     public String getName() {
         return name;

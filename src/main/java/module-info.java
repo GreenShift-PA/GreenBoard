@@ -24,12 +24,19 @@ module com.greenshift.greenboard {
     requires com.google.gson;
     requires com.jfoenix;
     requires com.google.api.services.translate;
+    requires java.xml.bind;
+    requires com.sun.xml.bind;
+    requires java.activation;
+    requires jakarta.xml.bind;
+    requires com.sun.xml.bind.core;
 
     opens com.greenshift.greenboard to javafx.fxml;
     opens com.greenshift.greenboard.applications to javafx.fxml;
     opens com.greenshift.greenboard.controllers to javafx.fxml;
-    opens com.greenshift.greenboard.models to com.google.gson;
-    opens com.greenshift.greenboard.models.entities to com.google.gson;
+    opens com.greenshift.greenboard.models to com.google.gson, jakarta.xml.bind;
+    opens com.greenshift.greenboard.models.entities to com.google.gson, jakarta.xml.bind;
+    opens com.greenshift.greenboard.services to com.google.gson;
+
 
     exports com.greenshift.greenboard;
     exports com.greenshift.greenboard.applications;
@@ -40,6 +47,8 @@ module com.greenshift.greenboard {
     exports com.greenshift.greenboard.converters;
     opens com.greenshift.greenboard.converters to javafx.fxml;
     exports com.greenshift.greenboard.utils;
+    opens com.greenshift.greenboard.controllers.settings to javafx.fxml;
 
 
 }
+

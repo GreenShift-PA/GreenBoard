@@ -1,9 +1,11 @@
 package com.greenshift.greenboard.models.entities;
 
 import com.greenshift.greenboard.interfaces.IVisitor;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.time.LocalDateTime;
 
+@XmlRootElement
 public class Activity extends BaseEntity {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -14,8 +16,9 @@ public class Activity extends BaseEntity {
 
     public Activity(String id) {
         super(id);
+    }
 
-        // ActivityService activityService = new ActivityService();
+    public Activity() {
     }
 
     @Override
