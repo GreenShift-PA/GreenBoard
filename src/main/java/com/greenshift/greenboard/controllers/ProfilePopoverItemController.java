@@ -43,6 +43,7 @@ public class ProfilePopoverItemController {
                 currentUser.setLastOrganizationId(item.getOrganization().getId());
                 UserService userService = new UserService();
                 userService.update(currentUser);
+
                 SessionManager.getInstance().refetchCurrentUser();
 
                 SceneManager.getInstance().switchToScene("/fxml/main-view.fxml", null, null, scene -> {

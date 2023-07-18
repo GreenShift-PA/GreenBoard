@@ -20,6 +20,9 @@ public class ProfilePopoverItem extends ReadOnlyObjectWrapper<ProfilePopoverItem
     }
 
     public ProfilePopoverItem(Organization organization) {
+        if(organization == null) {
+            return;
+        }
         this.id = organization.getId();
         this.icon = organization.getIcon();
         this.name = organization.getName();

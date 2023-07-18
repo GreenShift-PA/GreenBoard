@@ -313,7 +313,7 @@ public class User extends BaseEntity {
     }
 
 
-    public void setlastTeam(Team lastTeam) {
+    public void setLastTeam(Team lastTeam) {
         this.lastTeam = lastTeam;
     }
 

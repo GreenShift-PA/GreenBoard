@@ -1,10 +1,13 @@
 package com.greenshift.greenboard.controllers;
 
 import com.greenshift.greenboard.converters.UserCheckComboBoxConverter;
+import com.greenshift.greenboard.models.entities.Project;
 import com.greenshift.greenboard.models.entities.Team;
 import com.greenshift.greenboard.models.entities.User;
 import com.greenshift.greenboard.services.TeamService;
 import com.greenshift.greenboard.services.UserService;
+import com.greenshift.greenboard.singletons.SceneManager;
+import com.greenshift.greenboard.singletons.SessionManager;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextArea;
@@ -15,8 +18,10 @@ import net.synedra.validatorfx.Check;
 import net.synedra.validatorfx.Validator;
 import org.controlsfx.control.CheckComboBox;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class CreateTeamController {
 
@@ -100,14 +105,15 @@ public class CreateTeamController {
             return false;
         }
 
-        System.out.println("Creating team...");
-        System.out.println("Name: " + nameTextField.getText());
-        System.out.println("Color: " + colorTextField.getText());
-        System.out.println("Description: " + descriptionTextArea.getText());
-        System.out.println("Learn more: " + learnButton);
-
         Team newTeam = new Team(nameTextField.getText(), descriptionTextArea.getText(), "mdi2p-plus-circle", colorTextField.getText());
+        List<Project> projects = new ArrayList<>();
+        if(SessionManager.getInstance().getCurrentUser().getLastProject() != null) {
+            projects.add(SessionManager.getInstance().getCurrentUser().getLastProject());
+        }
+        newTeam.setProjects(projects);
         newTeam.setMembers(userCheckComboBox.getCheckModel().getCheckedItems());
+        newTeam.setOrganization(SessionManager.getInstance().getCurrentUser().getLastOrganization());
+
         TeamService teamService = new TeamService();
         Team createdTeam = teamService.create(newTeam);
 
@@ -115,6 +121,18 @@ public class CreateTeamController {
 
         if (createdTeam != null) {
             System.out.println("Team created successfully.");
+
+            SessionManager.getInstance().refetchCurrentUser();
+
+            SceneManager.getInstance().switchToScene("/fxml/main-view.fxml", null, null, scene -> {
+                scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/styles.css")).toExternalForm());
+                scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/kanban.css")).toExternalForm());
+                scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/hierarchy.css")).toExternalForm());
+                scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/settings.css")).toExternalForm());
+                scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/organization.css")).toExternalForm());
+                scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/popover.css")).toExternalForm());
+            });
+
             return true;
         }
 

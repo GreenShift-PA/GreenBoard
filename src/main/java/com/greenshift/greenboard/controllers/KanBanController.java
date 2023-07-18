@@ -9,6 +9,7 @@ import com.greenshift.greenboard.models.entities.User;
 import com.greenshift.greenboard.models.ui.CustomContextMenuItem;
 import com.greenshift.greenboard.models.ui.KanbanItem;
 import com.greenshift.greenboard.services.TaskService;
+import com.greenshift.greenboard.services.TaskStatusService;
 import com.greenshift.greenboard.services.TeamService;
 import com.greenshift.greenboard.singletons.SceneManager;
 import com.greenshift.greenboard.singletons.SessionManager;
@@ -156,14 +157,7 @@ public class KanBanController {
                     taskService.update(draggedTask);
 
                     SessionManager.getInstance().refetchCurrentUser();
-                    SceneManager.getInstance().switchToScene("/fxml/main-view.fxml", null, null, scene -> {
-                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/styles.css")).toExternalForm());
-                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/kanban.css")).toExternalForm());
-                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/hierarchy.css")).toExternalForm());
-                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/settings.css")).toExternalForm());
-                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/organization.css")).toExternalForm());
-                        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/popover.css")).toExternalForm());
-                    });
+                    buildKanbanColumns();
                 }
             }
 
@@ -313,6 +307,11 @@ public class KanBanController {
 
 
     private void buildKanbanColumns() {
+
+        // clear the columns list
+        if (this.columns != null)
+            this.columns.getChildren().clear();
+
         this.columnsListViews = new HashMap<>();
 
         TeamService teamService = new TeamService();
@@ -329,11 +328,40 @@ public class KanBanController {
         }
 
         List<Task> allTasks = Arrays.stream(teamService.getTasks(currentUser.getLastTeam().getId())).toList();
-        System.out.println("All tasks: " + allTasks);
 
         // Group the tasks by their status name
         Map<TaskStatus, List<Task>> groupedTasks = allTasks.stream()
                 .collect(Collectors.groupingBy(Task::getStatus));
+
+        boolean hasTodo = false;
+        boolean hasInProgress = false;
+        boolean hasDone = false;
+        // make sure to always have a status for each column TODO, IN_PROGRESS, DONE
+        // check that the values are present on the hashmap, if not add them with an empty list
+        for (TaskStatus status : groupedTasks.keySet()) {
+            if (status.getName().equals("TODO")) hasTodo = true;
+            if (status.getName().equals("IN_PROGRESS")) hasInProgress = true;
+            if (status.getName().equals("DONE")) hasDone = true;
+        }
+
+        TaskStatusService taskStatusService = new TaskStatusService();
+        if (!hasTodo) {
+            TaskStatus todoStatus = taskStatusService.getTaskStatusByName("TODO");
+            if (todoStatus != null)
+                groupedTasks.put(todoStatus, new ArrayList<>());
+        }
+
+        if (!hasInProgress) {
+            TaskStatus inProgressStatus = taskStatusService.getTaskStatusByName("IN_PROGRESS");
+            if (inProgressStatus != null)
+                groupedTasks.put(inProgressStatus, new ArrayList<>());
+        }
+
+        if (!hasDone) {
+            TaskStatus doneStatus = taskStatusService.getTaskStatusByName("DONE");
+            if (doneStatus != null)
+                groupedTasks.put(doneStatus, new ArrayList<>());
+        }
 
         // Create a JFXListView for each status and populate it with KanbanItems
         groupedTasks.forEach((status, tasks) -> {

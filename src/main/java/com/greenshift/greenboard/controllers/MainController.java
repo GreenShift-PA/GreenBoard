@@ -4,6 +4,7 @@ import com.greenshift.greenboard.TopBarController;
 import com.greenshift.greenboard.cells.LeftMenuItemCell;
 import com.greenshift.greenboard.interfaces.IContentLoadedCallback;
 import com.greenshift.greenboard.models.entities.Organization;
+import com.greenshift.greenboard.models.entities.Project;
 import com.greenshift.greenboard.models.entities.User;
 import com.greenshift.greenboard.models.ui.LeftMenuItem;
 import com.greenshift.greenboard.services.UserService;
@@ -30,6 +31,7 @@ import javafx.stage.Popup;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 public class MainController {
@@ -138,7 +140,7 @@ public class MainController {
             teamItem.getChildren().add(new TreeItem<>(
                     new LeftMenuItem("Tasks", "mdi2f-file-document-outline", (item) -> {
 
-                        currentUser.setlastTeam(team);
+                        currentUser.setLastTeam(team);
                         currentUser.setlastTeamId(team.getId());
                         UserService userService = new UserService();
                         User updatedUser = userService.update(currentUser);
@@ -161,7 +163,7 @@ public class MainController {
     }
 
     private void initProjectTreeView() {
-
+        currentUser = SessionManager.getInstance().getCurrentUser();
         if (currentUser == null)
             return;
 
@@ -169,24 +171,70 @@ public class MainController {
         teamTreeView.setRoot(rootItem);
 
         if (currentUser.getLastTeam() != null) {
-            currentUser.getLastTeam().getProjects().forEach(team -> {
-                TreeItem<LeftMenuItem> teamItem = new TreeItem<>(new LeftMenuItem(team.getName(), "mdi2f-file-document-outline"));
-                teamItem.getChildren().add(new TreeItem<>(
-                        new LeftMenuItem("Tasks", "mdi2f-file-document-outline", (item) -> {
-                            UserService userService = new UserService();
-                            User updatedUser = userService.update(currentUser);
-                            if (updatedUser != null) {
-                                currentUser = updatedUser;
-                                SessionManager.getInstance().setCurrentUser(currentUser);
-                            } else {
-                                System.out.println("Failed to update user");
-                            }
+            List<Project> projects = currentUser.getLastTeam().getProjects();
+            if (currentUser.getLastOrganization() != null)
+                projects = currentUser.getLastOrganization().getProjects();
+
+            projects.forEach(project -> {
+                TreeItem<LeftMenuItem> projectItem = new TreeItem<>(new LeftMenuItem(project.getName(), "mdi2f-file-document-outline", (item) -> {
+                    currentUser.setLastProject(project);
+                    currentUser.setLastProjectId(project.getId());
+                    currentUser.setLastTeamId(null);
+                    currentUser.setLastTeam(null);
+                    UserService userService = new UserService();
+                    User updatedUser = userService.update(currentUser);
+
+                    if (updatedUser != null) {
+                        SessionManager.getInstance().refetchCurrentUser();
+                        currentUser = SessionManager.getInstance().getCurrentUser();
+
+                        loadContent("/fxml/kanban.fxml", (node) -> {
+                            System.out.println("Loaded kanban");
+                        });
+                    } else {
+                        System.out.println("Failed to update user");
+                    }
+                }));
+
+                TreeItem<LeftMenuItem> projectTeamsItem = new TreeItem<>(
+                        new LeftMenuItem("Teams", "mdi2f-file-document-outline"));
+
+                projectItem.getChildren().add(projectTeamsItem);
+
+                project.getTeams().forEach(team -> {
+                    TreeItem<LeftMenuItem> teamItem = new TreeItem<>(new LeftMenuItem(team.getName(), "mdi2f-file-document-outline", (item) -> {
+
+                        currentUser.setLastTeam(team);
+                        currentUser.setLastProject(project);
+                        currentUser.setlastTeamId(team.getId());
+                        currentUser.setLastProjectId(project.getId());
+                        UserService userService = new UserService();
+                        User updatedUser = userService.update(currentUser);
+
+                        if (updatedUser != null) {
+                            SessionManager.getInstance().refetchCurrentUser();
+                            currentUser = SessionManager.getInstance().getCurrentUser();
 
                             loadContent("/fxml/kanban.fxml", (node) -> {
                                 System.out.println("Loaded kanban");
                             });
-                        })));
-                teamTreeView.getRoot().getChildren().add(teamItem);
+
+                        } else {
+                            System.out.println("Failed to update user");
+                        }
+                    }));
+
+                    teamItem.getChildren().add(new TreeItem<>(
+                            new LeftMenuItem("Tasks", "mdi2f-file-document-outline", (item) -> {
+                                loadContent("/fxml/kanban.fxml", (node) -> {
+                                    System.out.println("Loaded kanban");
+                                });
+                            })));
+
+                    projectTeamsItem.getChildren().add(teamItem);
+                });
+
+                teamTreeView.getRoot().getChildren().add(projectItem);
             });
         }
 
